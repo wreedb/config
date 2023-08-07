@@ -1,0 +1,16 @@
+#+title: wbr-config
+
+
+This repo is for my dotfiles, using GNU Stow to manage them.
+Below is a table of my personal main choices of software that
+I use on Linux.
+
+|type|name|link|my config|
+|---+---+---+---|
+|terminal|kitty|[[https://sw.kovidgoyal.net/kitty/][kitty's website]]|[[./.config/kitty][goto: kitty]]|
+|wayland compositor|river|[[https://github.com/riverwm/river][river (github)]]|[[./.config/river/init.v][goto: river]]|
+|editor|doom emacs|[[https://github.com/doomemacs/doomemacs][doom (github)]]|[[./.config/doom][goto: doom]]|
+|shell|zsh|[[https://zsh.org][zsh website]]|[[./.config/zsh][goto: zsh]]|
+|file manager|nnn|[[https://github.com/jarun/nnn][nnn (github)]]|[[./.config/zsh/.zshenv][goto: zshenv]]|
+|fetch|fastfetch|[[https://github.com/fastfetch-cli/fastfetch][fastfetch (github)]]|[[./.config/fastfetch/config.conf][goto: fastfetch]]|
+|run launcher|bemenu|[[https://github.com/cloudef/bemenu][bemenu (github)]]|[[./.config/zsh/env][goto: bemenu]]|

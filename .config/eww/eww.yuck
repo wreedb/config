@@ -1,0 +1,26 @@
+; vim:ft=yuck:expandtab:shiftwidth=2:tabstop=4:softtabstop=2
+; Will Reed | wreedb@yandex.com | https://github.com/wreedb/wbr-linux
+; EWW Configuration | WIDGETS
+
+(defwindow example
+  :monitor 0
+  :geometry (geometry
+    :x "0%"
+    :y "20px"
+    :width "90%"
+    :height "30px"
+    :anchor "top center")
+  :stacking "fg"
+  :reverse (struts
+    :distance "40px"
+    :side "top"
+  :windowtype "dock"
+  :wm-ignore false)
+  (greeter :text "Say Hello!"
+           :name "Will"))
+
+(defwidget greeter [?text name] (box
+  :orientation "horizontal"
+  :halign "center"
+  text
+  (button :onclick "notify-send 'Hello!' 'Hello, ${name}'" "Greet")))

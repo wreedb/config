@@ -1,0 +1,197 @@
+//vim:ft=sass
+
+
+$bg:  rgba(25,  23,  36,  1) // #191724
+$rp0: rgba(38,  35,  58,  1) // #26233A
+$rp1: rgba(235, 111, 146, 1) // #EB6F92
+$rp2: rgba(49,  116, 143, 1) // #31748F
+$rp3: rgba(246, 193, 119, 1) // #F6C177
+$rp4: rgba(156, 207, 216, 1) // #9CCFD8
+$rp5: rgba(196, 167, 231, 1) // #C4A7E7
+$rp6: rgba(235, 188, 186, 1) // #EBBCBA
+$rp7: rgba(224, 222, 244, 1) // #E0DEF4
+$rp8: rgba(110, 106, 134, 1) // #6E6A86
+
+
+@mixin fore()
+  color: $rp7
+
+@mixin modulepad()
+  padding-left: 10px
+  padding-right: 10px
+  margin-left: 5px
+  margin-right: 5px
+
+@mixin border()
+  border-color: $rp0
+  border-style: solid
+  border-width: 1px
+
+@mixin bg()
+  background-color: rgba(25,23,36,0.7)
+
+@mixin font()
+  font-family: "Roboto Condensed"
+  font-size: 18px
+
+@mixin symbols()
+  font-family: "Symbols Nerd Font"
+  font-size: 20px
+
+window
+  @include font
+
+#waybar
+  @include font
+  @include fore
+  background-color: transparent
+  padding: 5px
+
+.modules-center
+  @include fore
+
+.modules-left,
+.modules-right
+  @include bg
+  border: none
+  // padding: 3px
+  border-radius: 5px
+
+.modules-left
+  border: none
+
+.right
+  border: none
+
+.modules-right
+  border: none
+  @include symbols
+
+.left
+  @include font
+  padding: 0
+  border-radius: 5px
+  margin-left: 4px
+
+#backlight
+  border: none
+  // margin-left: 6px
+
+#battery
+  border: none
+  //margin-left: 6px
+
+#pulseaudio
+  border: none
+  //margin-left: 6px
+
+#tray
+  border: none
+  margin-left: 6px
+
+.right
+  border: none
+  @include font
+  border-radius: 5px
+  margin-right: 10px
+  margin-left: 10px
+  padding: 0 4px
+
+#tags button
+  color: $rp8
+  font-weight: bold
+  border-radius: 5px
+  margin: 4px
+  padding: 2px 2px
+  min-width: 1.5em
+  min-height: 1.5em
+  border: none
+
+#tags button:hover
+  color: $rp0
+  border: none
+  animation-duration: 0.8s
+  animation-name: fadein
+  animation-timing-function: ease-in-out
+  animation-fill-mode: forwards
+
+#tags button.occupied
+  color: $rp7
+  border: none
+
+#tags button.occupied:hover
+  color: $rp0
+  border: none
+
+#tags button.focused
+  color: $rp0
+  border: none
+  animation-duration: 0.8s
+  animation-name: fadein
+  animation-timing-function: ease-in-out
+  animation-fill-mode: forwards
+
+#tags button.focused:hover
+  color: $rp0
+  border: none
+
+@keyframes fadein
+  from
+    background-image: none
+  to
+    background-image: linear-gradient(to right, $rp2, $rp5)
+    color: $rp0
+  
+
+#custom-tray-label
+  border: none
+  color: $rp8
+
+#tray
+  @include modulepad
+  border: none
+
+#pulseaudio.right
+  @include modulepad
+  border: none
+  color: $bg
+  background-color: $rp1
+
+#pulseaudio:hover
+  border: none
+
+#backlight.right
+  @include modulepad
+  background-color: $rp3
+  border: none
+  color: $bg
+
+#battery.right
+  @include modulepad
+  border: none
+  color: $bg
+  background-color: $rp2
+
+#clock
+  @include font
+  @include modulepad
+  background-color: $rp5
+  border-radius: 5px
+  border: none
+  color: $bg
+
+
+#custom-powermenu
+  @include font
+  @include modulepad
+  color: $bg
+  border-radius: 5px
+  background-color: $rp1
+  
+
+#custom-pacman
+  @include font
+  @include modulepad
+  color: $bg
+  border-radius: 5px
+  background-color: $rp4

@@ -1,0 +1,39 @@
+import = ["/home/wbr/.config/alacritty/rosepine.toml"]
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 18.0
+
+[font.bold]
+family = "Cascadia Code"
+style = "Bold"
+
+[font.bold_italic]
+family = "Cascadia Code"
+style = "Bold Italic"
+
+[font.italic]
+family = "Cascadia Code"
+style = "Italic"
+
+[font.normal]
+family = "Cascadia Code"
+style = "Medium"
+
+[scrolling]
+history = 10000
+multiplier = 2
+
+[window]
+dynamic_title = true
+opacity = 0.98
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 20
+y = 5

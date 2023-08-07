@@ -1,0 +1,17 @@
+[general]
+cpus = 8
+editor = "nvim"
+
+[aur]
+build = "/home/wbr/.cache/aura/builds"
+cache = "/home/wbr/.cache/aura/cache"
+clones = "/home/wbr/.cache/aura/packages"
+hashes = "/home/wbr/.cache/aura/hashes"
+ignores = []
+git = false
+hotedit = false
+diff = false
+delmakedeps = false
+
+[backups]
+snapshots = "/home/wbr/.cache/aura/snapshots"

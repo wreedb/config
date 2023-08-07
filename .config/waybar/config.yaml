@@ -1,0 +1,80 @@
+layer: "top"
+position: "top"
+mode: "dock"
+margin-left: 10
+margin-right: 10
+margin-top: 10
+modules-left:
+  - "river/tags"
+modules-center:
+  - "river/window"
+modules-right:
+  - "tray"
+  - "custom/pacman"
+  - "pulseaudio#left"
+  - "pulseaudio#right"
+  - "backlight#left"
+  - "backlight#right"
+  - "battery#left"
+  - "battery#right"
+  - "clock"
+  - "custom/powermenu"
+river/tags:
+  num-tags: 9
+  tag-labels:
+    - "1"
+    - "2"
+    - "3"
+    - "4"
+    - "5"
+    - "6"
+    - "7"
+    - "8"
+    - "9"
+river/window:
+  max-length: 50
+custom/pacman:
+  exec: "~/.config/waybar/scripts/pacman.sh"
+  format: "󰊠  {}"
+  interval: 120
+  on-click: "~/.config/waybar/scripts/on-click_pacman.sh"
+custom/powermenu:
+  format: ""
+  on-click: "kitty -e byebye"
+pulseaudio#right:
+  format: '{volume}%'
+  on-click: "volume --mute"
+pulseaudio#left:
+  on-click: "volume --mute"
+  format: '{icon}'
+  format-muted: ""
+  format-icons:
+    headphone: ""
+    default:
+      - ""
+      - ""
+      - ""
+backlight#left:
+  format: '{icon}'
+  format-icons:
+    - "󰃞"
+    - "󰃟"
+    - "󰃝"
+    - "󰃠"
+backlight#right:
+  format: '{percent}%'
+battery#left:
+  format-icons:
+    - "󰂆"
+    - "󰂇"
+    - "󰂈"
+    - "󰂉"
+    - "󰂊"
+    - "󰂋"
+    - "󰂅"
+  format: '{icon}'
+battery#right:
+  format: '{capacity}%'
+clock:
+  format: '{:%I:%M %p}'
+  tooltip-format: '{:%A, %B %d}'

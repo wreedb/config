@@ -1,0 +1,27 @@
+- name: wbg
+  opts: ~/pictures/wallpapers/bg1.png
+  restart: true
+
+- name: dunst
+  opts: null
+  restart: false
+
+- name: waybar
+  opts: --log-level error
+  restart: true
+
+- name: emacs
+  opts: --daemon
+  restart: false
+
+- name: xfce-polkit
+  opts: null
+  restart: true
+
+- name: xfsettingsd-wayland
+  opts: --disable-wm-check --daemon
+  restart: false
+
+- name: foot
+  opts: --server
+  restart: false

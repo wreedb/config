@@ -1,0 +1,209 @@
+window {
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+}
+
+#waybar {
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  color: rgb(224, 222, 244);
+  background-color: transparent;
+  padding: 5px;
+}
+
+.modules-center {
+  color: rgb(224, 222, 244);
+}
+
+.modules-left,
+.modules-right {
+  background-color: rgba(25, 23, 36, 0.7);
+  border: none;
+  border-radius: 5px;
+}
+
+.modules-left {
+  border: none;
+}
+
+.right {
+  border: none;
+}
+
+.modules-right {
+  border: none;
+  font-family: "Symbols Nerd Font";
+  font-size: 20px;
+}
+
+.left {
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  padding: 0;
+  border-radius: 5px;
+  margin-left: 4px;
+}
+
+#backlight {
+  border: none;
+}
+
+#battery {
+  border: none;
+}
+
+#pulseaudio {
+  border: none;
+}
+
+#tray {
+  border: none;
+  margin-left: 6px;
+}
+
+.right {
+  border: none;
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 0 4px;
+}
+
+#tags button {
+  color: rgb(110, 106, 134);
+  font-weight: bold;
+  border-radius: 5px;
+  margin: 4px;
+  padding: 2px 2px;
+  min-width: 1.5em;
+  min-height: 1.5em;
+  border: none;
+}
+
+#tags button:hover {
+  color: rgb(38, 35, 58);
+  border: none;
+  animation-duration: 0.8s;
+  animation-name: fadein;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#tags button.occupied {
+  color: rgb(224, 222, 244);
+  border: none;
+}
+
+#tags button.occupied:hover {
+  color: rgb(38, 35, 58);
+  border: none;
+}
+
+#tags button.focused {
+  color: rgb(38, 35, 58);
+  border: none;
+  animation-duration: 0.8s;
+  animation-name: fadein;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#tags button.focused:hover {
+  color: rgb(38, 35, 58);
+  border: none;
+}
+
+@keyframes fadein {
+  from {
+    background-image: none;
+  }
+  to {
+    background-image: linear-gradient(to right, rgb(49, 116, 143), rgb(196, 167, 231));
+    color: rgb(38, 35, 58);
+  }
+}
+#custom-tray-label {
+  border: none;
+  color: rgb(110, 106, 134);
+}
+
+#tray {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+}
+
+#pulseaudio.right {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+  color: rgb(25, 23, 36);
+  background-color: rgb(235, 111, 146);
+}
+
+#pulseaudio:hover {
+  border: none;
+}
+
+#backlight.right {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: rgb(246, 193, 119);
+  border: none;
+  color: rgb(25, 23, 36);
+}
+
+#battery.right {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: none;
+  color: rgb(25, 23, 36);
+  background-color: rgb(49, 116, 143);
+}
+
+#clock {
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: rgb(196, 167, 231);
+  border-radius: 5px;
+  border: none;
+  color: rgb(25, 23, 36);
+}
+
+#custom-powermenu {
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: rgb(25, 23, 36);
+  border-radius: 5px;
+  background-color: rgb(235, 111, 146);
+}
+
+#custom-pacman {
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: rgb(25, 23, 36);
+  border-radius: 5px;
+  background-color: rgb(156, 207, 216);
+}

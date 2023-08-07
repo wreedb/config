@@ -1,0 +1,351 @@
+#compdef proto
+
+autoload -U is-at-least
+
+_proto() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+":: :_proto_commands" \
+"*::: :->proto" \
+&& ret=0
+    case $state in
+    (proto)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:proto-command-$line[1]:"
+        case $line[1] in
+            (alias)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+':alias -- Alias name:' \
+':semver -- Version (or alias) to associate with:' \
+&& ret=0
+;;
+(bin)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--shim[Display shim path when available]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+'::semver -- Version of tool:' \
+&& ret=0
+;;
+(clean)
+_arguments "${_arguments_options[@]}" \
+'--days=[Clean tools older than the specified number of days]:DAYS: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--yes[Avoid and force confirm prompts]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" \
+'--shell=[Shell to generate for]:SHELL:(bash elvish fish powershell zsh)' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(install)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--pin[Pin version as the global default]' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+'::semver -- Version of tool:' \
+'*::passthrough -- Unique arguments to pass to each tool:' \
+&& ret=0
+;;
+(install-global)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+'*::dependencies -- Dependencies and optional version to install:' \
+&& ret=0
+;;
+(global)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+':semver -- Version of tool:' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+&& ret=0
+;;
+(list-global)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+&& ret=0
+;;
+(list-remote)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+&& ret=0
+;;
+(local)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+':semver -- Version of tool:' \
+&& ret=0
+;;
+(plugins)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--json[Print the list in JSON format]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" \
+'--bin=[Path to an alternate binary to run]:BIN: ' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+'::semver -- Version of tool:' \
+'*::passthrough -- Arguments to pass through to the underlying command:' \
+&& ret=0
+;;
+(setup)
+_arguments "${_arguments_options[@]}" \
+'--shell=[Shell to setup for]:SHELL:(bash elvish fish powershell zsh)' \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'--profile[Return the profile path if setup]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(unalias)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+':alias -- Alias name:' \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help (see more with '\''--help'\'')]' \
+'--help[Print help (see more with '\''--help'\'')]' \
+'-V[Print version]' \
+'--version[Print version]' \
+':tool -- Type of tool:' \
+':semver -- Version of tool:' \
+&& ret=0
+;;
+(upgrade)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+(use)
+_arguments "${_arguments_options[@]}" \
+'--log=[Lowest log level to output]:LOG:(off error warn info debug trace)' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_proto_commands] )) ||
+_proto_commands() {
+    local commands; commands=(
+'alias:Add an alias to a tool.' \
+'bin:Display the absolute path to a tools binary.' \
+'clean:Clean the ~/.proto directory by removing stale and old tools.' \
+'completions:Generate command completions for your current shell.' \
+'install:Download and install a tool.' \
+'install-global:Install a global dependency for the specified tool.' \
+'global:Set the global default version of a tool.' \
+'list:List installed versions.' \
+'list-global:List installed globals.' \
+'list-remote:List available versions.' \
+'local:Set the local version of a tool.' \
+'plugins:List all active and configured plugins.' \
+'run:Run a tool after detecting a version from the environment.' \
+'setup:Setup proto for your current shell.' \
+'unalias:Remove an alias from a tool.' \
+'uninstall:Uninstall a tool.' \
+'upgrade:Upgrade proto to the latest version.' \
+'use:Download and install all tools from the closest .prototools.' \
+    )
+    _describe -t commands 'proto commands' commands "$@"
+}
+(( $+functions[_proto__alias_commands] )) ||
+_proto__alias_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto alias commands' commands "$@"
+}
+(( $+functions[_proto__bin_commands] )) ||
+_proto__bin_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto bin commands' commands "$@"
+}
+(( $+functions[_proto__clean_commands] )) ||
+_proto__clean_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto clean commands' commands "$@"
+}
+(( $+functions[_proto__completions_commands] )) ||
+_proto__completions_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto completions commands' commands "$@"
+}
+(( $+functions[_proto__global_commands] )) ||
+_proto__global_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto global commands' commands "$@"
+}
+(( $+functions[_proto__install_commands] )) ||
+_proto__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto install commands' commands "$@"
+}
+(( $+functions[_proto__install-global_commands] )) ||
+_proto__install-global_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto install-global commands' commands "$@"
+}
+(( $+functions[_proto__list_commands] )) ||
+_proto__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto list commands' commands "$@"
+}
+(( $+functions[_proto__list-global_commands] )) ||
+_proto__list-global_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto list-global commands' commands "$@"
+}
+(( $+functions[_proto__list-remote_commands] )) ||
+_proto__list-remote_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto list-remote commands' commands "$@"
+}
+(( $+functions[_proto__local_commands] )) ||
+_proto__local_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto local commands' commands "$@"
+}
+(( $+functions[_proto__plugins_commands] )) ||
+_proto__plugins_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto plugins commands' commands "$@"
+}
+(( $+functions[_proto__run_commands] )) ||
+_proto__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto run commands' commands "$@"
+}
+(( $+functions[_proto__setup_commands] )) ||
+_proto__setup_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto setup commands' commands "$@"
+}
+(( $+functions[_proto__unalias_commands] )) ||
+_proto__unalias_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto unalias commands' commands "$@"
+}
+(( $+functions[_proto__uninstall_commands] )) ||
+_proto__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto uninstall commands' commands "$@"
+}
+(( $+functions[_proto__upgrade_commands] )) ||
+_proto__upgrade_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto upgrade commands' commands "$@"
+}
+(( $+functions[_proto__use_commands] )) ||
+_proto__use_commands() {
+    local commands; commands=()
+    _describe -t commands 'proto use commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_proto" ]; then
+    _proto "$@"
+else
+    compdef _proto proto
+fi

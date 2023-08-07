@@ -1,0 +1,76 @@
+; vim:ft=yuck:expandtab:shiftwidth=2:tabstop=4:softtabstop=2
+; Will Reed | wreedb@yandex.com | https://github.com/wreedb/wbr-linux
+; EWW Configuration | WIDGETS
+
+(defpoll time :interval "10s"
+  "date '+%I:%M %p'"
+)
+
+(defpoll sample :interval "60s"
+  "echo river"
+)
+
+(defwidget endcap []
+  (box
+    :class "endcap"
+    :halign "end"
+    :orientation "h"
+    :space-evenly true
+    (button :onclick "notify-send 'fuck you'" time)
+  )
+)
+  
+(defwidget mid-section []
+  (box
+    :class "mid-section"
+    :halign "center"
+    :orientation "h"
+    :space-evenly true
+    sample
+  )
+)
+
+(defwidget riverbar []
+  (centerbox
+    :orientation "h"
+    (workspaces)
+    (mid-section)
+    (endcap)
+  )
+)
+
+(defwidget workspaces []
+  (box
+    :class "workspaces"
+    :orientation "h"
+    :space-evenly true
+    :halign "start"
+    :spacing 0
+    (button :onclick "river-ws 1" 1)
+    (button :onclick "river-ws 2" 2)
+    (button :onclick "river-ws 3" 3)
+    (button :onclick "river-ws 4" 4)
+    (button :onclick "river-ws 5" 5)
+    (button :onclick "river-ws 6" 6)
+    (button :onclick "river-ws 7" 7)
+    (button :onclick "river-ws 7" 7)
+    (button :onclick "river-ws 8" 8)
+    (button :onclick "river-ws 9" 9)
+
+  )
+)
+
+(defwindow riverbar
+  :monitor 0
+  :exclusive true
+  :geometry
+    (geometry
+      :x      "0%"
+      :y      "10px"
+      :width  "98%"
+      :height "40px"
+      :anchor "top center"
+    )
+    :reserve (struts :side "top" :distance "4%")
+    (riverbar)
+)

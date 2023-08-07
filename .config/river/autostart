@@ -1,0 +1,16 @@
+#!/bin/sh
+
+get_random_wallpaper () {
+  printf '%s' "$(find $(printf $(xdg-user-dir PICTURES)/wallpapers/) -type f | shuf -n 1)"
+}
+
+[ -n "$(pgrep eww)"         ] && eww reload || eww daemon &
+[ -n "$(pgrep foot)"        ] || foot --server &
+[ -n "$(pgrep swww)"        ] || swww init && swww img "$(get_random_wallpaper)" &
+[ -n "$(pgrep waybar)"      ] || waybar --log-level critical &
+[ -n "$(pgrep mako)"        ] || mako &
+[ -n "$(pgrep xfsettingsd)" ] || env --unset WAYLAND_DISPLAY xfsettingsd --daemon &
+[ -n "$(pgrep emacs)"       ] || emacs --bg-daemon &
+
+riverctl default-layout rivertile
+[ -n "$(pgrep rivertile)" ] || rivertile -view-padding 6 -outer-padding 6 &

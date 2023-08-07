@@ -1,0 +1,39 @@
+# vim:ft=toml
+
+[user]
+  email = wreedb@skiff.com
+  name = Will Reed
+  username = wbr
+
+[init]
+  defaultBranch = main
+
+[core]
+  editor = nvim
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  pager = less
+
+[web]
+  browser = firefox-developer-edition
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow bold
+  local = green bold
+  remote = cyan bold
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+  whitespace = red reverse
+
+[color "status"]
+  added = green bold
+  changed = yellow bold
+  untracked = red bold
+[safe]
+	directory = /home/wbr/src/clone/river
