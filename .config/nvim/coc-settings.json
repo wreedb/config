@@ -1,5 +1,12 @@
 {
-  "languageserver": {
+  "languageserver":
+  {
+    
+    "v":
+    { "command": "vls"
+    , "filetypes": ["v", "vsh"]
+    , "trace.server": "verbose"
+    },
     
     "perl":
     { "command": "pls"

@@ -32,8 +32,8 @@
   "custom/pacman": {
     "exec": "~/.config/waybar/scripts/pacman.sh",
     "format": "󰊠 {}",
-    "interval": 120,
-    "on-click": "~/.config/waybar/scripts/on-click_pacman.sh"
+    "interval": 60,
+    "on-click": "~/.local/bin/updates-notify"
   },
 
   "custom/powermenu": {

@@ -1,17 +1,17 @@
 # vim:ft=toml
 
 max-history=0
-font=Roboto Condensed
+font=Roboto Condensed 12
 width=400
-height=150
+height=200
 outer-margin=5
 margin=20
-padding=10
+padding=20
 background-color=#27293599
 border-size=2
 border-color=#6AA1FD99
 border-radius=10
-icon-path=/usr/share/icons/rose-pine/24x24/status/:/usr/share/icons/rose-pine/24x24/devices/
+icon-path=/usr/share/icons/rose-pine
 icon-location=right
 markup=1
 actions=1
@@ -37,3 +37,7 @@ max-icon-size=128
 width=175
 height=100
 text-alignment=center
+
+[category=packages]
+icon-location=left
+on-button-left=exec kitty --class='bar-pacman' sh -c 'printf "Enter your password to update\n"; doas pacman -Syyu'

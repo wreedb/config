@@ -31,7 +31,7 @@ lsp.clangd.setup {}
 lsp.perlpls.setup {}
 lsp.denols.setup {}
 lsp.yamlls.setup {}
--- lsp.tsserver.setup {}
+lsp.vls.setup {}
 lsp.lua_ls.setup {}
 
 g.zig_fmt_autosave = false

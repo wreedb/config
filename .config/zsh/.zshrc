@@ -50,11 +50,13 @@ alias pf=pfetch
 alias nf=neofetch
 alias node='rlwrap node'
 alias deno='rlwrap deno'
-alias 'bunx repl'='rlwrap bunx repl'
+alias luarepl='rlwrap lua'
+alias luajitrepl='rlwrap luajit'
 alias ecl='rlwrap ecl'
 alias sbcl='rlwrap sbcl'
 alias clasp='rlwrap clasp'
-alias sudo="fuzzel --log-level none --dmenu --lines 0 --password --prompt 'Password: ' | sudo --stdin"
+alias sudo='fuzzel --log-level none --dmenu --lines 0 --password --prompt "Password: " | sudo --stdin'
+alias nnn='nnn -P p'
 
 NEWLINE=$'\n'
 
@@ -65,6 +67,3 @@ declare -gx NVM_DIR="$XDG_CONFIG_HOME/nvm"
 
 eval "$(zoxide init zsh)"
 eval "$(keychain --agents gpg,ssh --quiet --dir $XDG_DATA_HOME/keychain --eval $HOME/.ssh/key)"
-eval "$(opam env)"
-
-clear; pfetch

@@ -37,6 +37,8 @@ set.shell = os.getenv('SHELL')
 set.syntax = 'ON'
 set.encoding = 'utf-8'
 set.backspace = 'indent,start,eol'
+set.guifont = 'Myosevka Extended:h14'
+-- set.guifont = "JetBrains Mono:h16"
 
 
 local keyset = vim.keymap.set
