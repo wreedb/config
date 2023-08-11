@@ -23,6 +23,7 @@ local plugs =
 , { 'noahtheduke/vim-just', name = 'just' }
 , { 'elkowar/yuck.vim', name = 'yuck' }
 , { 'ollykel/v-vim', name = 'v' }
+, { 'waycrate/swhkd-vim', name = 'swhkd' }
 }
 
 return plugs

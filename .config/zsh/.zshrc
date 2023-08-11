@@ -67,3 +67,6 @@ declare -gx NVM_DIR="$XDG_CONFIG_HOME/nvm"
 
 eval "$(zoxide init zsh)"
 eval "$(keychain --agents gpg,ssh --quiet --dir $XDG_DATA_HOME/keychain --eval $HOME/.ssh/key)"
+
+# bun completions
+[ -s "/home/wbr/.local/share/bun/_bun" ] && source "/home/wbr/.local/share/bun/_bun"

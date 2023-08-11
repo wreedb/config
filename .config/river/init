@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-# source $HOME/.config/zsh/.zshenv
-
 riverctl map normal Super       Return spawn "${TERMINAL}"
 riverctl map normal Super+Shift Return spawn "footclient"
 riverctl map normal Super+Shift E      spawn "${EDITOR}"
@@ -39,13 +37,33 @@ riverctl map-pointer normal Super BTN_LEFT   move-view
 riverctl map-pointer normal Super BTN_RIGHT  resize-view
 riverctl map-pointer normal Super BTN_MIDDLE toggle-float
 
-for i in $(seq 1 9)
-do
-  tags=$((1 << (${i} - 1)))
-  riverctl map normal Super ${i} set-focused-tags ${tags}
-  riverctl map normal Super+Shift ${i} set-view-tags ${tags}
-done
+# switch to workspace
+riverctl map normal Super 1 spawn 'river-ws 1'
+riverctl map normal Super 2 spawn 'river-ws 2'
+riverctl map normal Super 3 spawn 'river-ws 3'
+riverctl map normal Super 4 spawn 'river-ws 4'
+riverctl map normal Super 5 spawn 'river-ws 5'
+riverctl map normal Super 6 spawn 'river-ws 6'
+riverctl map normal Super 7 spawn 'river-ws 7'
+riverctl map normal Super 8 spawn 'river-ws 8'
+riverctl map normal Super 9 spawn 'river-ws 9'
 
+# send to workspace
+riverctl map normal Super+Shift 1 spawn 'river-send 1'
+riverctl map normal Super+Shift 2 spawn 'river-send 2'
+riverctl map normal Super+Shift 3 spawn 'river-send 3'
+riverctl map normal Super+Shift 4 spawn 'river-send 4'
+riverctl map normal Super+Shift 5 spawn 'river-send 5'
+riverctl map normal Super+Shift 6 spawn 'river-send 6'
+riverctl map normal Super+Shift 7 spawn 'river-send 7'
+riverctl map normal Super+Shift 8 spawn 'river-send 8'
+riverctl map normal Super+Shift 9 spawn 'river-send 9'
+
+# function keys
+riverctl map normal None  Print                spawn 'screenshot'
+riverctl map normal Super Print                spawn 'screenshot -s'
+riverctl map normal Super+Shift Print          spawn 'screenshot -w 5'
+riverctl map normal Super+Alt   Print          spawn 'screenshot -s -w 5'
 riverctl map normal None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
 riverctl map normal None XF86AudioLowerVolume  spawn 'pamixer -d 5'
 riverctl map normal None XF86AudioMute         spawn 'pamixer --toggle-mute'
@@ -74,7 +92,6 @@ riverctl rule-add ssd -app-id '*firefox*'
 riverctl rule-add ssd -app-id 'pavucontrol*'
 riverctl rule-add ssd -app-id 'xfce*'
 riverctl rule-add ssd -app-id 'yad*'
-udlaunch >/dev/null 2>&1 &
 
 riverctl default-layout rivertile
 
@@ -88,3 +105,6 @@ else
     -main-count 1 \
     -main-ratio 0.5 >/dev/null 2>&1 &
 fi
+
+xrdb -merge $XDG_CONFIG_HOME/x/resources
+udlaunch >/dev/null 2>&1 &

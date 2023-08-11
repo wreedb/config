@@ -30,9 +30,8 @@
   "river/window": { "max-length": 50 },
 
   "custom/pacman": {
-    "exec": "~/.config/waybar/scripts/pacman.sh",
+    "exec": "~/.config/waybar/scripts/pacman.pl",
     "format": "󰊠 {}",
-    "interval": 60,
     "on-click": "~/.local/bin/updates-notify"
   },
 

@@ -33,6 +33,13 @@ args = ['--replace', '--disable-wm-check', '--daemon']
 setenvs = {}
 unsetenvs = ['WAYLAND_DISPLAY']
 
+[xfce-polkit]
+name = 'xfce-polkit'
+restart = false
+args = []
+setenvs = {}
+unsetenvs = []
+
 [sww-daemon]
 name = 'swww'
 restart = false

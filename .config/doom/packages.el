@@ -6,7 +6,11 @@
 ;; use 'M-x doom/reload'.
 (package! just-mode)
 (package! justl)
-(package! v-mode)
+
+(package! eglot)
+
+(package! vlang-mode :recipe
+  (:host github :repo "naheel-azawy/vlang-mode"))
 
 ;To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)

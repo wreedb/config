@@ -32,6 +32,7 @@ format=<b>%s</b>\n%b
 group-by=none
 width=550
 max-icon-size=128
+on-button-left=exec thunar ~/pictures/screenshots
 
 [category=volume]
 width=175

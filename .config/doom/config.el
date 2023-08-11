@@ -53,6 +53,13 @@
    :slant italic
    :weight medium))
 
+(add-to-list 'auto-mode-alist '("\\.v\\'"  . vlang-mode))
+(add-to-list 'auto-mode-alist '("\\.vsh\\'"  . vlang-mode))
+
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(vlang-mode . ("v-analyzer" "--stdio"))))
+
 ;; -- Documentation from Doom maintainer --
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
