@@ -1,3 +1,91 @@
-// vim:ft=scss:expandtab:shiftwidth=2:tabstop=4:softtabstop=2
-// Will Reed | wreedb@yandex.com | https://github.com/wreedb/wbr-linux
-// EWW Configuration | STYLES
+
+.powermenu
+{
+    font-family: 'Symbols Nerd Font Mono';
+    font-size: 3rem;
+    border-radius: 5px;
+    border: 5px solid black;
+    background:transparent;
+}
+
+.cancel-box
+{
+    font-family: 'Roboto Condensed'
+}
+
+
+.logout
+{
+    all: unset;
+    border-radius: 5px;
+    color: #C4A7E7;
+    background-color: rgba(25, 23, 36, 0.5);
+    transition: all 0.15s ease-in;
+    &:hover
+    {
+        background-color: #C4A7E7;
+        color: rgba(25, 23, 36, 1);
+        transition: all 0.15s ease-out;
+    }
+}
+
+
+.poweroff
+{
+    all: unset;
+    border-radius: 5px;
+    color: #EB6F92;
+    background-color: rgba(25, 23, 36, 0.5);
+    transition: all 0.15s ease-in;
+    &:hover
+    {
+        background-color: #EB6F92;
+        color: rgba(25, 23, 36, 1);
+        transition: all 0.15s ease-out;
+    }
+}
+
+.reboot
+{
+    all: unset;
+    border-radius: 5px;
+    background-color: rgba(25, 23, 36, 0.5);
+    color: #31748F;
+    transition: all 0.15s ease-in;
+    &:hover
+    {
+        background-color: #31748F;
+        color: rgba(25, 23, 36, 1);
+        transition: all 0.15s ease-out;
+    }
+}
+
+.sleep
+{
+    all: unset;
+    border-radius: 5px;
+    background-color: rgba(25, 23, 36, 0.5);
+    color: #F6C177;
+    transition: all 0.15s ease-in;
+    &:hover
+    {
+        background-color: #F6C177;
+        color: rgba(25, 23, 36, 1);
+        transition: all 0.15s ease-out;
+    }
+}
+
+.cancel
+{
+    all: unset;
+    border-radius: 5px;
+    background-color: rgba(25, 23, 36, 0.5);
+    color: #9CCFD8;
+    transition: all 0.15s ease-in;
+    &:hover
+    {
+        background-color: #9CCFD8;
+        color: rgba(25, 23, 36, 1);
+        transition: all 0.15s ease-out;
+    }
+}

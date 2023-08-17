@@ -1,68 +1,57 @@
 # vim:ft=python
 
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Match, Screen, EzKey, Key, KeyChord
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 import os
 
-os.system('udlaunch')
+os.system('udlaunch -u qtile')
 
 mod = "mod4"
 terminal = os.getenv('TERMINAL')
 editor = os.getenv('EDITOR')
+launcher = os.getenv('LAUNCHER')
+
 
 keys = [
 
-    Key([mod, 'shift'], 'e', lazy.spawn(editor), desc = 'Launch primary text editor'),
+    EzKey('M-j',        lazy.layout.next(),          desc = 'Move focus down'),
+    EzKey('M-k',        lazy.layout.previous(),      desc = 'Move focus up'),
+    EzKey('M-S-j',      lazy.layout.shuffle_down(),  desc = 'Move focus down'),
+    EzKey('M-S-k',      lazy.layout.shuffle_up(),    desc = 'Move focus up'),
+    EzKey('M-l',        lazy.layout.grow_main(),     desc = 'Enlarge master window size'),
+    EzKey('M-h',        lazy.layout.shrink_main(),   desc = 'Decrease master window size'),
+    EzKey('M-n',        lazy.layout.normalize(),     desc = 'Reset all window sizes'),
+    
+    EzKey('M-<Return>', lazy.spawn(terminal),        desc = 'Launch terminal'),
+    EzKey('M-<Tab>',    lazy.next_layout(),          desc = 'Toggle between layouts'),
+    EzKey('M-S-c',      lazy.window.kill(),          desc = 'Kill focused window'),
+    EzKey('M-S-r',      lazy.reload_config(),        desc = 'Reload the config'),
+    EzKey('M-S-x',      lazy.spawn('logout_yad'),    desc = 'Logout menu'),
+    EzKey('M-C-x',      lazy.shutdown(),             desc = 'Shutdown Qtile'),
+    EzKey('M-p',        lazy.spawn(launcher),        desc = 'Run launcher'),
+    EzKey('M-S-p',      lazy.spawn('fuzzel'),        desc = 'Big run launcher'),
+    
+    EzKey('<Print>',    lazy.spawn('screenshot'),    desc = 'Take a screenshot'),
+    EzKey('M-<Print>',  lazy.spawn('screenshot -s'), desc = 'Select screenshot'),
+    EzKey('M-S-e',      lazy.spawn(editor),          desc = 'Launch primary text editor'),
 
-    Key([mod], "j", lazy.layout.next(), desc="Move focus down"),
-    Key([mod], "k", lazy.layout.previous(), desc="Move focus up"),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
-    Key([mod], "l", lazy.layout.grow_main(), desc="Enlarge master window size"),
-    Key([mod], "h", lazy.layout.shrink_main(), desc="Decrease master window size"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
-    ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod, "control"], "x", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "p", lazy.spawn('fuzzel'), desc="Run launcher"),
+    EzKey('M-f',   lazy.window.toggle_floating(),   desc = 'Toggle focused window to float'),
+    EzKey('M-S-f', lazy.window.toggle_fullscreen(), desc = 'Toggle focused window to fullscreen'),
+
+    KeyChord([mod], 'Print', [
+        Key([], 'n', lazy.spawn('screenshot')),
+        Key([], 's', lazy.spawn('screenshot -s'))
+    ], name = 'Screenshot'),
 ]
 
 groups = [Group(i) for i in "123456789"]
 
 for i in groups:
-    keys.extend(
-        [
-            # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
-        ]
-    )
+    keys.extend([
+            Key([mod], i.name, lazy.group[i.name].toscreen(), desc = "Switch to workspace > {}".format(i.name), ),
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group = False), desc = "Send focused window to > {}".format(i.name), ),
+        ])
 
 layout_theme = {
   "border_width":  1,
@@ -72,59 +61,53 @@ layout_theme = {
   "border_normal": "403D52", #403D52
 }
 
-floating_theme = {
-  "border_width": 1,
-  "border_focus":  "C4A7E7", #C4A7E7
-  "border_normal": "403D52", #403D52
-}
-
 
 layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
-    layout.Floating(**floating_theme),
+    layout.Floating(
+        border_width = 1,
+        border_normal = '#403D52',
+        border_focus = '#C4A7E7'
+    ),
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
+    font="Roboto Condensed",
+    fontsize=16,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        bottom = bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
+                widget.CurrentLayoutIcon(
+                    custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                    padding = 0,
+                    scale = 0.7
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                widget.GroupBox(
+                    fmt = ' {} ',
+                    highlight_method = 'block',
+                    active = 'E0DEF4',
+                    block_highlight_text_color = 'E0DEF4',
+                ),
+                widget.WindowName(),
+                widget.Clock(format = "%I:%M %p"),
             ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            30,
+            background = '#191724',
+            opacity = 0.8,
+            margin = [3, 3, 3, 3]
         ),
     ),
 ]
 
-# Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start = lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start = lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -134,25 +117,16 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
-    float_rules=[
-        # Run the utility of `xprop` to see the wm class and name of an X client.
+    float_rules = [
         *layout.Floating.default_float_rules,
-        Match(wm_class="confirmreset"),  # gitk
-        Match(wm_class="makebranch"),  # gitk
-        Match(wm_class="maketag"),  # gitk
-        Match(wm_class="ssh-askpass"),  # ssh-askpass
-        Match(title="branchdialog"),  # gitk
-        Match(title="pinentry"),  # GPG key password entry
+        Match(wm_class = "ssh-askpass"),  # ssh-askpass
+        Match(wm_class = "yad"),  # yad dialogs
+        Match(title = "branchdialog"),  # gitk
+        Match(title = "pinentry"),  # GPG key password entry
     ]
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 
-# If things like steam games want to auto-minimize themselves when losing
-# focus, should we respect this or not?
-auto_minimize = True
-
-# When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = True
-

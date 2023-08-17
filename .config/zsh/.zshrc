@@ -55,8 +55,8 @@ alias luajitrepl='rlwrap luajit'
 alias ecl='rlwrap ecl'
 alias sbcl='rlwrap sbcl'
 alias clasp='rlwrap clasp'
-alias sudo='fuzzel --log-level none --dmenu --lines 0 --password --prompt "Password: " | sudo --stdin'
 alias nnn='nnn -P p'
+alias dex="dex --search-path $XDG_DATA_HOME/applications:/usr/local/share/applications:/usr/share/applications"
 
 NEWLINE=$'\n'
 

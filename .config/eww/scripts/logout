@@ -1,0 +1,3 @@
+#!/bin/sh
+
+loginctl kill-user "$USER";

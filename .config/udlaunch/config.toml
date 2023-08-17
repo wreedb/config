@@ -1,55 +1,114 @@
-[emacs]
+[aw]
+[aw.emacs]
+name = 'emacs'
+args = ['--fg-daemon']
+
+[aw.dunst]
+name = 'dunst'
+
+[aw.xfsettingsd]
+name = 'xfsettingsd'
+args = ['--replace', '--disable-wm-check', '--dameon']
+
+[aw.polkit]
+name = 'xfce-polkit'
+
+[aw.xrdb]
+name = 'xrdb'
+args = ['-merge', '~/.config/x/resources']
+
+
+
+[qtile]
+[qtile.emacs]
 name = 'emacs'
 restart = false
 args = ['--fg-daemon']
-setenvs = {}
-unsetenvs = []
 
-[waybar]
-name = 'waybar'
-restart = false
-args = ['--log-level=critical']
-setenvs = {}
-unsetenvs = []
-
-[foot]
-name = 'foot'
-restart = false
-args = ['--server']
-setenvs = {}
-unsetenvs = []
-
-[mako]
+[qtile.mako]
 name = 'mako'
 restart = false
-args = []
-setenvs = {}
-unsetenvs = []
 
-[xfsettingsd]
-name = 'xfsettingsd'
-restart = false
-args = ['--replace', '--disable-wm-check', '--daemon']
-setenvs = {}
-unsetenvs = ['WAYLAND_DISPLAY']
-
-[xfce-polkit]
+[qtile.xfce-polkit]
 name = 'xfce-polkit'
 restart = false
-args = []
-setenvs = {}
-unsetenvs = []
 
-[sww-daemon]
+[qtile.sww-daemon]
 name = 'swww'
 restart = false
 args = ['init']
-setenvs = []
-unsetenvs = []
 
-[swww]
+[qtile.swww]
 name = 'swww'
 restart = false
-args = ['img', '~/pictures/wallpapers/wall_04.png']
-setenvs = {}
-unsetenvs = []
+args = ['img', '~/pictures/wallpapers/wall_03.png']
+
+[qtile.xrdb]
+name = 'xrdb'
+args = ['-merge', '~/.config/x/resources']
+
+[dwl]
+[dwl.emacs]
+name = 'emacs'
+restart = false
+args = ['--fg-daemon']
+
+[dwl.mako]
+name = 'mako'
+restart = false
+
+[dwl.xfce-polkit]
+name = 'xfce-polkit'
+restart = false
+
+[dwl.sww-daemon]
+name = 'swww'
+restart = false
+args = ['init']
+
+[dwl.swww]
+name = 'swww'
+restart = false
+args = ['img', '~/pictures/wallpapers/wall_03.png']
+
+[dwl.xrdb]
+name = 'xrdb'
+args = ['-merge', '~/.config/x/resources']
+
+
+[hypr]
+[hypr.emacs]
+name = 'emacs'
+restart = false
+args = ['--fg-daemon']
+
+[hypr.waybar]
+name = 'waybar'
+restart = false
+args = ['--config /home/wbr/.config/hypr/waybar/config', '--style /home/wbr/.config/hypr/waybar/style.css', '--log-level=critical']
+
+[hypr.foot]
+name = 'foot'
+restart = false
+args = ['--server']
+
+[hypr.mako]
+name = 'mako'
+restart = false
+
+[hypr.xfsettingsd]
+name = 'xfsettingsd'
+restart = false
+args = ['--replace', '--disable-wm-check', '--daemon']
+unsetenvs = ['WAYLAND_DISPLAY']
+
+[hypr.xfce-polkit]
+name = 'xfce-polkit'
+restart = false
+
+[hypr.wallpaper_wayland]
+name = 'wallpaper_wayland'
+
+[hypr.xrdb]
+name = 'xrdb'
+args = ['-merge', '~/.config/x/resources']

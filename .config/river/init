@@ -1,14 +1,15 @@
 #!/bin/zsh
 
-riverctl map normal Super       Return spawn "${TERMINAL}"
-riverctl map normal Super+Shift Return spawn "footclient"
-riverctl map normal Super+Shift E      spawn "${EDITOR}"
-riverctl map normal Super+Shift B      spawn "${BROWSER}"
-riverctl map normal Super       P      spawn "bemenu-run"
-riverctl map normal Super+Shift P      spawn "fuzzel"
-riverctl map normal Super+Shift R      spawn "$HOME/.config/river/init"
-riverctl map normal Super+Shift C      close
-riverctl map normal Super+Shift X      exit
+riverctl map normal Super         Return spawn terminal
+riverctl map normal Super+Shift   Return spawn "footclient"
+riverctl map normal Super+Shift   E      spawn editor
+riverctl map normal Super+Shift   B      spawn browser
+riverctl map normal Super         P      spawn launcher
+riverctl map normal Super+Shift   P      spawn fuzzel
+riverctl map normal Super+Shift   R      spawn $HOME/.config/river/init
+riverctl map normal Super+Shift   C      close
+riverctl map normal Super+Shift   X      spawn logout_yad
+riverctl map normal Super+Control X      exit
 
 riverctl map normal Super       J focus-view next
 riverctl map normal Super       K focus-view previous
@@ -62,13 +63,13 @@ riverctl map normal Super+Shift 9 spawn 'river-send 9'
 # function keys
 riverctl map normal None  Print                spawn 'screenshot'
 riverctl map normal Super Print                spawn 'screenshot -s'
-riverctl map normal Super+Shift Print          spawn 'screenshot -w 5'
-riverctl map normal Super+Alt   Print          spawn 'screenshot -s -w 5'
-riverctl map normal None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-riverctl map normal None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-riverctl map normal None XF86AudioMute         spawn 'pamixer --toggle-mute'
-riverctl map normal None XF86MonBrightnessUp   spawn 'xbacklight -inc 5'
-riverctl map normal None XF86MonBrightnessDown spawn 'xbacklight -dec 5'
+riverctl map normal Super+Shift Print          spawn 'screenshot -w 3'
+riverctl map normal Super+Alt   Print          spawn 'screenshot -s -w 3'
+riverctl map normal None XF86AudioRaiseVolume  spawn 'vol -u'
+riverctl map normal None XF86AudioLowerVolume  spawn 'vol -d'
+riverctl map normal None XF86AudioMute         spawn 'vol -m'
+riverctl map normal None XF86MonBrightnessUp   spawn 'bright -u'
+riverctl map normal None XF86MonBrightnessDown spawn 'bright -d'
 
 riverctl background-color       0x191724 #191724
 riverctl border-color-focused   0x6e6a86 #6e6a86
@@ -107,4 +108,4 @@ else
 fi
 
 xrdb -merge $XDG_CONFIG_HOME/x/resources
-udlaunch >/dev/null 2>&1 &
+udlaunch -u def

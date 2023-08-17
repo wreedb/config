@@ -18,9 +18,10 @@ declare -gx MANWIDTH=70
 declare -gx MANPAGER=less
 declare -gx PAGER=less
 declare -gx TERMINAL=kitty
-declare -gx BROWSER=firefox
+declare -gx BROWSER=floorp
 declare -gx EDITOR=doomclient
 declare -gx MEDIAPLAYER=mpv
+declare -gx IMAGEVIEWER=nsxiv
 declare -gx LAUNCHER=bemenu-run
 declare -gx FILEMANAGER=thunar
 declare -gx INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
@@ -92,8 +93,11 @@ declare -gx _ZO_DATA_DIR=$XDG_DATA_HOME/zoxide
 declare -gx _ZO_MAXAGE=20000
 
 # bemenu
-declare -gx BEMENU_OPTS="--fn 'JetBrains Mono 14' --ignorecase --list 10 --prompt '' --wrap --fixed-height --ifne --scrollbar none --grab --border 1 --bdr '#524f67' --border-radius 2 --cw 1 --width-factor 0.3 --center --tf '#EB6F92' --tb '#191724' --cf '#191724' --cb '#191724' --ff '#c4a7e7' --fb '#191724' --nf '#524f67' --nb '#191724' --af '#524f67' --ab '#191724' --hf '#31748F' --hb '#1f1d2e' --fbf '#9ccfd8' --fbb '#9ccfd8' "
 
+declare -gx BEMENU_OPTS="--fn 'Myosevka 16' --ignorecase --prompt '' --ifne --scrollbar none --border 1 --bdr '#524f67' --border-radius 2 --cw 1 --width-factor 1 --no-overlap --tf '#EB6F92' --tb '#191724' --cf '#191724' --cb '#191724' --ff '#c4a7e7'--fb '#191724' --nf '#524f67' --nb '#191724' --af '#524f67' --ab '#191724' --hf '#31748F' --hb '#1f1d2e' --fbf '#9ccfd8' --fbb '#9ccfd8'"
+[ -n "$(pgrep river)"    ] && declare -gx BEMENU_OPTS="--fn 'Myosevka 16' --ignorecase --list 10 --prompt '' --wrap --fixed-height --ifne --scrollbar none --border 1 --bdr '#524f67' --border-radius 2 --cw 1 --width-factor 0.3 --center --tf '#EB6F92' --tb '#191724' --cf '#191724' --cb '#191724' --ff '#c4a7e7' --fb '#191724' --nf '#524f67' --nb '#191724' --af '#524f67' --ab '#191724' --hf '#31748F' --hb '#1f1d2e' --fbf '#9ccfd8' --fbb '#9ccfd8' "
+[ -n "$(pgrep qtile)"    ] && declare -gx BEMENU_OPTS="--fn 'Myosevka 16' --ignorecase --prompt '' --ifne --scrollbar none --border 1 --bdr '#524f67' --border-radius 2 --cw 1 --width-factor 1 --no-overlap --tf '#EB6F92' --tb '#191724' --cf '#191724' --cb '#191724' --ff '#c4a7e7'--fb '#191724' --nf '#524f67' --nb '#191724' --af '#524f67' --ab '#191724' --hf '#31748F' --hb '#1f1d2e' --fbf '#9ccfd8' --fbb '#9ccfd8'"
+[ -n "$(pgrep Hyprland)" ] && declare -gx BEMENU_OPTS="--fn 'Myosevka 16' --ignorecase --list 10 --prompt '' --wrap --fixed-height --ifne --scrollbar none --border 1 --bdr '#524f67' --border-radius 2 --cw 1 --width-factor 0.3 --center --tf '#EB6F92' --tb '#191724' --cf '#191724' --cb '#191724' --ff '#c4a7e7' --fb '#191724' --nf '#524f67' --nb '#191724' --af '#524f67' --ab '#191724' --hf '#31748F' --hb '#1f1d2e' --fbf '#9ccfd8' --fbb '#9ccfd8' "
 declare -U path
 
 path=( /home/wbr/.local/share/JetBrains/Toolbox/scripts $XDG_DATA_HOME/perl/bin $DENO_INSTALL_ROOT/bin $XDG_DATA_HOME/bun/bin $HOME/.zvm/bin $PNPM_HOME $XDG_BIN_HOME $XDG_CONFIG_HOME/emacs/bin $path /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/sbin )

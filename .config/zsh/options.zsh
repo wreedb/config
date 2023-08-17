@@ -35,7 +35,6 @@ setopt bsd_echo
 setopt emacs
 setopt rm_star_silent
 setopt posix_jobs
-setopt zle
 unsetopt hup
 unsetopt beep
 unsetopt bg_nice

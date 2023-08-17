@@ -1,26 +1,66 @@
-; vim:ft=yuck:expandtab:shiftwidth=2:tabstop=4:softtabstop=2
-; Will Reed | wreedb@yandex.com | https://github.com/wreedb/wbr-linux
-; EWW Configuration | WIDGETS
+(defwindow menu
+    :monitor 0
+    :geometry (geometry
+        :x '6px'
+        :y '6px'
+        :width '9%'
+        :height '25%'
+        :anchor 'top right')
+    :stacking 'fg'
+    :wm-ignore false
+    (powermenu))
 
-(defwindow example
-  :monitor 0
-  :geometry (geometry
-    :x "0%"
-    :y "20px"
-    :width "90%"
-    :height "30px"
-    :anchor "top center")
-  :stacking "fg"
-  :reverse (struts
-    :distance "40px"
-    :side "top"
-  :windowtype "dock"
-  :wm-ignore false)
-  (greeter :text "Say Hello!"
-           :name "Will"))
+(defwidget powermenu []
+    (box
+      :orientation 'v'
+      :class 'powermenu'
+      (top-row)
+      (mid-row)
+      (btm-row)))
 
-(defwidget greeter [?text name] (box
-  :orientation "horizontal"
-  :halign "center"
-  text
-  (button :onclick "notify-send 'Hello!' 'Hello, ${name}'" "Greet")))
+(defwidget top-row [] (box
+    :class 'top-row'
+    :orientation 'h'
+    (logout)
+    (poweroff)))
+
+(defwidget mid-row [] (box
+    :class 'mid-row'
+    :orientation 'h'
+    (reboot)
+    (sleep)))
+
+(defwidget btm-row [] (box
+    :class 'btm-row'
+    :orientation 'h'
+    (cancel)))
+
+(defwidget logout []
+  (box :class "btns"
+    (button
+      :class 'logout'
+      :onclick '~/.config/eww/scripts/logout' '󰗽')))
+
+(defwidget poweroff []
+  (box :class "btns"
+    (button
+      :class 'poweroff'
+      :onclick '~/.config/eww/scripts/poweroff' '󰐥')))
+
+(defwidget reboot []
+  (box :class "btns"
+    (button
+      :class 'reboot'
+      :onclick '~/.config/eww/scripts/reboot' '')))
+
+(defwidget sleep []
+  (box :class "btns"
+    (button
+      :class 'sleep'
+      :onclick '~/.config/eww/scripts/sleep' '󰤄')))
+
+(defwidget cancel []
+  (box :class 'cancel-box'
+    (button
+      :class 'cancel'
+      :onclick 'eww close menu' 'Cancel')))
