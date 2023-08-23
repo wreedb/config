@@ -1,0 +1,66 @@
+
+# fg          #E0DEF4
+# bg          #191724
+# active bg   #26233A
+# inactive fg #6E6A86
+# black   #26233A
+# red     #EB6F92
+# green   #31748F
+# yellow  #F6C177
+# blue    #9CCFD8
+# magenta #C4A7E7
+# cyan    #EBBCBA
+# white   #E0DEF4
+
+matching-algorithm = normal
+text-cursor = true
+terminal = kitty
+require-match = false
+multi-instance = true
+# Font
+font = Myosevka Extended Medium
+font-size = 18
+
+# Window Style
+anchor = center
+width = 25%
+height = 40%
+
+outline-width = 0
+border-width = 2
+border-color = #26233A
+corner-radius = 5
+min-input-width = 120
+result-spacing = 20
+padding-top = 10
+padding-bottom = 0
+padding-left = 10
+padding-right = 0
+
+# Text style
+prompt-text = "->"
+placeholder-text = terminal
+placeholder-color = #403D52
+prompt-padding = 10
+
+background-color = #191724
+text-color = #C4A7E7
+
+prompt-color = #31748F
+prompt-background = #191724
+prompt-background-padding = 10
+prompt-background-corner-radius = 5
+
+text-cursor-style = beam
+
+input-color = #EB6F92
+input-background = #191724
+input-background-padding = 10
+input-background-corner-radius = 5
+
+selection-color = #E0DEF4
+selection-background = #26233A
+selection-background-padding = 10
+selection-background-corner-radius = 5
+selection-match-color = #31748F
+

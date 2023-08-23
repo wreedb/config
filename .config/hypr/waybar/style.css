@@ -81,12 +81,8 @@ window {
   color: #26233A;
   background-color: #C4A7E7;
 }
-#workspaces button.active:hover {
-  color: #26233A;
-  background-color: #C4A7E7;
-}
 #workspaces button.occupied {
-  color: #E0DEF4;
+  background-color: #31748F;
 }
 #workspaces button.occupied:hover {
   color: #26233A;

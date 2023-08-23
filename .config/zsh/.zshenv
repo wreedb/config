@@ -22,7 +22,7 @@ declare -gx BROWSER=floorp
 declare -gx EDITOR=doomclient
 declare -gx MEDIAPLAYER=mpv
 declare -gx IMAGEVIEWER=nsxiv
-declare -gx LAUNCHER=bemenu-run
+declare -gx LAUNCHER=tofi-run
 declare -gx FILEMANAGER=thunar
 declare -gx INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 

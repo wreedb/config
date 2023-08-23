@@ -40,5 +40,5 @@ height=100
 text-alignment=center
 
 [category=packages]
-icon-location=left
-on-button-left=exec kitty --class='bar-pacman' sh -c 'printf "Enter your password to update\n"; doas pacman -Syyu'
+icon-location=right
+on-button-left=exec kitty --class='bar-pacman' sh -c ~/.local/bin/updates-popup

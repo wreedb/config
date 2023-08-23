@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=FontPreview
+GenericName=Font Viewer
+Comment=View a font in a minimal window
+Exec=fontpreview %F
+Type=Application
+StartupNotify=true
+Keywords=font;

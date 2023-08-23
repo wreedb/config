@@ -3,8 +3,8 @@
     :geometry (geometry
         :x '6px'
         :y '6px'
-        :width '9%'
-        :height '25%'
+        :width '20%'
+        :height '10%'
         :anchor 'top right')
     :stacking 'fg'
     :wm-ignore false
@@ -12,34 +12,19 @@
 
 (defwidget powermenu []
     (box
-      :orientation 'v'
+      :orientation 'h'
       :class 'powermenu'
-      (top-row)
-      (mid-row)
-      (btm-row)))
-
-(defwidget top-row [] (box
-    :class 'top-row'
-    :orientation 'h'
-    (logout)
-    (poweroff)))
-
-(defwidget mid-row [] (box
-    :class 'mid-row'
-    :orientation 'h'
-    (reboot)
-    (sleep)))
-
-(defwidget btm-row [] (box
-    :class 'btm-row'
-    :orientation 'h'
-    (cancel)))
+      (logout)
+      (poweroff)
+      (reboot)
+      (sleep)
+      (cancel)))
 
 (defwidget logout []
   (box :class "btns"
     (button
       :class 'logout'
-      :onclick '~/.config/eww/scripts/logout' '󰗽')))
+      :onclick '~/.config/eww/scripts/logout' '󰩈')))
 
 (defwidget poweroff []
   (box :class "btns"
@@ -63,4 +48,4 @@
   (box :class 'cancel-box'
     (button
       :class 'cancel'
-      :onclick 'eww close menu' 'Cancel')))
+      :onclick 'eww close menu' '')))

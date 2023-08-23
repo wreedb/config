@@ -1,0 +1,25 @@
+[MIME Cache]
+application/json=firefox.desktop;
+application/pdf=firefox.desktop;
+application/x-shellscript=doomclient.desktop;
+application/x-xpinstall=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+text/english=doomclient.desktop;
+text/html=firefox.desktop;
+text/plain=doomclient.desktop;
+text/x-c=doomclient.desktop;
+text/x-c++=doomclient.desktop;
+text/x-c++hdr=doomclient.desktop;
+text/x-c++src=doomclient.desktop;
+text/x-chdr=doomclient.desktop;
+text/x-csrc=doomclient.desktop;
+text/x-java=doomclient.desktop;
+text/x-makefile=doomclient.desktop;
+text/x-moc=doomclient.desktop;
+text/x-pascal=doomclient.desktop;
+text/x-tcl=doomclient.desktop;
+text/x-tex=doomclient.desktop;
+text/xml=firefox.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop;

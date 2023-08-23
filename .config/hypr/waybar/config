@@ -1,10 +1,10 @@
 {
-  "layer": "top",
-  "position": "top",
-  "mode": "dock",
-  "margin-left": 3,
+  "layer":        "top",
+  "position":     "top",
+  "mode":         "dock",
+  "margin-left":  3,
   "margin-right": 3,
-  "margin-top": 3,
+  "margin-top":   3,
   
   "modules-left":
   [
@@ -29,17 +29,17 @@
   "tray":
   {
       "icon-size": 20,
-      "spacing": 10
+      "spacing":   10
   },
 
   "network":
   {
-      "interface": "wlan0",
-      "format": "",
-      "format-wifi": "",
+      "interface":           "wlan0",
+      "format":              "",
+      "format-wifi":         "",
       "format-disconnected": "",
-      "max-length": 50,
-      "on-click": "kitty iwctl"
+      "max-length":          50,
+      "on-click":            "kitty iwctl"
   },
 
   "hyprland/workspaces":
@@ -54,23 +54,23 @@
   },
 
   "custom/pacman": {
-    "exec": "~/.config/waybar/scripts/pacman.pl",
+    "exec":          "~/.config/waybar/scripts/pacman.pl",
     "exec-on-event": false,
-    "format": "󰊠 {}",
-    "on-click": "~/.local/bin/updates-notify"
+    "format":        "󰏔 {}",
+    "on-click":      "~/.local/bin/updates-notify"
   },
 
   "custom/powermenu": {
-    "format": "",
+    "format":   "",
     "on-click": "eww open menu"
   },
 
   "pulseaudio#right":
   {
-    "format": "{icon} {volume}%",
-    "on-click": "pamixer --toggle-mute",
+    "format":         "{icon} {volume}%",
+    "on-click":       "pamixer --toggle-mute",
     "on-click-right": "pavucontrol",
-    "format-muted": "",
+    "format-muted":   "",
     "format-icons":
     {
       "headphone": "",
@@ -86,19 +86,19 @@
   
   "battery#right":
   {
-    "format": "{icon} {capacity}%",
+    "format":       "{icon} {capacity}%",
     "format-icons": ["󰂆","󰂇","󰂈","󰂉","󰂊","󰂋","󰂅"]
   },
   
   "clock":
   {
-    "format": "{:%I:%M %p}",
+    "format":         "{:%I:%M %p}",
     "tooltip-format": "{:%A, %B %d}"
   },
 
   "memory": {
-    "interval": 30,
-    "format": " {}%",
+    "interval":   30,
+    "format":     " {}%",
     "max-length": 10
   },
 
