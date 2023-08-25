@@ -36,6 +36,11 @@ lsp.lua_ls.setup {}
 
 g.zig_fmt_autosave = false
 
-vim.cmd(string.format('colorscheme %s', theme))
+local onedark = require 'onedark'
+
+onedark.setup { style = 'darker' }
+onedark.load ()
+
+-- vim.cmd(string.format('colorscheme %s', theme))
 
 require 'keybinds'

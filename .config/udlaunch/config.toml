@@ -1,3 +1,62 @@
+[hypr]
+[hypr.emacs]
+name = 'emacs'
+restart = false
+args = ['--fg-daemon']
+
+[hypr.waybar]
+name = 'waybar'
+restart = false
+args = ['--config /home/wbr/.config/hypr/waybar/config', '--style /home/wbr/.config/hypr/waybar/style.css', '--log-level=critical']
+
+[hypr.mako]
+name = 'mako'
+restart = false
+
+[hypr.xfsettingsd]
+name = 'xfsettingsd'
+restart = false
+args = ['--replace', '--disable-wm-check', '--daemon']
+unsetenvs = ['WAYLAND_DISPLAY']
+
+[hypr.xfce-polkit]
+name = 'xfce-polkit'
+restart = false
+
+[hypr.wallpaper_wayland]
+name = 'wallpaper_wayland'
+
+[hypr.xrdb]
+name = 'xrdb'
+args = ['-merge', '~/.config/x/resources']
+
+[river]
+[river.emacs]
+name = 'emacs'
+restart = false
+args = ['--fg-daemon']
+
+[river.waybar]
+name = 'waybar'
+restart = false
+
+[river.mako]
+name = 'mako'
+restart = false
+
+[river.xfsettingsd]
+name = 'xfsettingsd'
+restart = false
+args = ['--replace', '--disable-wm-check', '--daemon']
+unsetenvs = ['WAYLAND_DISPLAY']
+
+[river.xfce-polkit]
+name = 'xfce-polkit'
+restart = false
+
+[river.wallpaper_wayland]
+name = 'wallpaper_wayland'
+
 [aw]
 [aw.emacs]
 name = 'emacs'
@@ -76,39 +135,3 @@ name = 'xrdb'
 args = ['-merge', '~/.config/x/resources']
 
 
-[hypr]
-[hypr.emacs]
-name = 'emacs'
-restart = false
-args = ['--fg-daemon']
-
-[hypr.waybar]
-name = 'waybar'
-restart = false
-args = ['--config /home/wbr/.config/hypr/waybar/config', '--style /home/wbr/.config/hypr/waybar/style.css', '--log-level=critical']
-
-[hypr.foot]
-name = 'foot'
-restart = false
-args = ['--server']
-
-[hypr.mako]
-name = 'mako'
-restart = false
-
-[hypr.xfsettingsd]
-name = 'xfsettingsd'
-restart = false
-args = ['--replace', '--disable-wm-check', '--daemon']
-unsetenvs = ['WAYLAND_DISPLAY']
-
-[hypr.xfce-polkit]
-name = 'xfce-polkit'
-restart = false
-
-[hypr.wallpaper_wayland]
-name = 'wallpaper_wayland'
-
-[hypr.xrdb]
-name = 'xrdb'
-args = ['-merge', '~/.config/x/resources']

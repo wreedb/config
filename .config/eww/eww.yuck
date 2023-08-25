@@ -1,3 +1,92 @@
+
+(deflisten workspaces '~/testing.sh workspaces')
+(deflisten window     '~/testing.sh window')
+
+(defwidget bar [] (box
+  :class 'full-bar'
+  :width '1920px'
+  :space-evenly true
+  (panel_workspaces)
+  (panel_window)
+  (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (metric
+      :label "🔊"
+      :value volume
+      :onchange "amixer -D pulse sset Master {}%")
+    (metric
+      :label ""
+      :value {EWW_RAM.used_mem_perc}
+      :onchange "")
+    (metric
+      :label "󰗮"
+      :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+      :onchange "")
+    time))
+
+;(defwidget panel_workspaces [orientation] (box :class "button-bin"
+(defwidget panel_workspaces [] (box
+  :class "workspaces-container"
+    (eventbox :class "workspace-buttons"
+      (box
+        :width '25px'
+        :height '100%'
+        (for workspace in {workspaces.workspaces}
+          (button
+            :class "workspace-btn ${workspace.id == workspaces.active ? "active" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            :onclick "hyprctl dispatch workspace ${workspace.id}"
+            :valign "center"
+            (label :class "icon" :text {workspace.windows > 0 ? "${workspace.id == workspaces.active ? workspace.id : workspace.id}" : workspace.id})))))))
+
+
+(defwidget panel_window [] (box
+  :class "button-bin"
+  :width '10%'
+  (button :class "button window" 
+    (label
+      :visible {window != "null" ? true : true}
+      :text {window != "null" ? window : ""}))))
+
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defpoll volume :interval "1s"
+  "scripts/getvol")
+
+(defpoll time :interval "10s"
+  "date '+%I:%M %p %b %d, %Y'")
+
+(defwindow bar
+  :exclusive true
+  :monitor 0
+  :stacking "bg"
+  :reserve (struts
+    :side "top"
+    :distance "3%")
+  :geometry (geometry
+    :anchor "top center"
+    :height "3%"
+    :width "100%"
+    :x "0%"
+    :y "0%")
+  (bar))
+
+
+; END BAR
+;;;;;;;;;;;;;;;;;
+; BEGIN POWERMENU
+
 (defwindow menu
     :monitor 0
     :geometry (geometry

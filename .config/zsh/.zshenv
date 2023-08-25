@@ -6,7 +6,7 @@ declare -gx CPP=mcpp
 declare -gx CXX=clang++
 declare -gx LD=lld
 declare -gx AR=llvm-ar
-declare -gx MAKEFLAGS='-j8'
+declare -gx MAKEFLAGS=-j8
 declare -gx COMMON_FLAGS='-march=tigerlake -mtune=tigerlake -pipe -mno-kl -mno-sgx -mno-widekl -mshstk -O3'
 declare -gx CFLAGS="${COMMON_FLAGS}"
 declare -gx CXXFLAGS="${COMMON_FLAGS}"
@@ -15,28 +15,20 @@ declare -gx TMPDIR=/tmp
 
 # default application vars
 declare -gx MANWIDTH=70
-declare -gx MANPAGER=less
+declare -gx MANPAGER=most
 declare -gx PAGER=less
 declare -gx TERMINAL=kitty
-declare -gx BROWSER=floorp
-declare -gx EDITOR=doomclient
+declare -gx BROWSER=firefox
+declare -gx EDITOR=nvim
 declare -gx MEDIAPLAYER=mpv
 declare -gx IMAGEVIEWER=nsxiv
-declare -gx LAUNCHER=tofi-run
+declare -gx LAUNCHER=bemenu-run
 declare -gx FILEMANAGER=thunar
-declare -gx INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
 # programming lang and package managers
 declare -gx GNUPGHOME=$XDG_DATA_HOME/gnupg
-declare -gx HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
-declare -gx HOMEBREW_CELLAR=/home/linuxbrew/.linuxbrew/Cellar
-declare -gx HOMEBREW_REPOSITORY=/home/linuxbrew/.linuxbrew/Homebrew
-declare -gx HOMEBREW_NO_ENV_HINTS=1
 declare -gx GOPATH=$XDG_DATA_HOME/go
-declare -gx GOMODCACHE=$GOPATH/pkg/mod
-declare -gx GOWORK=$GOPATH/work
 declare -gx GOBIN=$GOPATH/bin
-declare -gx GOTMPDIR=$TMPDIR/go
 declare -gx CARGO_HOME=$XDG_DATA_HOME/cargo
 declare -gx RUSTUP_HOME=$XDG_DATA_HOME/rustup
 declare -gx GEM_HOME=$XDG_DATA_HOME/gem
@@ -70,6 +62,9 @@ declare -gx LS_COLORS='rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:b
 
 # -- program specific options -- #
 
+# most pager
+declare -gx MOST_INITFILE=/etc/mostrc
+
 # cursor theme
 declare -gx XCURSOR_THEME=phinger-light
 declare -gx XCURSOR_SIZE=30
@@ -100,4 +95,9 @@ declare -gx BEMENU_OPTS="--fn 'Myosevka 16' --ignorecase --prompt '' --ifne --sc
 [ -n "$(pgrep Hyprland)" ] && declare -gx BEMENU_OPTS="--fn 'Myosevka 16' --ignorecase --list 10 --prompt '' --wrap --fixed-height --ifne --scrollbar none --border 1 --bdr '#524f67' --border-radius 2 --cw 1 --width-factor 0.3 --center --tf '#EB6F92' --tb '#191724' --cf '#191724' --cb '#191724' --ff '#c4a7e7' --fb '#191724' --nf '#524f67' --nb '#191724' --af '#524f67' --ab '#191724' --hf '#31748F' --hb '#1f1d2e' --fbf '#9ccfd8' --fbb '#9ccfd8' "
 declare -U path
 
-path=( /home/wbr/.local/share/JetBrains/Toolbox/scripts $XDG_DATA_HOME/perl/bin $DENO_INSTALL_ROOT/bin $XDG_DATA_HOME/bun/bin $HOME/.zvm/bin $PNPM_HOME $XDG_BIN_HOME $XDG_CONFIG_HOME/emacs/bin $path /home/linuxbrew/.linuxbrew/bin /home/linuxbrew/.linuxbrew/sbin )
+perl_bin="$XDG_DATA_HOME/perl/bin"
+pnpm_bin="$XDG_DATA_HOME/pnpm"
+local_bin="$HOME/.local/bin"
+emacs_bin="$XDG_CONFIG_HOME/emacs/bin"
+
+path=( $perl_bin $pnpm_bin $local_bin $XDG_CONFIG_HOME/emacs/bin $path )

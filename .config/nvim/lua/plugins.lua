@@ -4,6 +4,7 @@ local plugs =
 { { 'rose-pine/neovim', name = 'rose-pine' }
 , { 'morhetz/gruvbox', name = 'gruvbox' }
 , { 'mofiqul/dracula.nvim', name = 'dracula' }
+, { 'navarasu/onedark.nvim', name = 'one-dark' }
 , { 'b0o/mapx.nvim', name = 'mapx' }
 , { 'windwp/windline.nvim', name = 'windline', config = function() require 'wlsample.evil_line' end }
 , { 'lewis6991/gitsigns.nvim', name = 'gitsigns', config = function() require 'gitsigns'.setup() end }

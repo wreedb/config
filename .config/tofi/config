@@ -12,12 +12,11 @@
 # cyan    #EBBCBA
 # white   #E0DEF4
 
-matching-algorithm = normal
-text-cursor = true
-terminal = kitty
+#matching-algorithm = normal
+#text-cursor = true
+#terminal = kitty
 require-match = false
-multi-instance = true
-# Font
+#multi-instance = true
 font = Myosevka Extended Medium
 font-size = 18
 
@@ -51,7 +50,6 @@ prompt-background = #191724
 prompt-background-padding = 10
 prompt-background-corner-radius = 5
 
-text-cursor-style = beam
 
 input-color = #EB6F92
 input-background = #191724

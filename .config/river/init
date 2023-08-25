@@ -1,10 +1,10 @@
 #!/bin/zsh
 
-riverctl map normal Super         Return spawn terminal
+riverctl map normal Super         Return spawn 'wlaunch terminal'
 riverctl map normal Super+Shift   Return spawn "footclient"
-riverctl map normal Super+Shift   E      spawn editor
-riverctl map normal Super+Shift   B      spawn browser
-riverctl map normal Super         P      spawn launcher
+riverctl map normal Super+Shift   E      spawn 'wlaunch editor'
+riverctl map normal Super+Shift   B      spawn 'wlaunch browser'
+riverctl map normal Super         P      spawn 'wlaunch launcher'
 riverctl map normal Super+Shift   P      spawn fuzzel
 riverctl map normal Super+Shift   R      spawn $HOME/.config/river/init
 riverctl map normal Super+Shift   C      close
@@ -108,4 +108,4 @@ else
 fi
 
 xrdb -merge $XDG_CONFIG_HOME/x/resources
-udlaunch -u def
+udlaunch -u river

@@ -1,4 +1,10 @@
 
+* {
+    all: unset;
+    font-family: 'Symbols Nerd Font Mono';
+    font-size: 1rem;
+}
+
 .powermenu
 {
     font-family: 'Symbols Nerd Font Mono';
@@ -88,4 +94,82 @@
         color: rgba(25, 23, 36, 1);
         transition: all 0.15s ease-out;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.bar {
+  background-color: #323641;
+  color: #A0A8B7;
+  font-family: 'Roboto Condensed';
+  font-weight: 500;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.workspace-btn:hover {
+  transition: 1s ease-in-out;
+  color: #E55561;
+}
+
+.active {
+  color: #4FA6ED;
+}
+
+.sidestuff slider {
+  all: unset;
+  color: #ffd5cd;
+}
+
+.metric scale trough highlight {
+  all: unset;
+  background-color: #E55561;
+  color: #0E1013;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #4e4e4e;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.metric scale trough highlight {
+  all: unset;
+  background-color: #E55561;
+  color: #0E1013;
+  border-radius: 10px;
+}
+.metric scale trough {
+  all: unset;
+  background-color: #7A818E;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.label-ram {
+  font-size: large;
+}
+.workspaces-button:hover {
+  color: #E55561;
+
 }

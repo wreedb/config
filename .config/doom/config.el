@@ -5,31 +5,31 @@
 
 (setq doom-font
  (font-spec
-  :family "Myosevka Medium"
-  :size 20
+  :family "JetBrains Mono"
+  :size 16
   ;; :height 260
   :weight 'medium)
  doom-variable-pitch-font
  (font-spec
   :family "Roboto Condensed"
-  :size 20
+  :size 16
   ;; :height 260
   :weight 'regular)
  doom-unicode-font
  (font-spec
   :family "Symbols Nerd Font"
-  :size 20
+  :size 16
   ;; :height 260
   :weight 'regular)
  doom-serif-font
  (font-spec
   :family "Roboto Serif"
-  :size 20
+  :size 16
   ;; :height 260
   :weight 'regular))
 
 
-(setq doom-theme 'doom-rose-pine)
+(setq doom-theme 'doom-one)
 
 (setq display-line-numbers-type t)
 

@@ -12,13 +12,12 @@ source $plugins/autosuggestions/plugin.zsh
 source $plugins/history-substring-search/plugin.zsh
 
 declare -U fpath
-fpath=( $ZDOTDIR/completions $BUN_INSTALL $fpath )
+fpath=( $ZDOTDIR/completions $fpath )
 
 autoload -Uz compinit && compinit -d $XDG_DATA_HOME/zsh/compdump.zsh
 
 source $ZDOTDIR/options.zsh
 source $ZDOTDIR/functions.zsh
-source $XDG_CONFIG_HOME/tabtab/zsh/__tabtab.zsh
 
 exa='exa --icons --sort=type --color=always'
 alias ls="$exa -aF"
@@ -39,34 +38,39 @@ alias cat=bsdcat
 alias unzip=bsdunzip
 alias rcpkg="vim $XDG_CONFIG_HOME/pacman/makepkg.conf"
 alias bld="mkdir -pv bld && cd bld"
-alias pp="doas powerpill"
-alias p="powerpill"
-alias '?'=pgrep
+
+alias install='pakku -S'
+alias search='pakku -Ss'
+alias provides='pakku -F'
+alias about='pakku -Si'
+alias refresh='pakku -Syy && pakku -Fyy'
+alias cleanup='pakku -Scc'
+
+alias pp=pakku
+alias pk=pakku
+alias p=pakku
+alias 'p?'=pgrep
 alias m=micro
 alias nv=nvim
 alias vim=nvim
 alias ff=fastfetch
 alias pf=pfetch
 alias nf=neofetch
-alias node='rlwrap node'
-alias deno='rlwrap deno'
+alias nnn='nnn -P p'
+
+# RLWRAP
+alias noderepl='rlwrap node'
+alias denorepl='rlwrap deno'
 alias luarepl='rlwrap lua'
 alias luajitrepl='rlwrap luajit'
 alias ecl='rlwrap ecl'
 alias sbcl='rlwrap sbcl'
 alias clasp='rlwrap clasp'
-alias nnn='nnn -P p'
-alias dex="dex --search-path $XDG_DATA_HOME/applications:/usr/local/share/applications:/usr/share/applications"
 
 NEWLINE=$'\n'
 
-PROMPT="%F{green}%n%F{white}@%F{red}%m%f%k in %F{cyan}%3~ %f%k(%F{mag}%D{%I:%M%p}%f%k)${NEWLINE}%F{blue}->%f%k "
-
-declare -gx NVM_DIR="$XDG_CONFIG_HOME/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# Multiline: "%F{green}%n%F{white}@%F{red}%m%f%k in %F{cyan}%3~ %f%k(%F{mag}%D{%I:%M%p}%f%k)${NEWLINE}%F{blue}->%f%k "
+PROMPT="(%F{green}%n%F{white}@%F{red}%m%f%k) %F{magenta}%3~%f%k%F{blue} %%%f%k "
 
 eval "$(zoxide init zsh)"
 eval "$(keychain --agents gpg,ssh --quiet --dir $XDG_DATA_HOME/keychain --eval $HOME/.ssh/key)"
-
-# bun completions
-[ -s "/home/wbr/.local/share/bun/_bun" ] && source "/home/wbr/.local/share/bun/_bun"
