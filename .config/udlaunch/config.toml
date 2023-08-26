@@ -4,11 +4,6 @@ name = 'emacs'
 restart = false
 args = ['--fg-daemon']
 
-[hypr.waybar]
-name = 'waybar'
-restart = false
-args = ['--config /home/wbr/.config/hypr/waybar/config', '--style /home/wbr/.config/hypr/waybar/style.css', '--log-level=critical']
-
 [hypr.mako]
 name = 'mako'
 restart = false

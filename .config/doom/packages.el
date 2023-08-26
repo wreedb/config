@@ -12,6 +12,11 @@
 (package! vlang-mode :recipe
   (:host github :repo "naheel-azawy/vlang-mode"))
 
+(package! yuck-mode)
+
+;(package! yuck-mode :recipe
+;  (:host github :repo "mmcjimsey26/yuck-mode"))
+
 ;To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 

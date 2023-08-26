@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while true
+do
+    sleep 0.33;
+    hyprctl activeworkspace -j | jq '.["id"]'
+done

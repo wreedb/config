@@ -1,140 +1,169 @@
+(defvar clock-click-left false)
+(defpoll hypr-active
+  :interval '120s'
+  'scripts/get-active-workspace')
 
-(deflisten workspaces '~/testing.sh workspaces')
-(deflisten window     '~/testing.sh window')
+(defpoll pacman-count
+  :interval '120s'
+  'scripts/pacman count')
 
-(defwidget bar [] (box
-  :class 'full-bar'
-  :width '1920px'
-  :space-evenly true
-  (panel_workspaces)
-  (panel_window)
-  (sidestuff)))
+(defpoll pacman-names
+  :interval '125s'
+  'scripts/pacman names')
 
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric
-      :label "🔊"
-      :value volume
-      :onchange "amixer -D pulse sset Master {}%")
-    (metric
-      :label ""
-      :value {EWW_RAM.used_mem_perc}
-      :onchange "")
-    (metric
-      :label "󰗮"
-      :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-      :onchange "")
-    time))
+(defpoll time
+  :interval '5s'
+  "date '+%I:%M %p'")
 
-;(defwidget panel_workspaces [orientation] (box :class "button-bin"
-(defwidget panel_workspaces [] (box
-  :class "workspaces-container"
-    (eventbox :class "workspace-buttons"
-      (box
-        :width '25px'
-        :height '100%'
-        (for workspace in {workspaces.workspaces}
-          (button
-            :class "workspace-btn ${workspace.id == workspaces.active ? "active" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
-            :onclick "hyprctl dispatch workspace ${workspace.id}"
-            :valign "center"
-            (label :class "icon" :text {workspace.windows > 0 ? "${workspace.id == workspaces.active ? workspace.id : workspace.id}" : workspace.id})))))))
+(defpoll day-time
+  :interval '30s'
+  "date '+%B %d, %Y - %I:%M %p'")
 
+(defwidget status-bar []
+  (box
+    :class 'status-bar'
+    (workspaces)
+    (modules)))
 
-(defwidget panel_window [] (box
-  :class "button-bin"
-  :width '10%'
-  (button :class "button window" 
-    (label
-      :visible {window != "null" ? true : true}
-      :text {window != "null" ? window : ""}))))
+(defwidget bar-clock []
+  (box
+    :class 'bar-clock'
+    :valign 'fill'
+    :halign 'end'
+    (button
+      :class { clock-click-left ?  'clock-button-clicked' : 'clock-button' } 
+      :onclick { clock-click-left ? 'eww update clock-click-left=false' : 'eww update clock-click-left=true' }
+      { clock-click-left ? day-time : time })))
 
+(defwidget pacman-names-box []
+  (box
+    :class 'pacman-names-box'
+    :orientation 'vertical'
+    :space-evenly false
+    ''
+    'Available Updates:'
+    ''
+    (button
+      :class 'pacman-names-box-button'
+      :onclick 'eww close pacman-popup' pacman-names)))
 
-(defwidget metric [label value onchange]
-  (box :orientation "h"
-       :class "metric"
-       :space-evenly false
-    (box :class "label" label)
-    (scale :min 0
-           :max 101
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
+(defwidget pacman []
+  (box
+    :class 'contain-pacman'
+    :orientation 'horizontal'
+    :valign 'fill'
+    :halign 'start'
+    '󰏔 '
+    pacman-count))
 
-(defpoll volume :interval "1s"
-  "scripts/getvol")
+(defwidget pacman-button []
+  (box
+    :class 'contain-pacman-button'
+    :orientation 'horizontal'
+    :valign 'fill'
+    :halign 'end'
+    (button
+      :class 'pacman-button'
+      :onrightclick 'scripts/pacman refresh'
+      :onclick 'scripts/pacman popup'
+      (pacman))))
 
-(defpoll time :interval "10s"
-  "date '+%I:%M %p %b %d, %Y'")
+(defwidget power-menu-button []
+  (box
+    :class 'power-menu-button'
+    :valign 'fill'
+    :halign 'end'
+    (button :onclick 'eww open power-menu' '')))
 
-(defwindow bar
-  :exclusive true
+(defwidget modules []
+  (box
+    :class 'modules'
+    :valign 'fill'
+    :halign 'end'
+    :space-evenly false
+    (pacman-button)
+    (bar-clock)
+    (power-menu-button)))
+
+(defwidget workspaces []
+  (box
+    :class 'contain-workspaces'
+    :orientation 'horizontal'
+    :valign 'fill'
+    :halign 'start'
+    (button
+      :class {hypr-active == 1 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 1' 1)
+    (button
+      :class {hypr-active == 2 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 2' 2)
+    (button
+      :class {hypr-active == 3 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 3' 3)
+    (button
+      :class {hypr-active == 4 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 4' 4)
+    (button
+      :class {hypr-active == 5 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 5' 5)
+    (button
+      :class {hypr-active == 6 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 6' 6)
+    (button
+      :class {hypr-active == 7 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 7' 7)
+    (button
+      :class {hypr-active == 8 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 8' 8)
+    (button
+      :class {hypr-active == 9 ? 'workspace-active' : 'workspace-button' }
+      :onclick 'hypr-ws 9' 9)))
+
+(defwindow status-bar
   :monitor 0
-  :stacking "bg"
-  :reserve (struts
-    :side "top"
-    :distance "3%")
-  :geometry (geometry
-    :anchor "top center"
-    :height "3%"
-    :width "100%"
-    :x "0%"
-    :y "0%")
-  (bar))
+  :exclusive true
+  :geometry
+    (geometry
+      :anchor 'top center'
+      :width '100%'
+      :height '4%'
+      :x '0%'
+      :y '0%')
+  :reserve
+    (struts
+      :side 'top'
+      :distance '3%')
+  (status-bar))
+
+(defwindow pacman-popup
+  :monitor 0
+  :geometry
+    (geometry
+      :anchor 'top right'
+      :x '1%'
+      :y '1%')
+  (pacman-names-box))
 
 
-; END BAR
-;;;;;;;;;;;;;;;;;
-; BEGIN POWERMENU
+(defwidget power-menu []
+  (box
+    :class 'power-menu'
+    :orientation 'vertical'
+    (button :onclick 'scripts/power-menu logout' 'logout')
+    (button :onclick 'scripts/power-menu reboot' 'reboot')
+    (button :onclick 'scripts/power-menu shutdown' 'shutdown')
+    (button :onclick 'scripts/power-menu hibernate' 'hibernate')
+    (button :onclick 'eww close power-menu' 'cancel')))
 
-(defwindow menu
-    :monitor 0
-    :geometry (geometry
-        :x '6px'
-        :y '6px'
-        :width '20%'
-        :height '10%'
-        :anchor 'top right')
-    :stacking 'fg'
-    :wm-ignore false
-    (powermenu))
 
-(defwidget powermenu []
-    (box
-      :orientation 'h'
-      :class 'powermenu'
-      (logout)
-      (poweroff)
-      (reboot)
-      (sleep)
-      (cancel)))
 
-(defwidget logout []
-  (box :class "btns"
-    (button
-      :class 'logout'
-      :onclick '~/.config/eww/scripts/logout' '󰩈')))
-
-(defwidget poweroff []
-  (box :class "btns"
-    (button
-      :class 'poweroff'
-      :onclick '~/.config/eww/scripts/poweroff' '󰐥')))
-
-(defwidget reboot []
-  (box :class "btns"
-    (button
-      :class 'reboot'
-      :onclick '~/.config/eww/scripts/reboot' '')))
-
-(defwidget sleep []
-  (box :class "btns"
-    (button
-      :class 'sleep'
-      :onclick '~/.config/eww/scripts/sleep' '󰤄')))
-
-(defwidget cancel []
-  (box :class 'cancel-box'
-    (button
-      :class 'cancel'
-      :onclick 'eww close menu' '')))
+(defwindow power-menu
+  :monitor 0
+  :geometry
+    (geometry
+      :width '6%'
+      :height '20%'
+      :anchor 'top right'
+      :x '1%'
+      :y '1%')
+  (power-menu))

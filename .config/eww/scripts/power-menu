@@ -1,0 +1,25 @@
+#!/bin/sh
+
+case $1 in
+
+    logout)
+        loginctl kill-user $USER
+        ;;
+
+    reboot)
+        systemctl reboot
+        ;;
+
+    shutdown)
+        systemctl poweroff
+        ;;
+
+    hibernate)
+        systemctl hibernate
+        ;;
+
+    *)
+        exit 1;
+        ;;
+
+esac

@@ -6,30 +6,31 @@
 (setq doom-font
  (font-spec
   :family "JetBrains Mono"
-  :size 16
+  :size 18
   ;; :height 260
   :weight 'medium)
  doom-variable-pitch-font
  (font-spec
   :family "Roboto Condensed"
-  :size 16
+  :size 18
   ;; :height 260
   :weight 'regular)
  doom-unicode-font
  (font-spec
   :family "Symbols Nerd Font"
-  :size 16
+  :size 18
   ;; :height 260
   :weight 'regular)
  doom-serif-font
  (font-spec
   :family "Roboto Serif"
-  :size 16
+  :size 18
   ;; :height 260
   :weight 'regular))
 
 
-(setq doom-theme 'doom-one)
+; (setq doom-theme 'doom-one)
+
 
 (setq display-line-numbers-type t)
 
@@ -60,6 +61,8 @@
   (add-to-list 'eglot-server-programs
                '(vlang-mode . ("v-analyzer" "--stdio"))))
 
+(add-to-list 'custom-theme-load-path "~/.config/doom/themes")
+(load-theme 'everforest-hard-dark t)
 ;; -- Documentation from Doom maintainer --
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom

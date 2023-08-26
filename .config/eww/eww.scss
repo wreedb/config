@@ -1,175 +1,214 @@
+$fg: #D3C6AA;
+$fg_dim: #9DA9A0;
+$bg_dark: #2B3339;
+$bg_light: #374247;
 
-* {
-    all: unset;
-    font-family: 'Symbols Nerd Font Mono';
-    font-size: 1rem;
+$red: #E67E80;
+$green: #A7C080;
+$yellow: #DBBC7F;
+$blue: #7FBBB3;
+$magenta: #D699B6;
+$cyan: #83C092;
+
+
+@mixin rounded { border-radius: 0.25rem; }
+
+@mixin unset-annoy
+{
+    border: unset;
+    outline: unset;
+    border-radius: unset;
+    background-color: unset;
 }
 
-.powermenu
+@mixin pad
 {
-    font-family: 'Symbols Nerd Font Mono';
-    font-size: 3rem;
-    border-radius: 5px;
-    border: 5px solid black;
-    background:transparent;
+    padding-left:  0.5rem;
+    padding-right: 0.5rem;
 }
 
-.cancel-box
+@mixin ui-font
 {
-    font-family: 'Roboto Condensed'
+    font-family: 'Roboto Condensed';
+    font-size: 1.125rem;
+    font-weight: 600;
 }
 
-
-.logout
+.status-bar
 {
-    all: unset;
-    border-radius: 5px;
-    color: #C4A7E7;
-    background-color: rgba(25, 23, 36, 0.5);
-    transition: all 0.15s ease-in;
-    &:hover
+    background-color: $bg_light;
+}
+
+.modules
+{
+    @include pad;
+}
+
+.power-menu
+{
+    @include pad;
+    @include ui-font;
+    @include unset-annoy;
+    background-color: $bg_light;
+    @include rounded;
+    border: 2px solid $bg_dark;
+    transition: 0.25s linear;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    & button
     {
-        background-color: #C4A7E7;
-        color: rgba(25, 23, 36, 1);
-        transition: all 0.15s ease-out;
+        all: unset;
+        @include unset-annoy;
+        @include rounded;
+
+        &:hover
+        {   
+            all: unset;
+            @include unset-annoy;
+            @include rounded;
+            background-color: $blue;
+            color: $bg_dark;
+        }
+    }
+}
+
+.power-menu-button
+{
+    @include ui-font;
+    @include pad;
+    background-color: $magenta;
+    color: $bg_dark;
+    border-radius: 0.25rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+    transition: 0.25s linear;
+    & button
+    { 
+        @include unset-annoy;
+        color: $bg_dark;
+
+        &:hover
+        {
+            all: unset;
+            padding-right: 1rem;
+            padding-left: 1rem;
+        }
+
     }
 }
 
 
-.poweroff
+.pacman-names-box
+{
+    @include ui-font;
+    padding: 1.5rem;
+    border: 2px solid $bg_dark;
+    background-color: $bg_light;
+}
+
+
+.pacman-names-box-button
 {
     all: unset;
-    border-radius: 5px;
-    color: #EB6F92;
-    background-color: rgba(25, 23, 36, 0.5);
-    transition: all 0.15s ease-in;
+    @include unset-annoy;
+    @include ui-font;
+
+}
+
+.contain-pacman-button
+{
+    @include pad;
+    @include ui-font;
+    background-color: $red;
+    color: $bg_dark;
+    border-radius: 0.25rem;
+    margin-right: 5px;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.pacman-button {
+    @include unset-annoy;
+    color: $bg_dark;
+    transition: 0.25s linear;
     &:hover
     {
-        background-color: #EB6F92;
-        color: rgba(25, 23, 36, 1);
-        transition: all 0.15s ease-out;
+        all: unset;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
-.reboot
+.bar-clock
 {
-    all: unset;
-    border-radius: 5px;
-    background-color: rgba(25, 23, 36, 0.5);
-    color: #31748F;
-    transition: all 0.15s ease-in;
+    @include pad;
+    @include ui-font;
+    background-color: $green;
+    color: $bg_dark;
+    border-radius: 0.25rem;
+    margin-right: 5px;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.clock-button
+{
+    @include unset-annoy;
+    color: $bg_dark;
+    &-clicked
+    {
+        @include unset-annoy;
+        color: $bg_dark;
+        transition: 0.25s linear;
+        &:hover
+        {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+    }
     &:hover
     {
-        background-color: #31748F;
-        color: rgba(25, 23, 36, 1);
-        transition: all 0.15s ease-out;
+        transition: 0.25s linear;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
-.sleep
+.contain-workspaces
 {
-    all: unset;
-    border-radius: 5px;
-    background-color: rgba(25, 23, 36, 0.5);
-    color: #F6C177;
-    transition: all 0.15s ease-in;
+    @include ui-font;
+    margin-left: 5px;
+}
+
+.workspace-button
+{
+    @include unset-annoy;
+    padding: 0 0.5rem 0 0.5rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
     &:hover
     {
-        background-color: #F6C177;
-        color: rgba(25, 23, 36, 1);
-        transition: all 0.15s ease-out;
+        transition: 0.25s linear;
+        color: $bg_dark;
+        background-color: $magenta;
+        border-radius: 50% 0 50% 0;
     }
+
 }
 
-.cancel
+.workspace-active
 {
-    all: unset;
-    border-radius: 5px;
-    background-color: rgba(25, 23, 36, 0.5);
-    color: #9CCFD8;
-    transition: all 0.15s ease-in;
+    @include unset-annoy;
+    @include rounded;
+    background-color: $blue;
+    color: $bg_dark;
+    padding: 0 0.5rem 0 0.5rem;
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
     &:hover
     {
-        background-color: #9CCFD8;
-        color: rgba(25, 23, 36, 1);
-        transition: all 0.15s ease-out;
+        transition: 0.25s linear;
+        border-radius: 0 50% 0 50%;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.bar {
-  background-color: #323641;
-  color: #A0A8B7;
-  font-family: 'Roboto Condensed';
-  font-weight: 500;
-}
-
-// Styles on classes (see eww.yuck for more information)
-
-.workspace-btn:hover {
-  transition: 1s ease-in-out;
-  color: #E55561;
-}
-
-.active {
-  color: #4FA6ED;
-}
-
-.sidestuff slider {
-  all: unset;
-  color: #ffd5cd;
-}
-
-.metric scale trough highlight {
-  all: unset;
-  background-color: #E55561;
-  color: #0E1013;
-  border-radius: 10px;
-}
-.metric scale trough {
-  all: unset;
-  background-color: #4e4e4e;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-.metric scale trough highlight {
-  all: unset;
-  background-color: #E55561;
-  color: #0E1013;
-  border-radius: 10px;
-}
-.metric scale trough {
-  all: unset;
-  background-color: #7A818E;
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-  margin-right: 20px;
-}
-.label-ram {
-  font-size: large;
-}
-.workspaces-button:hover {
-  color: #E55561;
-
 }

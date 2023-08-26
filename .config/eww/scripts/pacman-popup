@@ -1,0 +1,5 @@
+#!/bin/sh
+
+eww open pacman-popup;
+sleep 4;
+eww close pacman-popup;

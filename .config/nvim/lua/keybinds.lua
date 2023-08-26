@@ -3,60 +3,62 @@
 local m = require 'mapx'.setup { global = true, whichkey = true }
 
 nnoremap('<leader>s', ':%s/', 'search/replace')
-nnoremap('<leader>o', ':e ~/', 'open file')
+nnoremap('<leader>o', ':e ~/',   'open file')
+nnoremap('<leader>o.', ':e ~/.', 'open [dot]file')
+
+nnoremap('<leader>\\', ':Dashboard<cr>', 'open dashboard')
 
 
-m.nname('<leader>c',     'clipboard')
-m.nname('<leader>r',     'resize')
-m.nname('<leader>w',     'window')
-m.nname('<leader>f',     'file')
-m.nname('<leader>g',     'goto')
-m.nname('<leader><tab>', 'tab')
-m.nname('<leader>x',     'off')
-m.nname('<leader>X',     'on')
+m.nname('<leader>c',     'CLIPBOARD')
+m.nname('<leader>r',     'RESIZE')
+m.nname('<leader>w',     'WINDOW')
+m.nname('<leader>f',     'FILE')
+m.nname('<leader>g',     'GOTO')
+m.nname('<leader><tab>', 'TAB')
+m.nname('<leader>x',     'OFF')
+m.nname('<leader>b',     'ON')
 
 -- resize
-nnoremap('<leader>r<Left>',  ':vertical resize +4<Cr>',   'resize: left')
-nnoremap('<leader>r<Right>', ':vertical resize -4<Cr>',   'resize: right')
+nnoremap('<leader>r<Left>',  ':vertical resize +4<Cr>',   'RESIZE: left')
+nnoremap('<leader>r<Right>', ':vertical resize -4<Cr>',   'RESIZE: right')
 
-nnoremap('<leader>r<Up>',    ':horizontal resize -4<Cr>', 'resize: up')
-nnoremap('<leader>r<Down>',  ':horizontal resize +4<Cr>', 'resize: down')
+nnoremap('<leader>r<Up>',    ':horizontal resize -4<Cr>', 'RESIZE: up')
+nnoremap('<leader>r<Down>',  ':horizontal resize +4<Cr>', 'RESIZE: down')
 
 -- goto
-nnoremap('<leader>g<Up>',   'gg', 'goto: document start')
-nnoremap('<leader>g<Down>', 'G',  'goto: document end')
+nnoremap('<leader>g<Up>',   'gg', 'GOTO: document start')
+nnoremap('<leader>g<Down>', 'G',  'GOTO: document end')
 
 -- files
-nnoremap('<leader>fm', ':CHADopen<Cr>', 'file: manager')
-nnoremap('<leader>fr', ':e #<1<Cr>',    'file: open most recent')
+nnoremap('<leader>fm', ':NvimTreeToggle<Cr>', 'FILE: manager')
+nnoremap('<leader>fr', ':e #<1<Cr>',    'FILE: open most recent')
 
 -- off
-nnoremap('<leader>xl',  ':LspStop<Cr>',                   'off: LSP')
-nnoremap('<leader>xc',  ':CocDisable<Cr>',                'off: COC')
-nnoremap('<leader>xx',  ':ColorizerDetachFromBuffer<Cr>', 'off: Colorizer')
+nnoremap('<leader>xl',  ':LspStop<Cr>',                   'OFF: LSP')
+nnoremap('<leader>xx',  ':ColorizerDetachFromBuffer<Cr>', 'OFF: Colorizer')
 
 -- on
-nnoremap('<leader>bl',  ':LspStart<Cr>',                'on: LSP')
-nnoremap('<leader>bc',  ':CocEnable<Cr>',               'on: COC')
-nnoremap('<leader>bx',  ':ColorizerAttachToBuffer<Cr>', 'on: Colorizer')
+nnoremap('<leader>bl',  ':LspStart<Cr>',                'ON: LSP')
+nnoremap('<leader>bc',  ':CoqNow<Cr>',                  'ON: Coq')
+nnoremap('<leader>bx',  ':ColorizerAttachToBuffer<Cr>', 'ON: Colorizer')
 
 -- windows
-nnoremap('<leader>wv', ':vsplit<Cr>', 'window: v-split')
-nnoremap('<leader>wh', ':split<Cr>',  'window: h-split')
-nnoremap('<leader>wq', ':q<Cr>',      'window: close')
-nnoremap('<leader>wx', ':x<Cr>',      'window: write+close')
+nnoremap('<leader>wv', ':vsplit<Cr>', 'WINDOW: v-split')
+nnoremap('<leader>wh', ':split<Cr>',  'WINDOW: h-split')
+nnoremap('<leader>wq', ':q<Cr>',      'WINDOW: close')
+nnoremap('<leader>wx', ':x<Cr>',      'WINDOW: write+close')
 
 -- windows: focus
-nnoremap('<leader>w<Left>',  ':wincmd h<Cr>', 'window: focus left')
-nnoremap('<leader>w<Down>',  ':wincmd j<Cr>', 'window: focus down')
-nnoremap('<leader>w<Up>',    ':wincmd k<Cr>', 'window: focus up')
-nnoremap('<leader>w<Right>', ':wincmd l<Cr>', 'window: focus right')
+nnoremap('<leader>w<Left>',  ':wincmd h<Cr>', 'WINDOW: focus left')
+nnoremap('<leader>w<Down>',  ':wincmd j<Cr>', 'WINDOW: focus down')
+nnoremap('<leader>w<Up>',    ':wincmd k<Cr>', 'WINDOW: focus up')
+nnoremap('<leader>w<Right>', ':wincmd l<Cr>', 'WINDOW: focus right')
 
 -- tabs
-nnoremap('<leader><tab>n',       ':tabnew<Cr>',  'tab: new')
-nnoremap('<leader><tab><Right>', ':tabnext<Cr>', 'tab: next')
-nnoremap('<leader><tab><Left>',  ':tabprev<Cr>', 'tab: previous')
+nnoremap('<leader><tab>n',       ':tabnew<Cr>',  'TAB: new')
+nnoremap('<leader><tab><Right>', ':tabnext<Cr>', 'TAB: next')
+nnoremap('<leader><tab><Left>',  ':tabprev<Cr>', 'TAB: previous')
 
 -- clipboard
-nnoremap('<leader>cc', '"+y',  'clipboard: copy')
-nnoremap('<leader>cp', '"+p',  'clipboard: paste')
+nnoremap('<leader>cc', '"+y',  'CLIPBOARD: copy')
+nnoremap('<leader>cp', '"+p',  'CLIPBOARD: paste')
