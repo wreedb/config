@@ -1,0 +1,35 @@
+super + Return
+	$TERMINAL
+
+super + p
+	$LAUNCHER
+
+super + shift + {b,e}
+	{$BROWSER,$VISUAL}
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+super + shift + {x,r}
+	bspc {quit,wm -r}
+
+super + shift + c
+	bspc node -c
+
+super + {t,f,shift + f}
+	bspc node -t {tiled,floating,fullscreen}
+
+super + {_,shift + }{j,k}
+	bspc node -{f,s} {next,prev}.local.!hidden.window
+
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+super + {h,l}
+	bspc node -z left {-20,20} 0
+
+super + ctrl + {j,k}
+	bspc node -z bottom 0 {20,-20}
+
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

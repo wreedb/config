@@ -1,0 +1,166 @@
+casc: &cascadia Cascadia Code:pixelsize=14
+robo: &roboto   Roboto Medium:pixelsize=16
+symb: &symb     Symbols Nerd Font Mono:pixelsize=16
+
+dec: &dec
+  stack:
+  - overline: { size: 3 }
+
+blue: &blue 31748Fff
+red:  &red  eb6f92ff
+
+bg: &bg 272935FF
+fg: &fg EEEEECFF
+
+
+bar:
+  height: 40
+  location: top
+  font: *roboto
+  spacing: 0
+  margin: 5
+  layer: bottom
+  foreground: EEEEEEFF
+  background: 2E3440DD
+
+  right:
+   - script:
+       path: ~/.config/yambar/scripts/test.sh
+       args: []
+       content: {string: {text: "{test}"}}
+   - pipewire:
+       anchors:
+         volume: &volume
+           conditions:
+             muted:
+               string:
+                 on-click.left: "/usr/bin/notify-send 'fuck you'"
+                 text: "{linear_volume}%"
+                 font: *roboto    
+                 deco:
+                   stack: 
+                   - overline: { size: 3, color: *blue }
+             ~muted:
+               string:
+                 on-click.left: "/usr/bin/notify-send 'fuck you'"
+                 text: "{linear_volume}%"
+                 font: *roboto    
+                 deco:
+                   stack: 
+                   - overline: { size: 3, color: *blue }
+       content:
+         list:
+           margin: 10
+           font: *symb
+           items:
+             - map:
+                 deco:
+                   stack:
+                   - overline: { size: 3, color: *blue }
+                 conditions:
+                   type == "sink":
+                     map:
+                       conditions:
+                         icon == "audio-headset-bluetooth":
+                           string:
+                             text: "󰂯  "
+                             font: *roboto
+                             deco:
+                               stack: 
+                               - overline: { size: 3, color: *blue }
+                       default:
+                         - ramp:
+                             tag: linear_volume
+                             items:
+                               - string:
+                                   on-click: "{test}"
+                                   text: "  󰕿  "
+                                   font: *roboto
+                                   deco:
+                                     stack: 
+                                     - overline: { size: 3, color: *blue }
+                               
+                               - string:
+                                   text: "  󰖀  "
+                                   font: *roboto
+                                   deco:
+                                     stack: 
+                                     - overline: { size: 3, color: *blue }
+                               
+                               - string:
+                                   text: "  󰕾  "
+                                   font: *roboto
+                                   deco:
+                                     stack: 
+                                     - overline: { size: 3, color: *blue }
+
+
+                 
+      
+   - clock:
+       time-format: "%I:%M %p"
+       content: 
+         string:
+           font: *roboto
+           left-margin: 15
+           right-margin: 15
+           text: "{time}"
+           deco:
+            stack:
+             - overline:
+                 size: 3
+                 color: *blue
+
+  left:
+   - river:
+       anchors:
+         - base: &river
+             left-margin: 10
+             right-margin: 10
+             default:
+               string:
+                 text: "{id}"
+                 font: *roboto
+             conditions:
+               id > 9: { empty: {} }
+
+   
+       title:
+         string:
+           text: " [ {title} ] "
+           max: 100
+           font: *cascadia
+
+       content:
+         map:
+           on-click:
+             left: sh -c "river-ws {id}"
+           
+           conditions:
+             
+             state == urgent:
+               map:
+                 <<: *river
+                 deco: { background: { color: *red } }
+            
+             state == focused:
+               map:
+                 <<: *river
+                 foreground: c4a7e7ff
+                 deco: { stack: [ { background: { color: *blue } }, { overline: { size: 3, color: *bg } }, { underline: { size: 3, color: *bg } } ] }
+         
+             state == unfocused:
+               map:
+                 <<: *river
+                 deco:
+                   background: { color: 191724ff }
+
+             state == occupied:
+               map:
+                 <<: *river
+                 deco:
+                   background: { color: C4A7E7ff }
+             
+             state == invisible:
+               map:
+                 <<: *river

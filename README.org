@@ -1,0 +1,13 @@
+#+title: wbr-config
+
+
+This repo is for my dotfiles, using GNU Stow to manage them.
+
+* Disclaimer
+My configurations may not work on all systems-- that being said,
+feel free to contact me if you have any simple questions about them
+and/or have any suggestions for my configurations. I love finding new
+things and new ways to configure my system.
+
+** Contact Me
+[[mailto:wreedb@skiff.com][Email]]

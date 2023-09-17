@@ -1,0 +1,280 @@
+# vim:ft=toml
+
+
+
+format = """$username@$hostname$directory$line_break\
+$character"""
+
+add_newline = false
+
+[directory]
+style = "blue"
+format = "in [$path](blue) "
+
+[username]
+show_always = true
+disabled = false
+format = '[$user]($style)'
+style_user = 'bold green'
+style_root = 'bold red'
+
+[character]
+success_symbol = "[->](purple)"
+error_symbol = "[->](red)"
+vimcmd_symbol = "[<-](green)"
+
+
+[hostname]
+ssh_only = false
+format = '[$ssh_symbol](bold blue)[$hostname](bold red) '
+trim_at = '.companyname.com'
+disabled = false
+
+######################
+#[ Disabled modules ]#
+######################
+
+######################################
+#[ Modules I might be interested in ]#
+######################################
+
+[package]
+disabled = true
+
+[localip]
+disabled = true
+
+[shlvl]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[env_var]
+disabled = true
+
+[custom]
+disabled = true
+
+[sudo]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[jobs]
+disabled = true
+
+[status]
+disabled = true
+
+[battery]
+disabled = true
+
+[time]
+disabled = true
+
+[os]
+disabled = true
+
+[shell]
+disabled = true
+
+#################################
+#[ These probably slow it down ]#
+#################################
+
+[singularity]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[vcsh]
+disabled = true
+
+[fossil_branch]
+disabled = true
+
+[git_branch]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_metrics]
+disabled = true
+
+[git_status]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[pijul_channel]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[cobol]
+disabled = true
+
+[daml]
+disabled = true
+
+[dart]
+disabled = true
+
+[deno]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[erlang]
+disabled = true
+
+[fennel]
+disabled = true
+
+[golang]
+disabled = true
+
+[guix_shell]
+disabled = true
+
+[haskell]
+disabled = true
+
+[haxe]
+disabled = true
+
+[helm]
+disabled = true
+
+[java]
+disabled = true
+
+[julia]
+disabled = true
+
+[kotlin]
+disabled = true
+
+[gradle]
+disabled = true
+
+[lua]
+disabled = true
+
+[nim]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[opa]
+disabled = true
+
+[perl]
+disabled = true
+
+[php]
+disabled = true
+
+[pulumi]
+disabled = true
+
+[purescript]
+disabled = true
+
+[python]
+disabled = true
+
+[raku]
+disabled = true
+
+[rlang]
+disabled = true
+
+[red]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[scala]
+disabled = true
+
+[solidity]
+disabled = true
+
+[swift]
+disabled = true
+
+[terraform]
+disabled = true
+
+[vlang]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[zig]
+disabled = true
+
+[buf]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[conda]
+disabled = true
+
+[meson]
+disabled = true
+
+[spack]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[openstack]
+disabled = true
+
+[azure]
+disabled = true
+
+[crystal]
+disabled = true
+
+[container]
+disabled = true

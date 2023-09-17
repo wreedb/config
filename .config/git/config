@@ -1,0 +1,8 @@
+[safe]
+	directory = /var/db/repos/mv
+	directory = /var/db/repos/guru
+[init]
+	defaultBranch = main
+[user]
+	email = wreedb@skiff.com
+	name = Will Reed

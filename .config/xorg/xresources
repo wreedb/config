@@ -1,0 +1,58 @@
+! vim:ft=xresources
+
+Xft.dpi: 96
+
+Xft.antialias: true
+Xft.hinting: true
+Xft.autohint: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcdfilter
+
+XTerm*renderFont: true
+XTerm*faceName: xft:JetBrains Mono Medium:size=13
+XTerm*faceSize: 13
+XTerm*utf8: 2
+XTerm*locale: true
+
+URxvt&imLocale: en_US.UTF-8
+URxvt*termName: rxvt-unicode-256color
+URxvt*buffered: false
+URxvt.intensityStyles: false
+URxvt.font: xft:JetBrains Mono:style=Medium:size=13
+URxvt.scrollBar: false
+URxvt.cursorColor: white
+URxvt*depth: 32
+
+Nsxiv*background: #26233A
+Nsxiv*foreground: #E0DEF4
+Nsxiv.bar.font: xft:Roboto Condensed:style=Medium:size=13
+
+*font: xft:JetBrains Mono Medium;size=13
+*boldFont: xft:JetBrains Mono Medium;size=13
+
+*background: #191724
+*foreground: #e0def4
+
+*color0: #26233a
+*color8: #6e6a86
+
+*color1: #eb6f92
+*color9: #eb6f92
+
+*color2: #9ccfd8
+*color10: #9ccfd8
+
+*color3: #f6c177
+*color11: #f6c177
+
+*color4: #31748f
+*color12: #31748f
+
+*color5: #c4a7e7
+*color13: #c4a7e7
+
+*color6: #ebbcba
+*color14: #ebbcba
+
+*color7: #e0def4
+*color15: #e0def4
