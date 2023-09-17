@@ -1,5 +1,0 @@
-#!/bin/sh
-
-eww ping || exit;
-
-eww open status-bar;

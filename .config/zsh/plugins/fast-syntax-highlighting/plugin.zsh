@@ -1,1 +1,0 @@
-fast-syntax-highlighting.plugin.zsh

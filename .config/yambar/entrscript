@@ -1,3 +1,0 @@
-#!/bin/sh
-
-killall yambar; yambar --log-level error
