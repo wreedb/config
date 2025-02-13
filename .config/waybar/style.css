@@ -1,209 +1,118 @@
-window {
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-}
-
-#waybar {
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-  color: rgb(224, 222, 244);
-  background-color: transparent;
-  padding: 5px;
-}
-
-.modules-center {
-  color: rgb(224, 222, 244);
-}
-
-.modules-left,
-.modules-right {
-  background-color: rgba(25, 23, 36, 0.7);
-  border: none;
-  border-radius: 5px;
-}
-
-.modules-left {
-  border: none;
-}
-
-.right {
-  border: none;
-}
-
-.modules-right {
-  border: none;
-  font-family: "Symbols Nerd Font";
+window#waybar {
+  font-family: "WBR Mono Medium Semi-Extended", "Symbols Nerd Font Mono";
   font-size: 20px;
+  background-color: #1A1D27;
+}
+window#waybar.hidden {
+  opacity: 0.2;
 }
 
-.left {
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-  padding: 0;
-  border-radius: 5px;
-  margin-left: 4px;
-}
-
-#backlight {
+button {
+  box-shadow: inset 0 -3px transparent;
   border: none;
+  border-radius: 0;
+}
+button:hover {
+  background: inherit;
+  box-shadow: inset 0 -3px #D7D7D7;
 }
 
-#battery {
-  border: none;
+#workspaces button {
+  font-weight: bold;
+  padding: 0 5px;
+  background-color: #1A1D27;
+  color: #80B0E0;
+}
+#workspaces button:hover {
+  background-color: #1A1D27;
+  opacity: 0.2;
+}
+#workspaces button.active {
+  color: #76C5A4;
+}
+#workspaces button.empty {
+  color: #494C59;
+}
+#workspaces button.urgent {
+  background-color: #FB7DA7;
+}
+
+#tray {
+  padding: 0 10px;
+  background-color: #AF98E6;
+  color: #1A1D27;
+}
+#tray:hover {
+  background-color: #1A1D27;
+  color: #AF98E6;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
 }
 
 #pulseaudio {
-  border: none;
+  padding: 0 10px;
+  background-color: #76C5A4;
+  color: #1A1D27;
 }
-
-#tray {
-  border: none;
-  margin-left: 6px;
-}
-
-.right {
-  border: none;
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-  border-radius: 5px;
-  margin-right: 10px;
-  margin-left: 10px;
-  padding: 0 4px;
-}
-
-#tags button {
-  color: rgb(110, 106, 134);
-  font-weight: bold;
-  border-radius: 5px;
-  margin: 4px;
-  padding: 2px 2px;
-  min-width: 1.5em;
-  min-height: 1.5em;
-  border: none;
-}
-
-#tags button:hover {
-  color: rgb(38, 35, 58);
-  border: none;
-  animation-duration: 0.8s;
-  animation-name: fadein;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-#tags button.occupied {
-  color: rgb(224, 222, 244);
-  border: none;
-}
-
-#tags button.occupied:hover {
-  color: rgb(38, 35, 58);
-  border: none;
-}
-
-#tags button.focused {
-  color: rgb(38, 35, 58);
-  border: none;
-  animation-duration: 0.8s;
-  animation-name: fadein;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-#tags button.focused:hover {
-  color: rgb(38, 35, 58);
-  border: none;
-}
-
-@keyframes fadein {
-  from {
-    background-image: none;
-  }
-  to {
-    background-image: linear-gradient(to right, rgb(49, 116, 143), rgb(196, 167, 231));
-    color: rgb(38, 35, 58);
-  }
-}
-#custom-tray-label {
-  border: none;
-  color: rgb(110, 106, 134);
-}
-
-#tray {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  border: none;
-}
-
-#pulseaudio.right {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  border: none;
-  color: rgb(25, 23, 36);
-  background-color: rgb(235, 111, 146);
-}
-
 #pulseaudio:hover {
-  border: none;
+  background-color: #1A1D27;
+  color: #76C5A4;
+}
+#pulseaudio.muted {
+  background-color: #FB7DA7;
+}
+#pulseaudio.muted:hover {
+  background-color: #1A1D27;
+  color: #FB7DA7;
 }
 
-#backlight.right {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  background-color: rgb(246, 193, 119);
-  border: none;
-  color: rgb(25, 23, 36);
+#custom-dnf {
+  padding: 0 10px;
+  background-color: #E3CF67;
+  color: #1A1D27;
 }
-
-#battery.right {
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  border: none;
-  color: rgb(25, 23, 36);
-  background-color: rgb(49, 116, 143);
+#custom-dnf:hover {
+  background-color: #1A1D27;
+  color: #E3CF67;
 }
 
 #clock {
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  background-color: rgb(196, 167, 231);
-  border-radius: 5px;
-  border: none;
-  color: rgb(25, 23, 36);
+  padding: 0 10px;
+  background-color: #1A1D27;
+  color: #D7D7D7;
+}
+#clock:hover {
+  background-color: #D7D7D7;
+  color: #1A1D27;
 }
 
-#custom-powermenu {
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: rgb(25, 23, 36);
-  border-radius: 5px;
-  background-color: rgb(235, 111, 146);
+#network {
+  padding: 0 10px;
+  background-color: #51C7DA;
+  color: #1A1D27;
+}
+#network:hover {
+  background-color: #1A1D27;
+  color: #51C7DA;
+}
+#network.disconnected {
+  background-color: #FB7DA7;
 }
 
-#custom-pacman {
-  font-family: "Roboto Condensed";
-  font-size: 18px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
-  color: rgb(25, 23, 36);
-  border-radius: 5px;
-  background-color: rgb(196, 167, 231);
+#window, #workspaces {
+  margin: 0 4px;
+}
+
+.modules-left > widget:first-child > #workspace {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspace {
+  margin-right: 0;
 }

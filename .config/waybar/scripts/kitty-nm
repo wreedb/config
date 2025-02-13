@@ -1,0 +1,7 @@
+#!/bin/sh
+
+exec kitty --title="kitty-nmtui" \
+    --override remember_window_size=no \
+    --override initial_window_width=800 \
+    --override initial_window_height=600 \
+    -e nmtui "$@"

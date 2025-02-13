@@ -1,8 +1,9 @@
-[safe]
-	directory = /var/db/repos/mv
-	directory = /var/db/repos/guru
 [init]
 	defaultBranch = main
 [user]
-	email = wreedb@skiff.com
+	email = wreed@programmer.net
 	name = Will Reed
+[core]
+	editor = nvim
+[advice]
+	detachedHead = false

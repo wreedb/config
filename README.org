@@ -1,5 +1,4 @@
-#+title: wbr-config
-
+#+TITLE: My config files for linux
 
 This repo is for my dotfiles, using GNU Stow to manage them.
 
@@ -10,4 +9,4 @@ and/or have any suggestions for my configurations. I love finding new
 things and new ways to configure my system.
 
 ** Contact Me
-[[mailto:wreedb@skiff.com][Email]]
+[[mailto:wreed@programmer.net][Email]]

@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+set -l numupgrades (dnf5 list --upgrades 2>/dev/null | wc -l)
+if test $numupgrades -ne 0
+    set -l refined (math $numupgrades -1)
+    printf $refined
+else
+    printf $numupgrades
+end

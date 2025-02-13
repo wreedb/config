@@ -1,0 +1,7 @@
+#!/bin/sh
+
+exec kitty --title="kitty-dnf-updates" \
+    --override remember_window_size=no \
+    --override initial_window_width=1400 \
+    --override initial_window_height=1000 \
+    -e $HOME/.config/kitty/bin/dnf-updates

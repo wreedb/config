@@ -1,0 +1,16 @@
+[metadata]
+name = "alice"
+author = "wreed"
+aliases = []
+
+[colors]
+foreground = "#EBEBEB"
+background = "#14161E"
+cursor_bg = "#EBEBEB"
+cursor_border = "#80B0E0"
+cursor_fg = "#1A1D27"
+selection_bg = "#494C59"
+selection_fg = "#D7D7D7"
+
+ansi = ["#1A1D27","#FB7DA7","#76C5A4","#FDAD5D","#80B0E0","#AF98E6","#51C7DA","#D7D7D7"]
+brights = ["#494C59","#FB83AB","#7DC8A9","#E3CF67","#86B4E2","#B39DE7","#5ACADC","#ECECEC"]

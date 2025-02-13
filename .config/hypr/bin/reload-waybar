@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -n "$(pgrep -x waybar)" ]
+then
+	pkill -x waybar
+fi
+
+waydir="${XDG_CONFIG_HOME}/waybar"
+sass --no-source-map "$waydir/main.sass":"$waydir/style.css"
+
+exec waybar --log-level error

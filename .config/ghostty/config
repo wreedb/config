@@ -1,0 +1,36 @@
+# vim:ft=ghostty
+
+command = fish
+
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = server
+
+font-size = 15
+font-family = JetBrains Mono
+font-family = Noto Emoji
+font-family = Symbols Nerd Font Mono
+
+font-family-bold = JetBrains Mono Medium
+font-family-italic = JetBrains Mono Italic
+font-family-bold-italic = JetBrains Mono Medium Italic
+
+theme = alice
+
+cursor-style = bar
+cursor-style-blink = false
+
+term = ghostty
+
+confirm-close-surface = false
+app-notifications = false
+resize-overlay = never
+
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
+focus-follows-mouse = true
+gtk-single-instance = true
+
+keybind = control+shift+enter=new_split:right

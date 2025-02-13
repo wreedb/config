@@ -1,14 +1,16 @@
+
+.config/emacs/var/
+.config/emacs/elpaca/
+.config/emacs/tree-sitter/
+
+.config/fish/completions/
+
 __pycache__
 .mypy_cache
 zig-out
 zig-cache
 *compdump
 *compcache
-
-zsh/plugins
-autosuggestions
-syntax-highlighting
-history-substring-search
 
 # Compiled source #
 ###################

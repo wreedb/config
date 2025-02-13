@@ -1,4 +1,0 @@
-#!/bin/sh
-
-id=$(hyprctl activeworkspace -j | jq '.["id"]');
-echo $id;
