@@ -1,28 +1,5 @@
 #+TITLE: My Emacs configuration
 #+AUTHOR: Will Reed
-#+STARTUP: showeverything
-#+OPTIONS: toc:2
-
-* Index :TOC:
-+ [[*Before this file][Before this file]]
-+ [[*Early Setup][Early Setup]]
-+ [[*Constants][Constants]]
-  + [[*Creating the directories][Creating the directories]]
-  + [[*Modify load-path][Modify load-path]]
-+ [[*Housekeeping][Housekeeping]]
-+ [[*Packages][Packages]]
-  + [[*misc.][misc.]]
-  + [[*language modes][language modes]]
-  + [[*themes][themes]]
-  + [[*interface][interface]]
-  + [[*editing][editing]]
-  + [[*org packages + setup][org packages + setup]]
-  + [[*nerd icons + integration][nerd icons + integration]]
-  + [[*general.el][general.el]]
-+ [[*Misc. configuration][Misc. configuration]]
-+ [[*Eglot][Eglot]]
-+ [[*Tree-sitter][Tree-sitter]]
-+ [[*Language mode-association][Language mode-association]]
 
 ** Before this file
 Before this file is loaded, [[file:./early-init.el][early-init.el]] and [[file:./init.el][init.el]] are loaded;
