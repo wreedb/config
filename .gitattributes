@@ -9,3 +9,5 @@
 .stowrc linguist-language=sh
 **/bat/config linguist-language=sh
 .bashrc linguist-language=bash
+**/user-dirs.dirs linguist-language=sh
+**/util/start-ssh-agent linguist-language=sh
