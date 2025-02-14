@@ -2,58 +2,84 @@
       auto-revert-avoid-polling t
       display-line-numbers-width 3)
 
+;; Avoid visiting symlinked file destination, rather
+;; refer to them as the name of the symlink
 (setq find-file-visit-truename nil
       vc-follow-symlinks nil)
 
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'conf-mode-hook #'display-line-numbers-mode)
 
 (add-to-list 'default-frame-alist '(font . "JetBrains Mono Medium-14"))
 
 (defconst wbr-config/dir
   user-emacs-directory
-  "my config dir: '~/.config/emacs'")
+  "My config dir: '~/.config/emacs'")
 
 (defconst wbr-config/assets
-  (concat user-emacs-directory "assets/")
+  (concat wbr-config/dir "assets/")
   "(user) misc. files such as images")
 
 (defconst wbr-config/themes
-  (concat user-emacs-directory "themes/")
-  "my theme files")
+  (concat wbr-config/dir "themes/")
+  "My theme files")
 
 (defconst wbr-config/var
-  (concat user-emacs-directory "var/")
-  "caches and varying files")
+  (concat wbr-config/dir "var/")
+  "Caches and varying files")
 
 (defconst wbr-config/modules
-  (concat user-emacs-directory "modules/")
-  "directory for modular configuration files")
+  (concat wbr-config/dir "modules/")
+  "Directory for modular configuration files")
+
+(defconst wbr-config/file-config-org
+  (concat wbr-config/dir "configuration.org")
+  "My configuration as a literate Org document")
 
 (defconst wbr-config/file-config
-  (concat wbr-config/dir "config.el")
-  "misc. configurations '~/.config/emacs/config.el'")
+  (concat wbr-config/dir "configuration.el")
+  "The elisp file that 'wbr-config/file-config-org' is tangled into")
+
+(defconst wbr-config/file-init
+  (concat wbr-config/dir "init.el")
+  "My init.el file '~/.config/emacs/init.el'")
+
+(defconst wbr-config/file-early-init
+  (concat wbr-config/dir "early-init.el")
+  "The first file loaded on startup '~/.config/emacs/early-init.el'")
 
 (defconst wbr-home/dir
   (concat (getenv "HOME") "/")
-  "my HOME directory")
+  "My $HOME (~) directory")
 
 (defconst wbr-home/local
   (concat wbr-home/dir ".local/")
-  "my '~/.local' directory")
+  "My '~/.local' directory")
 
 (defconst wbr-home/bin
   (concat wbr-home/local "bin/")
-  "my '~/.local/bin' directory")
+  "My '~/.local/bin' directory")
 
 (defconst wbr-home/org-dir
   (concat wbr-home/dir "Documents/org/")
-  "my org-mode directory")
+  "My Org documents directory")
+
+(defconst wbr-home/projects
+  (concat wbr-home/dir "Projects/")
+  "Directory containing all of my projects")
 
 (mkdir wbr-home/org-dir t)
 (mkdir wbr-config/modules t)
 (mkdir wbr-config/assets t)
 (mkdir wbr-config/var t)
+;; Subdirectories that may be needed
+(mkdir (concat wbr-config/var "auto-save")    t)
+(mkdir (concat wbr-config/var "backup")       t)
+(mkdir (concat wbr-config/var "native-cache") t)
+(mkdir (concat wbr-config/var "transient")    t)
+(mkdir (concat wbr-config/var "url")          t)
+(mkdir (concat wbr-config/var "treemacs")     t)
 
 (setq load-path
   (cons wbr-config/modules load-path))
@@ -112,6 +138,8 @@
 (use-package one-themes)
 (use-package kaolin-themes)
 
+;; for saving history of M-x commands between sessions, I've read that 
+;; this can be done without smex, but I was unable to succeed in trying
 (use-package smex
   :custom
   (smex-save-file (concat wbr-config/var "smex-save-file")))
@@ -119,20 +147,26 @@
 (use-package slime)
 (use-package magit)
 
+;; Hides minor modes from modelines
 (use-package rich-minority
   :delight
   :config (rich-minority-mode t))
 
+;; A better terminal emulator for Emacs
 (use-package vterm
   :custom
   (vterm-shell "/usr/bin/fish")
   (vterm-always-compile-module t))
 
+;; I use ligatured fonts when programming and find great value in them
+;; when reading source code
 (use-package ligature
   :delight global-ligature-mode
   :hook (prog-mode . ligature-mode)
   :config (load-library "ligatures_jetbrains-mono.el"))
 
+;; Counsel and Ivy provide a much nicer interface, as well as
+;; quality of life improvement wrappers for some regular Emacs functions
 (use-package counsel
   :config (counsel-mode))
 
@@ -153,33 +187,44 @@
   :delight ivy-rich-mode
   :config (ivy-rich-mode t))
 
+;; Provides a floating frame for M-x command among other things;
+;; I find it easier to use given it being in the center of the frame
 (use-package ivy-posframe
+  ;; Load after theme: doom-themes change the border of the posframe
+  ;; which makes it impossible to tell where the edge of the posframe is.
+  ;; in ':config' below, I set-face-attribute for the border manually after
+  ;; loading it, as a workaround for this interaction
   :after (ivy ivy-rich doom-themes)
   :delight ivy-posframe-mode
   :custom
   (ivy-posframe-parameters
-    '((left-fringe  . 8)
-      (right-fringe . 8)))
+    '((left-fringe  . 12)
+(right-fringe . 12)))
   (ivy-posframe-border-width 3)
   (ivy-posframe-display-functions-alist
    '((counsel-M-x . ivy-posframe-display-at-frame-center)
      (t . ivy-posframe-display)))
   :config
   (ivy-posframe-mode t)
+  ;; doom-themes set the 'internal-border' face to the same as 'default'
+  ;; which is the same as background, making the border practically
+  ;; indistinguishable from the rest of the frame; this adresses that
   (set-face-attribute 'ivy-posframe-border nil :background "black"))
 
+;; Changes ugly page breaks into neat lines
 (use-package page-break-lines
   :delight
   :config (page-break-lines-mode))
 
+;; The modeline from Doom Emacs
 (use-package doom-modeline
   :after (nerd-icons)
   :custom (doom-modeline-icon t)
   :config (doom-modeline-mode))
 
+;; The startup welcome screen buffer
 (use-package dashboard
   :after (nerd-icons projectile)
-  :elpaca t
   :config
   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
   (setq dashboard-display-icons-p t)
@@ -187,12 +232,12 @@
   (setq dashboard-heading-icons t)
   (setq dashboard-set-file-icons t)
   (setq dashboard-items '((recents   . 6)
-                          (bookmarks . 3)
-                          (projects  . 3)))
+		    (bookmarks . 3)
+		    (projects  . 3)))
   (setq dashboard-modify-heading-icons
-        '((recents . "nf-fa-file_text")
-          (bookmarks . "nf-fa-bookmark")
-          (projects . "nf-fa-folder_tree")))
+  '((recents . "nf-fa-file_text")
+    (bookmarks . "nf-fa-bookmark")
+    (projects . "nf-fa-folder_tree")))
   (setq dashboard-banner-logo-title "Hey, Will.")
   (setq dashboard-startup-banner (concat wbr-config/assets "emacs.png"))
   (setq dashboard-center-content t)
@@ -201,14 +246,17 @@
   (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
   (dashboard-setup-startup-hook))
 
+;; Project management
 (use-package projectile
   :custom
   (projectile-cache-file (concat wbr-config/var "projectile.cache"))
   (projectile-known-projects-file (concat wbr-config/var "projectile-known-projects.eld"))
   :config
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  (projectile-mode t))
+  (projectile-mode t)
+  (setq projectile-project-search-path '(("~/Projects" . 1))))
 
+;; Makes the experience of Emacs have much less friction
 (use-package which-key
   :custom
   (which-key-side-window-location 'bottom)
@@ -222,15 +270,29 @@
   :config
   (which-key-mode t))
 
+(use-package treemacs
+  :delight
+  :custom
+  (treemacs-show-hidden-files t)
+  (treemacs-hide-dot-git-directory t)
+  (treemacs-persist-file (concat wbr-config/var "treemacs/persist-file"))
+  (treemacs-last-error-persist-file (concat wbr-config/var "treemacs/last-error-persist-file")))
+
+(use-package treemacs-evil
+  :after (treemacs evil))
+
+;; I'm glad something like editorconfig exists.
 (use-package editorconfig
   :delight
   :config (editorconfig-mode t))
 
+;; Better undo system
 (use-package undo-fu
   :config (global-unset-key (kbd "C-z"))
   :bind (("C-z" . 'undo-fu-only-undo)
-         ("C-S-z" . 'undo-fu-only-redo)))
+	 ("C-S-z" . 'undo-fu-only-redo)))
 
+;; I used [n]vim before Emacs
 (use-package evil
   :after (undo-fu)
   :custom
@@ -238,20 +300,23 @@
   (evil-undo-system 'undo-fu)
   :config (evil-mode))
 
+;; Extra keybindings for evil-mode
 (use-package evil-collection
   :after (evil)
   :config (evil-collection-init))
 
+;; Like vim-surround but for evil-mode
 (use-package evil-surround
   :after (evil)
   :config (global-evil-surround-mode t))
 
+;; Better paren interaction for lisp-like languages
 (use-package evil-cleverparens
   :after (evil)
   :hook ((emacs-lisp-mode . evil-cleverparens-mode)
-         (lisp-mode       . evil-cleverparens-mode)
-         (scheme-mode     . evil-cleverparens-mode)
-         (racket-mode     . evil-cleverparens-mode)))
+	 (lisp-mode       . evil-cleverparens-mode)
+	 (scheme-mode     . evil-cleverparens-mode)
+	 (racket-mode     . evil-cleverparens-mode)))
 
 (use-package rainbow-mode
   :delight
@@ -288,6 +353,7 @@
   :config (vertico-mode))
 
 (use-package vertico-posframe
+  :after (vertico)
   :config
   (setq vertico-posframe-parameters
     '((left-fringe . 8)
@@ -307,6 +373,7 @@
    (help-mode . highlight-quoted-mode)))
 
 (use-package highlight-numbers
+  :delight
   :hook (prog-mode . highlight-numbers-mode))
 
 (require 'org)
@@ -318,7 +385,7 @@
       org-tags-column 0)
 
 (use-package org-modern
-  :delight org-modern-mode
+  :delight
   :hook (org-mode . org-modern-mode))
 
 (use-package toc-org)
@@ -392,6 +459,8 @@
     "t"   '(:ignore                   :wk "TOGGLE:")
     "t t" '(toggle-truncate-lines     :wk "truncated lines")
     "t n" '(display-line-numbers-mode :wk "line numbers")
+    "t v" '(vterm-other-window        :wk "vterm")
+    "t f" '(treemacs                  :wk "treemacs")
 
     "e"   '(:ignore t       :wk "EVAL:")
     "e e" '(eval-expression :wk "expression")
@@ -502,12 +571,14 @@
 
 (setq auto-mode-alist (append
   '(("\\.toml\\'"         . toml-ts-mode)
+
     ("\\.c\\'"            . c-ts-mode)
     ("\\.h\\'"            . c-ts-mode)
     ("\\.cpp\\'"          . c++-ts-mode)
     ("\\.cxx\\'"          . c++-ts-mode)
     ("\\.hpp\\'"          . c++-ts-mode)
     ("\\.hxx\\'"          . c++-ts-mode)
+
     ("\\.md\\'"           . markdown-ts-mode)
     ("\\.ts\\'"           . typescript-ts-mode)
     ("\\.tsx\\'"          . typescript-ts-mode)
@@ -523,14 +594,19 @@
     ("\\.jsonc\\'"        . json-ts-mode)
     ("\\.rb\\'"           . ruby-ts-mode)
     ("\\.rs\\'"           . rust-ts-mode)
+    ;; yaml
     ("\\.yaml\\'"         . yaml-ts-mode)
     ("\\.yml\\'"          . yaml-ts-mode)
+    ;; cmake
     ("\\CMakeList.txt\\'" . cmake-ts-mode)
     ("\\.cmake\\'"        . cmake-ts-mode)
+    ;; python
     ("\\.py\\'"           . python-ts-mode)
     ("\\.pyc\\'"          . python-ts-mode)
+    ;; hyprlang
     ("\\hyprland.conf\\'" . hyprlang-ts-mode)
     ("\\hyprlock.conf\\'" . hyprlang-ts-mode)
+    
     ("\\.fish\\'"         . fish-mode)
     ("\\.rkt\\'"          . racket-mode)
     ("\\.lua\\'"          . lua-mode)
@@ -538,5 +614,8 @@
     ("\\.zig.zon\\'"      . zig-ts-mode)
     ("\\.v\\'"            . v-mode)
     ("\\v.mod\\'"         . v-mode)
-    ("\\justfile\\'"      . just-ts-mode))
+    ("\\justfile\\'"      . just-ts-mode)
+    ;; git files
+    ("\\gitignore\\'"     . conf-mode)
+    ("\\gitattributes\\'" . conf-mode)
   auto-mode-alist))

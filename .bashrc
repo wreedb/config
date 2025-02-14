@@ -1,6 +1,3 @@
-# -*- mode: bash-ts-mode; -*-
-# vim:ft=bash
-
 mkdir -p ~/.cache/bash
 export HISTFILE=$HOME/.cache/bash/history
 export SAVEHIST=6000

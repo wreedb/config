@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Polkit Authentication Agent
+Exec=/usr/libexec/xfce-polkit

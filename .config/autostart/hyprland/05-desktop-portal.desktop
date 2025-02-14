@@ -1,0 +1,4 @@
+[Desktop Entry]
+Exec=/usr/libexec/xdg-desktop-portal-hyprland
+Name=xdg-desktop-portal-hyprland
+Type=Application

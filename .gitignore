@@ -1,3 +1,5 @@
+# -*- mode: conf; -*-
+
 # Micro
 .config/micro/buffers/
 .config/micro/backups/

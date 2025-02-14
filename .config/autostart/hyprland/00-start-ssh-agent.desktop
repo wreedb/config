@@ -1,0 +1,4 @@
+[Desktop Entry]
+Exec=/home/wbr/.config/autostart/util/start-ssh-agent
+Name=start-ssh-agent
+Type=Application
