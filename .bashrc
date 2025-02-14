@@ -9,27 +9,42 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:=$HOME/.local/share}"
 export XDG_STATE_HOME="${XDG_STATE_HOME:=$HOME/.local/state}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:=$HOME/.cache}"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:=$HOME/.config}"
+
 export GROFF_NO_SGR=1
 export MANROFFOPT=-c
 export LESSHISTFILE=
 export MANWIDTH=80
+export MANPAGER="ov --section-delimiter '^[^\s]' --section-header"
+
 export RUSTUP_HOME=/opt/sw/rust/rustup
 export CARGO_HOME=/opt/sw/rust/cargo
 export GNUPGHOME=$HOME/.local/share/gnupg
 export GIT_CONFIG_NOSYSTEM=1
 export GIT_CONFIG_GLOBAL=$HOME/.config/git/config
-export GOPATH=$HOME/.local/share/go
-export GOTELEMETRY=off
 export CFLAGS="-O2 -pipe -march=native -mtune=native"
 export CXXFLAGS="-O2 -pipe -march=native -mtune=native"
-export LDFLAGS="-O2 -pipe -march=native -mtune=native"
 export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
 export PERL_CPANM_HOME=$HOME/.local/share/cpanm
+export PERL_CANARY_STABILITY_NOPROMPT=1
+
+export EGET_CONFIG="${XDG_CONFIG_HOME}/eget/config.toml"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/config.toml"
 
+export NODE_REPL_HISTORY="${XDG_CACHE_HOME}/nodejs-history"
+export NPM_CONFIG_EDITOR=nvim
+export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
+export BUN_INSTALL=/opt/sw/bun
+export DENO_INSTALL=/opt/sw/deno
+
+export GOPATH=$HOME/.local/share/go
+export GOBIN=$GOPATH/bin
+export GOTELEMETRY=off
 export CGO_CFLAGS="$CFLAGS -g"
 export CGO_CXXFLAGS="$CXXFLAGS -g"
-export CGO_LDFLAGS="$LDFLAGS -g"
+
+export VEXE=/opt/sw/v/v
+export VMODULES="${XDG_DATA_HOME}/vmodules"
+export VCACHE="${XDG_CACHE_HOME}/vcache"
 
 mkdir -p "${XDG_RUNTIME_DIR:-$HOME/.local/run}/sockets"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-$XDG_RUNTIME_HOME}/sockets/ssh-agent"
@@ -43,7 +58,9 @@ alias la="eza $ls_o --across"
 alias tree="eza $ls_o --tree"
 alias mkdir="mkdir -pv"
 alias mv="mv -v"    
-alias mvt="mv -vt"  
+alias mvt="mv -vt"
+alias rm="rm -v"
+alias rmd="rm -rvf"
 alias cp="cp -v"
 alias cpt="cp -vt"
 alias grep="grep --color=auto -i"
@@ -56,7 +73,19 @@ alias nvi=nvim
 alias nv=nvim
 alias m=micro
 alias envy="env | sort | bat -l sh"
-alias curl="curl --progress-bar"
+alias curl="curl --progress-bar -L"
+alias hg=chg
+alias make="colormake --short"
+alias dfc="dfc -t ext4,vfat"
+alias mmv=mmv-go
+alias j=just
+
+alias cat=bsdcat
+alias cpio=bsdcpio
+alias unzip=bsdunzip
+
+alias chx="chmod +x"
+
 
 for extra in "${XDG_CONFIG_HOME:-$HOME/.config}"/bash/*.sh
 do
@@ -93,5 +122,12 @@ path-edit "${CARGO_HOME}/bin"
 path-edit "/opt/sw/go/versions/current/bin"
 path-edit "/opt/sw/perl/versions/current/bin"
 path-edit "/opt/sw/nodejs/versions/current/bin"
+path-edit "/opt/sw/zig/version/current"
+path-edit "/opt/sw/deno/bin"
+path-edit "/opt/sw/bun/bin"
+path-edit "$GOBIN"
 
 export PATH
+
+eval "$(starship init bash)"
+eval "$(zoxide init bash)"

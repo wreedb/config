@@ -1,16 +1,22 @@
+# Micro
+.config/micro/buffers/
+.config/micro/backups/
 
+# Emacs
 .config/emacs/var/
 .config/emacs/elpaca/
 .config/emacs/tree-sitter/
 
+# fish
 .config/fish/completions/
+.config/fish/fish_variables
 
 __pycache__
 .mypy_cache
 zig-out
 zig-cache
-*compdump
-*compcache
+*compdump*
+*compcache*
 
 # Compiled source #
 ###################

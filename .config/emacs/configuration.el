@@ -2,6 +2,9 @@
       auto-revert-avoid-polling t
       display-line-numbers-width 3)
 
+(setq find-file-visit-truename nil
+      vc-follow-symlinks nil)
+
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 

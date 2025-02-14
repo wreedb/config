@@ -1,0 +1,4 @@
+# -*- mode: conf; -*-
+.config/git/config linguist-language=gitconfig
+*.conf linguist-language=dosini
+.config/ghostty/* linguist-language=dosini

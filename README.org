@@ -1,14 +1,20 @@
-#+TITLE: My config files for linux
+#+AUTHOR: Will Reed
+#+DESCRIPTION: My configuration files for linux
 
-This repo is for my dotfiles, using GNU Stow to manage them.
+* The programs I mainly use :TOC:
++ [[file:./.config/kitty/kitty.conf][Terminal Emulator: Kitty]]
++ [[file:./.config/emacs/configuration.org][Text Editor: GNU Emacs]]
++ [[file:./.config/fish][Command Line Shell: Fish]]
++ [[file:./.config/hypr/hyprland.conf][Wayland Compositor: Hyprland]]
 
-My Emacs configuration can be viewed as a [[file:./.config/emacs/configuration.org][literate Org document]].
+* Trying my configurations
+I'd recommend just copying the things you like, however if you want to install them all at once:
+#+BEGIN_SRC shell
+git clone https://github.com/wreedb/config && cd config
+stow -t $HOME -S .
+#+END_SRC
+And that's it! [[https://gnu.org/software/stow][GNU Stow]] is a bit magical.
 
-* Disclaimer
-My configurations may not work on all systems-- that being said,
-feel free to contact me if you have any simple questions about them
-and/or have any suggestions for my configurations. I love finding new
-things and new ways to configure my system.
-
+If you'd lie to ask me anything about my config files, my contact info is below.
 ** Contact Me
 [[mailto:wreed@programmer.net][Email]]
