@@ -1,0 +1,6 @@
+--ignore=".editorconfig"
+--ignore=".stowrc"
+--ignore=".gitattributes"
+--ignore="LICENSE"
+--ignore="README.org"
+--verbose=1

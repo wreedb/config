@@ -1,11 +1,33 @@
-#+TITLE: My Emacs configuration
 #+AUTHOR: Will Reed
+#+PROPERTY: header-args :tangle configuration.el
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+** INDEX :TOC:
++ [[#before-this-file][Before this file]]
++ [[#early-setup][Early Setup]]
++ [[#constants][Constants]]
+  * [[#creating-the-directories][Creating the directories]]
+  * [[#modify-load-path][Modify load-path]]
++ [[#housekeeping][Housekeeping]]
++ [[#packages][Packages]]
+  * [[#misc][misc]]
+  * [[#language-modes][language modes]]
+  * [[#themes][themes]]
+  * [[#interface][interface]]
+  * [[#editing][editing]]
+  * [[#org-packages--setup][org packages + setup]]
+  * [[#nerd-icons--integration][nerd icons + integration]]
+  * [[#generalel][general.el]]
++ [[#misc-configuration][Misc. configuration]]
++ [[#eglot][Eglot]]
++ [[#tree-sitter][Tree-sitter]]
++ [[#language-mode-association][Language mode-association]]
 
 ** Before this file
 Before this file is loaded, [[file:./early-init.el][early-init.el]] and [[file:./init.el][init.el]] are loaded;
-~early-init.el~ disables some of the emacs UI features like the menu/tool/scroll bars
-~init.el~ Calls [[file:./modules/elpaca.el][elpaca.el]] to set up (you guessed it) [[https://github.com/progfolio/elpaca][progfolio/elpaca]], my package manager of choice.
-
+~early-init.el~ disables some of the emacs UI features like the menu/tool/scroll bars,
+~init.el~ Calls [[file:./modules/elpaca.el][elpaca.el]] to set up: (you guessed it) [[https://github.com/progfolio/elpaca][progfolio/elpaca]], my package manager of choice.
 ** Early Setup
 #+BEGIN_SRC emacs-lisp
 (setq load-prefer-newer t
@@ -101,7 +123,7 @@ Before this file is loaded, [[file:./early-init.el][early-init.el]] and [[file:.
 
 ** Packages
 This is where all of my ~use-package~ blocks will go; separated into a few subsections
-*** misc.
+*** misc
 Packages that don't quite fit in another category (yet)
 #+BEGIN_SRC emacs-lisp
 (use-package transient
@@ -137,7 +159,6 @@ Language modes for languages that aren't built-in, or have a better available mo
 *** themes
 Theme packages, though I mainly use ~doom-vibrant~ from Doom Emacs.
 #+BEGIN_SRC emacs-lisp
-
 (use-package doom-themes
   :custom
   (doom-themes-enable-bold t)
@@ -195,7 +216,7 @@ Packages that have to do with either the interface itself, or complement it.
   :config (ivy-rich-mode t))
 
 (use-package ivy-posframe
-  :after (ivy ivy-rich)
+  :after (ivy ivy-rich doom-themes)
   :delight ivy-posframe-mode
   :custom
   (ivy-posframe-parameters
@@ -206,7 +227,8 @@ Packages that have to do with either the interface itself, or complement it.
    '((counsel-M-x . ivy-posframe-display-at-frame-center)
      (t . ivy-posframe-display)))
   :config
-  (ivy-posframe-mode t))
+  (ivy-posframe-mode t)
+  (set-face-attribute 'ivy-posframe-border nil :background "black"))
 
 (use-package page-break-lines
   :delight
@@ -219,6 +241,7 @@ Packages that have to do with either the interface itself, or complement it.
 
 (use-package dashboard
   :after (nerd-icons projectile)
+  :elpaca t
   :config
   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
   (setq dashboard-display-icons-p t)
@@ -236,6 +259,8 @@ Packages that have to do with either the interface itself, or complement it.
   (setq dashboard-startup-banner (concat wbr-config/assets "emacs.png"))
   (setq dashboard-center-content t)
   (setq dashboard-vertically-center-content t)
+  (add-hook 'elpaca-after-init-hook #'dashboard-insert-startupify-lists)
+  (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
   (dashboard-setup-startup-hook))
 
 (use-package projectile
@@ -263,6 +288,10 @@ Packages that have to do with either the interface itself, or complement it.
 *** editing
 Packages that augment text-editing or compliment it.
 #+BEGIN_SRC emacs-lisp
+(use-package editorconfig
+  :delight
+  :config (editorconfig-mode t))
+
 (use-package undo-fu
   :config (global-unset-key (kbd "C-z"))
   :bind (("C-z" . 'undo-fu-only-undo)
@@ -334,8 +363,8 @@ Packages that augment text-editing or compliment it.
 (use-package highlight-defined
   :delight
   :hook
-  ((prog-mode    . highlight-defined-mode)
-   (help-mode    . highlight-defined-mode)))
+  ((prog-mode . highlight-defined-mode)
+   (help-mode . highlight-defined-mode)))
 
 (use-package highlight-quoted
   :delight
@@ -346,8 +375,6 @@ Packages that augment text-editing or compliment it.
 (use-package highlight-numbers
   :hook (prog-mode . highlight-numbers-mode))
 
-; (require 'highlight-numbers)
-; (add-hook 'prog-mode-hook #'highlight-numbers-mode)
 #+END_SRC
 
 *** org packages + setup
@@ -490,19 +517,16 @@ Generic settings that didn't fit in another section
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
 
-(set-fontset-font t nil
-  (font-spec
-    :name "Symbols Nerd Font Mono"
-    :size 14))
+(set-fontset-font t nil (font-spec
+  :name "Symbols Nerd Font Mono"
+  :size 14))
 
 (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
 (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
-(set-face-attribute
-  'font-lock-function-call-face nil
+
+(set-face-attribute 'font-lock-function-call-face nil
   :weight 'bold
   :underline t)
-
-(set-face-attribute 'ivy-posframe-border nil :background "grey")
 
 ;; in case counsel breaks
 (keymap-global-set "C-x M-x" 'execute-extended-command)
@@ -569,7 +593,6 @@ Better syntax highlight wherever I can get it.
 (setq treesit-font-lock-level 4
       go-ts-mode-indent-offset 4)
 #+END_SRC
-
 
 ** Language mode-association
 Where I define all of the modes for their respective language.

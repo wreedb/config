@@ -154,7 +154,7 @@
   :config (ivy-rich-mode t))
 
 (use-package ivy-posframe
-  :after (ivy ivy-rich)
+  :after (ivy ivy-rich doom-themes)
   :delight ivy-posframe-mode
   :custom
   (ivy-posframe-parameters
@@ -165,7 +165,8 @@
    '((counsel-M-x . ivy-posframe-display-at-frame-center)
      (t . ivy-posframe-display)))
   :config
-  (ivy-posframe-mode t))
+  (ivy-posframe-mode t)
+  (set-face-attribute 'ivy-posframe-border nil :background "black"))
 
 (use-package page-break-lines
   :delight
@@ -178,6 +179,7 @@
 
 (use-package dashboard
   :after (nerd-icons projectile)
+  :elpaca t
   :config
   (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
   (setq dashboard-display-icons-p t)
@@ -195,6 +197,8 @@
   (setq dashboard-startup-banner (concat wbr-config/assets "emacs.png"))
   (setq dashboard-center-content t)
   (setq dashboard-vertically-center-content t)
+  (add-hook 'elpaca-after-init-hook #'dashboard-insert-startupify-lists)
+  (add-hook 'elpaca-after-init-hook #'dashboard-initialize)
   (dashboard-setup-startup-hook))
 
 (use-package projectile
@@ -217,6 +221,10 @@
   (which-key-idle-delay 0.8)
   :config
   (which-key-mode t))
+
+(use-package editorconfig
+  :delight
+  :config (editorconfig-mode t))
 
 (use-package undo-fu
   :config (global-unset-key (kbd "C-z"))
@@ -289,8 +297,8 @@
 (use-package highlight-defined
   :delight
   :hook
-  ((prog-mode    . highlight-defined-mode)
-   (help-mode    . highlight-defined-mode)))
+  ((prog-mode . highlight-defined-mode)
+   (help-mode . highlight-defined-mode)))
 
 (use-package highlight-quoted
   :delight
@@ -300,9 +308,6 @@
 
 (use-package highlight-numbers
   :hook (prog-mode . highlight-numbers-mode))
-
-; (require 'highlight-numbers)
-; (add-hook 'prog-mode-hook #'highlight-numbers-mode)
 
 (require 'org)
 (require 'org-tempo)
@@ -427,19 +432,16 @@
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
 
-(set-fontset-font t nil
-  (font-spec
-    :name "Symbols Nerd Font Mono"
-    :size 14))
+(set-fontset-font t nil (font-spec
+  :name "Symbols Nerd Font Mono"
+  :size 14))
 
 (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
 (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
-(set-face-attribute
-  'font-lock-function-call-face nil
+
+(set-face-attribute 'font-lock-function-call-face nil
   :weight 'bold
   :underline t)
-
-(set-face-attribute 'ivy-posframe-border nil :background "grey")
 
 ;; in case counsel breaks
 (keymap-global-set "C-x M-x" 'execute-extended-command)

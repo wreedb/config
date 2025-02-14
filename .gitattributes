@@ -1,4 +1,7 @@
 # -*- mode: conf; -*-
 .config/git/config linguist-language=gitconfig
 *.conf linguist-language=dosini
-.config/ghostty/* linguist-language=dosini
+**/ghostty/config linguist-language=dosini
+**/ghostty/themes/* linguist-language=dosini
+**/tofi/config linguist-language=dosini
+**/mimeapps.list linguist-language=desktop
