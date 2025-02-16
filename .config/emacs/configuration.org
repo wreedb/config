@@ -1,7 +1,7 @@
 #+AUTHOR: Will Reed
 #+PROPERTY: header-args :tangle configuration.el
-#+STARTUP: fold
 #+OPTIONS: toc:2
+#+STARTUP: fold
 
 ** INDEX :TOC:
 + [[#before-this-file][Before this file]]
@@ -172,6 +172,7 @@ Packages that don't quite fit in another category (yet)
 *** language modes
 Language modes for languages that aren't built-in, or have a better available mode; e.g. tree-sitter ~-ts-mode~'s
 #+BEGIN_SRC emacs-lisp
+(use-package ssass-mode)
 (use-package markdown-ts-mode)
 (use-package just-ts-mode)
 (use-package zig-ts-mode)
@@ -188,16 +189,16 @@ Theme packages, though I mainly use ~doom-vibrant~ from Doom Emacs theme mega-pa
 I'd like to switch away from them though; they don't always play nicely with other 
 packages/modes and most notably: ~font-lock-mode~
 #+BEGIN_SRC emacs-lisp
-(use-package doom-themes
-  :custom
-  (doom-themes-enable-bold t)
-  (doom-themes-enable-italic t)
-  :config
-  (load-theme 'doom-vibrant t))
+;(use-package doom-themes)
+;;:config
+;;(setq doom-themes-enable-bold t)
+;;(setq doom-themes-enable-italic t)
+;;(setq doom-gruvbox-dark-variant "hard")
+;;(load-theme 'doom-gruvbox t))
 
-(use-package gruvbox-theme)
-(use-package one-themes)
-(use-package kaolin-themes)
+;(use-package gruvbox-theme)
+;(use-package one-themes)
+;(use-package kaolin-themes)
 #+END_SRC
 
 *** interface
@@ -671,14 +672,12 @@ Where I define all of the modes for their respective language.
 #+BEGIN_SRC emacs-lisp
 (setq auto-mode-alist (append
   '(("\\.toml\\'"         . toml-ts-mode)
-
     ("\\.c\\'"            . c-ts-mode)
     ("\\.h\\'"            . c-ts-mode)
     ("\\.cpp\\'"          . c++-ts-mode)
     ("\\.cxx\\'"          . c++-ts-mode)
     ("\\.hpp\\'"          . c++-ts-mode)
     ("\\.hxx\\'"          . c++-ts-mode)
-
     ("\\.md\\'"           . markdown-ts-mode)
     ("\\.ts\\'"           . typescript-ts-mode)
     ("\\.tsx\\'"          . typescript-ts-mode)
@@ -694,19 +693,14 @@ Where I define all of the modes for their respective language.
     ("\\.jsonc\\'"        . json-ts-mode)
     ("\\.rb\\'"           . ruby-ts-mode)
     ("\\.rs\\'"           . rust-ts-mode)
-    ;; yaml
     ("\\.yaml\\'"         . yaml-ts-mode)
     ("\\.yml\\'"          . yaml-ts-mode)
-    ;; cmake
     ("\\CMakeList.txt\\'" . cmake-ts-mode)
     ("\\.cmake\\'"        . cmake-ts-mode)
-    ;; python
     ("\\.py\\'"           . python-ts-mode)
     ("\\.pyc\\'"          . python-ts-mode)
-    ;; hyprlang
     ("\\hyprland.conf\\'" . hyprlang-ts-mode)
     ("\\hyprlock.conf\\'" . hyprlang-ts-mode)
-    
     ("\\.fish\\'"         . fish-mode)
     ("\\.rkt\\'"          . racket-mode)
     ("\\.lua\\'"          . lua-mode)
@@ -715,8 +709,26 @@ Where I define all of the modes for their respective language.
     ("\\.v\\'"            . v-mode)
     ("\\v.mod\\'"         . v-mode)
     ("\\justfile\\'"      . just-ts-mode)
-    ;; git files
     ("\\gitignore\\'"     . conf-mode)
-    ("\\gitattributes\\'" . conf-mode)
+    ("\\gitattributes\\'" . conf-mode))
   auto-mode-alist))
 #+END_SRC
+
+* Late setup
+#+begin_src emacs-lisp
+(use-package doom-themes
+  :config
+  (load-theme 'doom-vibrant t)
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t
+        doom-gruvbox-dark-variant "hard")
+  (set-face-attribute 'font-lock-comment-face nil :slant italic)
+  (set-face-attribute 'font-lock-keyword-face nil :slant italic)
+  (global-font-lock-mode t))
+
+(set-face-attribute 'help-key-binding nil
+  :background nil
+  :foreground nil
+  :weight 'bold
+  :box nil)
+#+end_src

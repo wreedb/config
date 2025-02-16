@@ -1,0 +1,55 @@
+# -*- mode: toml-ts; -*- vim:ft=toml
+
+# Instructions:
+# In your ~/.config/alacritty/alacritty.toml, in the [general]
+# section, add something equivalent to the following:
+#
+# [general]
+# import = [ "/path/to/this/file" ]
+#
+# In alacritty's configuration, the import keyword works with
+# absolute paths, relative paths, and ones with "~/" in them
+# to denote a path relative to your home directory
+# so if you put this file right next your alacritty.toml, either of
+#
+# [general]
+# import = [ "alice.toml" ]
+# or
+# import = [ "~/.config/alacritty/alice.toml" ]
+#
+# should work as. For more information, see the
+# Alacritty configuration manual page: `man 5 alacritty`
+
+[colors]
+
+[colors.primary]
+foreground = "#EBEBEB"
+background = "#14161E"
+
+[colors.selection]
+background = "#494C59"
+text       = "#D7D7D7"
+
+[colors.cursor]
+text   = "#1A1D27"
+cursor = "#80B0E0"
+
+[colors.normal]
+black   = "#1A1D27"
+red     = "#FB7DA7"
+green   = "#76C5A4"
+yellow  = "#FDAD5D"
+blue    = "#80B0E0"
+magenta = "#AF98E6"
+cyan    = "#51C7DA"
+white   = "#D7D7D7"
+
+[colors.bright]
+black   = "#494C59"
+red     = "#FB83AB"
+green   = "#7DC8A9"
+yellow  = "#E3CF67"
+blue    = "#86B4E2"
+magenta = "#B39DE7"
+cyan    = "#5ACADC"
+white   = "#ECECEC"

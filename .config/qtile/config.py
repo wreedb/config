@@ -1,4 +1,4 @@
-# -*- mode: python; -*-
+# -*- mode: python-ts; -*-
 
 from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Match, Screen, EzKey, Key, KeyChord

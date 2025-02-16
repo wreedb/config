@@ -7,6 +7,8 @@
 (setq find-file-visit-truename nil
       vc-follow-symlinks nil)
 
+(global-visual-line-mode t)
+
 (add-hook 'text-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'conf-mode-hook #'display-line-numbers-mode)
@@ -92,6 +94,7 @@
 (setq auto-save-default nil)
 
 (setq savehist-file (concat wbr-config/var "savehist"))
+(savehist-mode)
 
 (setq url-configuration-directory (concat wbr-config/var "url/"))
 (setq recentf-save-file (concat wbr-config/var "recentf"))
@@ -101,6 +104,28 @@
 
 (setq backup-directory-alist
       `(("." . ,(concat wbr-config/var "backup/"))))
+
+
+(load-file (concat wbr-config/modules "ligatures_jetbrains-mono.el"))
+(use-package doom-themes)
+;  :config
+;  (setq doom-themes-enable-bold t
+;        doom-themes-enable-italic t
+;        doom-gruvbox-dark-variant "hard")
+;  (load-theme 'doom-snazzy t)
+
+(use-package catppuccin-theme
+  :config
+  (load-theme 'catppuccin t)
+  (setq catppuccin-flavor 'mocha)
+  (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+  (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
+  (set-face-attribute 'font-lock-variable-name-face nil :weight 'bold)
+  (set-face-attribute 'help-key-binding nil
+	              :background nil
+	              :foreground nil
+		      :weight 'bold
+		      :box nil))
 
 (use-package transient
   :custom
@@ -117,26 +142,20 @@
 (use-package swiper)
 (use-package sudo-edit)
 
+(use-package ssass-mode)
 (use-package markdown-ts-mode)
 (use-package just-ts-mode)
 (use-package zig-ts-mode)
 (use-package v-mode)
 (use-package lua-mode)
 (use-package fish-mode)
-(use-package racket-mode)
+(use-package racket-mode
+  :config
+  (setq racket-doc-index-directory (concat wbr-config/var "racket/"))
+  (setq racket-repl-history-directory (concat wbr-config/var "racket/")))
+
 (use-package hyprlang-ts-mode
   :custom (hyprlang-ts-mode-indent-offset 2))
-
-(use-package doom-themes
-  :custom
-  (doom-themes-enable-bold t)
-  (doom-themes-enable-italic t)
-  :config
-  (load-theme 'doom-vibrant t))
-
-(use-package gruvbox-theme)
-(use-package one-themes)
-(use-package kaolin-themes)
 
 ;; for saving history of M-x commands between sessions, I've read that 
 ;; this can be done without smex, but I was unable to succeed in trying
@@ -144,7 +163,7 @@
   :custom
   (smex-save-file (concat wbr-config/var "smex-save-file")))
 
-(use-package slime)
+(use-package sly)
 (use-package magit)
 
 ;; Hides minor modes from modelines
@@ -157,13 +176,6 @@
   :custom
   (vterm-shell "/usr/bin/fish")
   (vterm-always-compile-module t))
-
-;; I use ligatured fonts when programming and find great value in them
-;; when reading source code
-(use-package ligature
-  :delight global-ligature-mode
-  :hook (prog-mode . ligature-mode)
-  :config (load-library "ligatures_jetbrains-mono.el"))
 
 ;; Counsel and Ivy provide a much nicer interface, as well as
 ;; quality of life improvement wrappers for some regular Emacs functions
@@ -187,28 +199,21 @@
   :delight ivy-rich-mode
   :config (ivy-rich-mode t))
 
-;; Provides a floating frame for M-x command among other things;
-;; I find it easier to use given it being in the center of the frame
+;; Provides a floating frame for M-x command among other things
 (use-package ivy-posframe
-  ;; Load after theme: doom-themes change the border of the posframe
-  ;; which makes it impossible to tell where the edge of the posframe is.
-  ;; in ':config' below, I set-face-attribute for the border manually after
-  ;; loading it, as a workaround for this interaction
-  :after (ivy ivy-rich doom-themes)
-  :delight ivy-posframe-mode
-  :custom
-  (ivy-posframe-parameters
+  :after (ivy) ; if using doom-themes, add to :after list
+  :init
+  (setq ivy-posframe-parameters
     '((left-fringe  . 12)
-(right-fringe . 12)))
-  (ivy-posframe-border-width 3)
-  (ivy-posframe-display-functions-alist
+      (right-fringe . 12)))
+  (setq ivy-posframe-width 125)
+  (setq ivy-posframe-height 10)
+  (setq ivy-posframe-border-width 3)
+  (setq ivy-posframe-display-functions-alist
    '((counsel-M-x . ivy-posframe-display-at-frame-center)
      (t . ivy-posframe-display)))
   :config
   (ivy-posframe-mode t)
-  ;; doom-themes set the 'internal-border' face to the same as 'default'
-  ;; which is the same as background, making the border practically
-  ;; indistinguishable from the rest of the frame; this adresses that
   (set-face-attribute 'ivy-posframe-border nil :background "black"))
 
 ;; Changes ugly page breaks into neat lines
@@ -323,11 +328,15 @@
   :hook
   ((prog-mode    . rainbow-mode)
    (help-mode    . rainbow-mode)
-   (org-mode     . rainbow-mode)))
+   (org-mode     . rainbow-mode)
+   (toml-ts-mode . rainbow-mode)
+   (conf-mode    . rainbow-mode)))
 
 (use-package rainbow-delimiters
   :delight rainbow-delimiters-mode
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook
+  ((prog-mode . rainbow-delimiters-mode)
+   (toml-ts-mode . rainbow-delimiters-mode)))
 
 (use-package suggest)
 
@@ -382,7 +391,8 @@
       org-default-notes-file (concat org-directory "notes.org")
       org-agenda-files (list org-directory)
       org-auto-align-tags t
-      org-tags-column 0)
+      org-tags-column 0
+      org-edit-src-content-indentation 0)
 
 (use-package org-modern
   :delight
@@ -505,13 +515,6 @@
   :name "Symbols Nerd Font Mono"
   :size 14))
 
-(set-face-attribute 'font-lock-comment-face nil :slant 'italic)
-(set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
-
-(set-face-attribute 'font-lock-function-call-face nil
-  :weight 'bold
-  :underline t)
-
 ;; in case counsel breaks
 (keymap-global-set "C-x M-x" 'execute-extended-command)
 
@@ -534,6 +537,27 @@
     (fish-mode          . ("fish-lsp" "start"))
     (lua-mode           . ("lua-language-server")))
   eglot-server-programs))
+
+(defun auto-eglot (mode)
+  "Automatically set up eglot with parameter 'mode'"
+  (add-hook mode 'eglot-ensure))
+
+(auto-eglot 'markdown-ts-mode)
+(auto-eglot 'bash-ts-mode)
+(auto-eglot 'css-ts-mode)
+(auto-eglot 'js-ts-mode)
+(auto-eglot 'html-mode)
+(auto-eglot 'json-ts-mode)
+(auto-eglot 'python-ts-mode)
+(auto-eglot 'c-ts-mode)
+(auto-eglot 'c++-ts-mode)
+(auto-eglot 'go-ts-mode)
+(auto-eglot 'typescript-ts-mode)
+(auto-eglot 'yaml-ts-mode)
+(auto-eglot 'v-mode)
+(auto-eglot 'rust-ts-mode)
+(auto-eglot 'fish-mode)
+(auto-eglot 'lua-mode)
 
 (require 'treesit)
 
@@ -571,14 +595,12 @@
 
 (setq auto-mode-alist (append
   '(("\\.toml\\'"         . toml-ts-mode)
-
     ("\\.c\\'"            . c-ts-mode)
     ("\\.h\\'"            . c-ts-mode)
     ("\\.cpp\\'"          . c++-ts-mode)
     ("\\.cxx\\'"          . c++-ts-mode)
     ("\\.hpp\\'"          . c++-ts-mode)
     ("\\.hxx\\'"          . c++-ts-mode)
-
     ("\\.md\\'"           . markdown-ts-mode)
     ("\\.ts\\'"           . typescript-ts-mode)
     ("\\.tsx\\'"          . typescript-ts-mode)
@@ -594,19 +616,14 @@
     ("\\.jsonc\\'"        . json-ts-mode)
     ("\\.rb\\'"           . ruby-ts-mode)
     ("\\.rs\\'"           . rust-ts-mode)
-    ;; yaml
     ("\\.yaml\\'"         . yaml-ts-mode)
     ("\\.yml\\'"          . yaml-ts-mode)
-    ;; cmake
     ("\\CMakeList.txt\\'" . cmake-ts-mode)
     ("\\.cmake\\'"        . cmake-ts-mode)
-    ;; python
     ("\\.py\\'"           . python-ts-mode)
     ("\\.pyc\\'"          . python-ts-mode)
-    ;; hyprlang
     ("\\hyprland.conf\\'" . hyprlang-ts-mode)
     ("\\hyprlock.conf\\'" . hyprlang-ts-mode)
-    
     ("\\.fish\\'"         . fish-mode)
     ("\\.rkt\\'"          . racket-mode)
     ("\\.lua\\'"          . lua-mode)
@@ -615,7 +632,8 @@
     ("\\.v\\'"            . v-mode)
     ("\\v.mod\\'"         . v-mode)
     ("\\justfile\\'"      . just-ts-mode)
-    ;; git files
     ("\\gitignore\\'"     . conf-mode)
-    ("\\gitattributes\\'" . conf-mode)
+    ("\\gitattributes\\'" . conf-mode))
   auto-mode-alist))
+
+(setq inferior-lisp-program (concat wbr-home/local "opt/sbcl/bin/sbcl"))

@@ -43,6 +43,12 @@ set -gx RUSTFLAGS "-C target-cpu=native -C opt-level=3 -C link-arg=-fuse-ld=lld"
 set -gx VEXE /opt/sw/v/v
 set -gx VMODULES $XDG_DATA_HOME/vmodules
 set -gx VCACHE $XDG_CACHE_HOME/vcache
-set -gx VFLAGS "-cc clang"
 
 set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/sockets/ssh-agent"
+
+set -gx SBCL_HOME $HOME/.local/opt/sbcl/lib/sbcl
+
+set -gx HOMEBREW_PREFIX $XDG_DATA_HOME/homebrew
+set -gx HOMEBREW_CELLAR $XDG_DATA_HOME/homebrew/Cellar
+set -gx HOMEBREW_REPOSITORY $XDG_DATA_HOME/homebrew
+set -gx HOMEBREW_NO_ENV_HINTS 1

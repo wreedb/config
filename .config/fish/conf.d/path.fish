@@ -6,3 +6,5 @@ path-edit /opt/sw/zig/versions/current
 path-edit /opt/sw/bun/bin
 path-edit $GOPATH/bin
 path-edit /opt/sw/deno/bin
+path-edit ~/.local/share/homebrew/bin
+path-edit ~/.local/share/homebrew/sbin

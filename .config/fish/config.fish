@@ -18,6 +18,14 @@ function dfc
     command dfc -t ext4,vfat $argv
 end
 
+function dl
+    command lwp-download -s $argv
+end
+
+function sbcl
+    command rlwrap sbcl $argv
+end
+
 abbr -a mkdir  "mkdir -pv"
 abbr -a mv     "mv -vi"
 abbr -a mvt    "mv -vit"
@@ -39,7 +47,6 @@ abbr -a vim  nvim
 abbr -a nvi  nvim
 abbr -a j    just
 
-abbr -a tar    bsdtar
 abbr -a cat    bsdcat
 abbr -a cpio   bsdcpio
 abbr -a unzip  bsdunzip

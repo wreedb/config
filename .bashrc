@@ -43,6 +43,11 @@ export VEXE=/opt/sw/v/v
 export VMODULES="${XDG_DATA_HOME}/vmodules"
 export VCACHE="${XDG_CACHE_HOME}/vcache"
 
+export SBCL_HOME="${HOME}/.local/opt/sbcl/lib/sbcl"
+export HOMEBREW_PREFIX="${XDG_DATA_HOME}/homebrew"
+export HOMEBREW_CELLAR="${XDG_DATA_HOME}/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="${XDG_DATA_HOME}/homebrew"
+
 mkdir -p "${XDG_RUNTIME_DIR:-$HOME/.local/run}/sockets"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-$XDG_RUNTIME_HOME}/sockets/ssh-agent"
 
@@ -119,10 +124,11 @@ path-edit "${CARGO_HOME}/bin"
 path-edit "/opt/sw/go/versions/current/bin"
 path-edit "/opt/sw/perl/versions/current/bin"
 path-edit "/opt/sw/nodejs/versions/current/bin"
-path-edit "/opt/sw/zig/version/current"
+path-edit "/opt/sw/zig/versions/current"
 path-edit "/opt/sw/deno/bin"
 path-edit "/opt/sw/bun/bin"
 path-edit "$GOBIN"
+path-edit "${XDG_DATA_HOME}/homebrew/bin"
 
 export PATH
 
