@@ -132,8 +132,6 @@ disabled = true
 disabled = true
 [azure]
 disabled = true
-[battery]
-disabled = true
 [buf]
 disabled = true
 [bun]

@@ -2,9 +2,9 @@ if not status is-interactive
     return
 end
 
-function make
-    colormake --short $argv
-end
+#function make
+#    colormake --short $argv
+#end
 
 function hg
     chg $argv
@@ -12,10 +12,6 @@ end
 
 function grep
     command grep --color=auto -i $argv
-end
-
-function dfc
-    command dfc -t ext4,vfat $argv
 end
 
 function dl
@@ -39,7 +35,6 @@ abbr -a lnr  "ln -svr"
 abbr -a rm   "rm -v"
 abbr -a rmd  "rm -rvf"
 
-abbr -a mmv  mmv-go
 abbr -a m    micro
 abbr -a vi   nvim
 abbr -a nv   nvim
@@ -56,5 +51,5 @@ abbr -a --position anywhere "!!" --function last-command
 starship init fish | source
 zoxide init fish | source
 
-ssh-add -l >/dev/null 2>&1
-or ssh-add >/dev/null 2>&1
+# ssh-add -l >/dev/null 2>&1
+# or ssh-add >/dev/null 2>&1

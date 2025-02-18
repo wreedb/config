@@ -13,25 +13,25 @@ export LESSHISTFILE=
 export MANWIDTH=80
 export MANPAGER="ov --section-delimiter '^[^\s]' --section-header"
 
-export RUSTUP_HOME=/opt/sw/rust/rustup
-export CARGO_HOME=/opt/sw/rust/cargo
-export GNUPGHOME=$HOME/.local/share/gnupg
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export GNUPGHOME="${XDG_DATA_HOME}/.local/share/gnupg"
 export GIT_CONFIG_NOSYSTEM=1
-export GIT_CONFIG_GLOBAL=$HOME/.config/git/config
-export CFLAGS="-O2 -pipe -march=native -mtune=native"
-export CXXFLAGS="-O2 -pipe -march=native -mtune=native"
-export RUSTFLAGS="-C opt-level=3 -C target-cpu=native"
+export GIT_CONFIG_GLOBAL="${XDG_CONFIG_HOME}/.config/git/config"
+export CFLAGS="-O2 -pipe -march=skylake -mtune=native"
+export CXXFLAGS="-O2 -pipe -march=skylake -mtune=native"
+export RUSTFLAGS="-C opt-level=3 -C target-cpu=skylake -C link-arg=-fuse-ld=lld"
 export PERL_CPANM_HOME=$HOME/.local/share/cpanm
 export PERL_CANARY_STABILITY_NOPROMPT=1
 
 export EGET_CONFIG="${XDG_CONFIG_HOME}/eget/config.toml"
 export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/config.toml"
+export STARSHIP_CACHE="${XDG_CACHE_HOME}/starship/log"
 
 export NODE_REPL_HISTORY="${XDG_CACHE_HOME}/nodejs-history"
 export NPM_CONFIG_EDITOR=nvim
 export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
-export BUN_INSTALL=/opt/sw/bun
-export DENO_INSTALL=/opt/sw/deno
+export BUN_INSTALL="${XDG_DATA_HOME}/bun"
 
 export GOPATH=$HOME/.local/share/go
 export GOBIN=$GOPATH/bin
@@ -39,17 +39,8 @@ export GOTELEMETRY=off
 export CGO_CFLAGS="$CFLAGS -g"
 export CGO_CXXFLAGS="$CXXFLAGS -g"
 
-export VEXE=/opt/sw/v/v
-export VMODULES="${XDG_DATA_HOME}/vmodules"
-export VCACHE="${XDG_CACHE_HOME}/vcache"
-
-export SBCL_HOME="${HOME}/.local/opt/sbcl/lib/sbcl"
-export HOMEBREW_PREFIX="${XDG_DATA_HOME}/homebrew"
-export HOMEBREW_CELLAR="${XDG_DATA_HOME}/homebrew/Cellar"
-export HOMEBREW_REPOSITORY="${XDG_DATA_HOME}/homebrew"
-
-mkdir -p "${XDG_RUNTIME_DIR:-$HOME/.local/run}/sockets"
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-$XDG_RUNTIME_HOME}/sockets/ssh-agent"
+#mkdir -p "${XDG_RUNTIME_DIR:-$HOME/.local/run}/sockets"
+#export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-$XDG_RUNTIME_HOME}/sockets/ssh-agent"
 
 ls_o="--group-directories-first -F always -a --icons always --no-git"
 ll_o="--long --header --no-permissions --octal-permissions --header"
@@ -96,39 +87,33 @@ done
 
 path-edit()
 {
-	if ! echo "${PATH}" | grep -qE "(^|:)$1($|:)"
+    if ! echo "${PATH}" | grep -qE "(^|:)$1($|:)"
+    then
+	if [ "$2" = "append" ]
 	then
-		if [ "$2" = "append" ]
-		then
-			PATH="${PATH}:$1"
-		else
-			PATH="$1:${PATH}"
-		fi
+	    PATH="${PATH}:$1"
+	else
+	    PATH="$1:${PATH}"
 	fi
+    fi
 }
 
 manpath-edit()
 {
-	if ! echo "${MANPATH}" | grep -qE "(^|:)$1($|:)"
+    if ! echo "${MANPATH}" | grep -qE "(^|:)$1($|:)"
+    then
+	if [ "$2" = "append" ]
 	then
-		if [ "$2" = "append" ]
-		then
-			MANPATH="${MANPATH}:$1"
-		else
-			MANPATH="$1:${MANPATH}"
-		fi
+	    MANPATH="${MANPATH}:$1"
+	else
+	    MANPATH="$1:${MANPATH}"
 	fi
+    fi
 }
 
 path-edit "${CARGO_HOME}/bin"
-path-edit "/opt/sw/go/versions/current/bin"
-path-edit "/opt/sw/perl/versions/current/bin"
-path-edit "/opt/sw/nodejs/versions/current/bin"
-path-edit "/opt/sw/zig/versions/current"
-path-edit "/opt/sw/deno/bin"
-path-edit "/opt/sw/bun/bin"
-path-edit "$GOBIN"
-path-edit "${XDG_DATA_HOME}/homebrew/bin"
+path-edit "${GOBIN}"
+path-edit "${BUN_INSTALL}/bin"
 
 export PATH
 

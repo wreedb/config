@@ -9,7 +9,6 @@ window-decoration = server
 
 font-size = 14
 font-family = JetBrains Mono
-font-family = Noto Emoji
 font-family = Symbols Nerd Font Mono
 
 theme = alice
@@ -28,6 +27,6 @@ clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 
 focus-follows-mouse = true
-gtk-single-instance = true
+# gtk-single-instance = true
 
 keybind = control+shift+enter=new_split:right

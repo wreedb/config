@@ -1,5 +1,5 @@
 window#waybar {
-  font-family: "WBR Mono Medium Semi-Extended", "Symbols Nerd Font Mono";
+  font-family: "Roboto Condensed Medium", "Symbols Nerd Font Mono";
   font-size: 20px;
   background-color: #1A1D27;
 }
@@ -94,7 +94,7 @@ button:hover {
 
 #network {
   padding: 0 10px;
-  background-color: #51C7DA;
+  background-color: #80B0E0;
   color: #1A1D27;
 }
 #network:hover {
@@ -103,6 +103,10 @@ button:hover {
 }
 #network.disconnected {
   background-color: #FB7DA7;
+}
+
+#window {
+  color: #D7D7D7;
 }
 
 #window, #workspaces {

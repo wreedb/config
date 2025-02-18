@@ -28,6 +28,17 @@ function lls
         --color-scale-mode fixed $argv
 end
 
+function llss
+    eza --classify always \
+        --icons always \
+        --no-git -a \
+        --group-directories-first \
+        --long --header \
+        --color-scale \
+        --color-scale-mode fixed \
+        --total-size $argv
+end
+
 function la
     eza --classify always \
         --icons always \

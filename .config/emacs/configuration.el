@@ -98,6 +98,7 @@
 
 (setq url-configuration-directory (concat wbr-config/var "url/"))
 (setq recentf-save-file (concat wbr-config/var "recentf"))
+(recentf-mode)
 
 (setq backup-by-copying t
       delete-old-versions t)
@@ -105,6 +106,8 @@
 (setq backup-directory-alist
       `(("." . ,(concat wbr-config/var "backup/"))))
 
+(setq tramp-persistency-file-name (concat wbr-config/var "tramp-persist")
+      tramp-histfile-override (concat wbr-config/var "tramp-history"))
 
 (load-file (concat wbr-config/modules "ligatures_jetbrains-mono.el"))
 (use-package doom-themes)
@@ -141,6 +144,9 @@
 
 (use-package swiper)
 (use-package sudo-edit)
+
+
+(require 'qml-ts-mode)
 
 (use-package ssass-mode)
 (use-package markdown-ts-mode)
@@ -505,8 +511,7 @@
       pixel-scroll-precision-mode nil
       column-number-mode t
       electric-indent-mode nil
-      indent-tabs-mode nil
-      recentf-mode t)
+      indent-tabs-mode nil)
 
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
@@ -538,31 +543,11 @@
     (lua-mode           . ("lua-language-server")))
   eglot-server-programs))
 
-(defun auto-eglot (mode)
-  "Automatically set up eglot with parameter 'mode'"
-  (add-hook mode 'eglot-ensure))
-
-(auto-eglot 'markdown-ts-mode)
-(auto-eglot 'bash-ts-mode)
-(auto-eglot 'css-ts-mode)
-(auto-eglot 'js-ts-mode)
-(auto-eglot 'html-mode)
-(auto-eglot 'json-ts-mode)
-(auto-eglot 'python-ts-mode)
-(auto-eglot 'c-ts-mode)
-(auto-eglot 'c++-ts-mode)
-(auto-eglot 'go-ts-mode)
-(auto-eglot 'typescript-ts-mode)
-(auto-eglot 'yaml-ts-mode)
-(auto-eglot 'v-mode)
-(auto-eglot 'rust-ts-mode)
-(auto-eglot 'fish-mode)
-(auto-eglot 'lua-mode)
-
 (require 'treesit)
 
 (setq treesit-language-source-alist
   '((hyprlang        "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang")
+    (qml             "https://github.com/yuja/tree-sitter-qmljs")
     (c               "https://github.com/tree-sitter/tree-sitter-c")
     (h               "https://github.com/tree-sitter/tree-sitter-c")
     (cpp             "https://github.com/tree-sitter/tree-sitter-cpp")
@@ -595,6 +580,7 @@
 
 (setq auto-mode-alist (append
   '(("\\.toml\\'"         . toml-ts-mode)
+    ("\\.qml\\'"          . qml-ts-mode)
     ("\\.c\\'"            . c-ts-mode)
     ("\\.h\\'"            . c-ts-mode)
     ("\\.cpp\\'"          . c++-ts-mode)
