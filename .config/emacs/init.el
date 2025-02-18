@@ -1,3 +1,11 @@
-;; -*- lexical-binding: t; -*-
-(load (concat user-emacs-directory "modules/elpaca.el"))
-(load (concat user-emacs-directory "configuration.el"))
+(add-to-list 'load-path (concat user-emacs-directory "lisp"))
+(add-to-list 'load-path (concat user-emacs-directory "local-pkgs/dash"))
+(add-to-list 'load-path (concat user-emacs-directory "local-pkgs/autothemer"))
+(load-library "dash")
+(load-library "autothemer")
+
+(load-library "elpaca-setup")
+(load-library "wbr-functions")
+(load-library "wbr-constants")
+(load-library "theme-setup")
+(load-library "font-lock-setup")

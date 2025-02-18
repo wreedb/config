@@ -17,6 +17,8 @@
 # Emacs
 .config/emacs/var/
 .config/emacs/elpaca/
+.config/emacs/local-pkgs/
+.config/emacs/cache/
 .config/emacs/tree-sitter/
 
 # fish
