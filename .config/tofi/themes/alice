@@ -1,0 +1,12 @@
+# -*- mode: conf; -*- vim:ft=conf
+
+border-color = #1A1D27
+placeholder-color = #494C59
+background-color = #14161E
+text-color = #AF98E6
+prompt-background = #14161E
+input-color = #FB7DA7
+input-background = #14161E
+selection-color = #D7D7D7
+selection-background = #1A1D27
+selection-match-color = #76C5A4

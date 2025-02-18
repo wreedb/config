@@ -1,4 +1,4 @@
-# -*- mode: conf; -*-
+# -*- mode: conf; -*- vim:ft=gitattributes
 
 .config/git/config linguist-language=gitconfig
 *.conf linguist-language=dosini

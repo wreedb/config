@@ -110,6 +110,9 @@
       tramp-histfile-override (concat wbr-config/var "tramp-history"))
 
 (load-file (concat wbr-config/modules "ligatures_jetbrains-mono.el"))
+
+;; (use-package gruvbox-theme
+;;   :config (load-theme 'gruvbox-dark-medium t))
 (use-package doom-themes
   :config
   (setq doom-themes-enable-bold t
@@ -119,10 +122,11 @@
   (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
   (set-face-attribute 'font-lock-variable-name-face nil :weight 'bold)
   (set-face-attribute 'help-key-binding nil
-	              :background nil
-	              :foreground nil
+		      :background nil
+		      :foreground nil
 		      :weight 'bold
 		      :box nil))
+
 
 ;; (use-package catppuccin-theme
 ;;   :config
@@ -621,5 +625,3 @@
     ("\\gitignore\\'"     . conf-mode)
     ("\\gitattributes\\'" . conf-mode))
   auto-mode-alist))
-
-(setq inferior-lisp-program (concat wbr-home/local "opt/sbcl/bin/sbcl"))

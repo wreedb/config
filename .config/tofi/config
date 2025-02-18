@@ -1,31 +1,15 @@
 # -*- mode: conf; -*- vim:ft=conf
-# fg          #E0DEF4
-# bg          #191724
-# active bg   #26233A
-# inactive fg #6E6A86
-# black   #26233A
-# red     #EB6F92
-# green   #31748F
-# yellow  #F6C177
-# blue    #9CCFD8
-# magenta #C4A7E7
-# cyan    #EBBCBA
-# white   #E0DEF4
 
-#text-cursor = true
+include = themes/gruvbox
+
 require-match = false
-#multi-instance = true
 font = JetBrains Mono Medium
 font-size = 14
-
-# Window Style
 anchor = center
 width = 25%
 height = 40%
-
 outline-width = 0
 border-width = 2
-border-color = #1A1D27
 corner-radius = 5
 min-input-width = 120
 result-spacing = 20
@@ -33,31 +17,12 @@ padding-top = 10
 padding-bottom = 0
 padding-left = 10
 padding-right = 0
-
-# Text style
 prompt-text = "->"
 placeholder-text = terminal
-placeholder-color = #494C59
 prompt-padding = 10
-
-background-color = #14161E
-text-color = #AF98E6
-
-
-prompt-color = #
-prompt-background = #14161E
 prompt-background-padding = 10
 prompt-background-corner-radius = 5
-
-
-input-color = #FB7DA7
-input-background = #14161E
 input-background-padding = 10
 input-background-corner-radius = 5
-
-selection-color = #D7D7D7
-selection-background = #1A1D27
 selection-background-padding = 10
 selection-background-corner-radius = 5
-selection-match-color = #76C5A4
-
