@@ -110,18 +110,12 @@
       tramp-histfile-override (concat wbr-config/var "tramp-history"))
 
 (load-file (concat wbr-config/modules "ligatures_jetbrains-mono.el"))
-(use-package doom-themes)
-;  :config
-;  (setq doom-themes-enable-bold t
-;        doom-themes-enable-italic t
-;        doom-gruvbox-dark-variant "hard")
-;  (load-theme 'doom-snazzy t)
-
-(use-package catppuccin-theme
+(use-package doom-themes
   :config
-  (load-theme 'catppuccin t)
-  (setq catppuccin-flavor 'mocha)
-  (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t
+        doom-gruvbox-dark-variant "hard")
+  (load-theme 'doom-gruvbox t)
   (set-face-attribute 'font-lock-keyword-face nil :slant 'italic)
   (set-face-attribute 'font-lock-variable-name-face nil :weight 'bold)
   (set-face-attribute 'help-key-binding nil
@@ -129,6 +123,12 @@
 	              :foreground nil
 		      :weight 'bold
 		      :box nil))
+
+;; (use-package catppuccin-theme
+;;   :config
+;;   (load-theme 'catppuccin t)
+;;   (setq catppuccin-flavor 'mocha)
+;;   (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
 
 (use-package transient
   :custom

@@ -1,5 +1,15 @@
 # -*- mode: conf; -*-
 
+# Vesktop
+.config/vesktop/Crashpad/
+.config/vesktop/sessionData/
+.config/vesktop/settings/
+.config/vesktop/settings.json
+.config/vesktop/state.json
+.config/vesktop/SingletonCookie
+.config/vesktop/SingletonLock
+.config/vesktop/SingletonSocket
+
 # Micro
 .config/micro/buffers/
 .config/micro/backups/

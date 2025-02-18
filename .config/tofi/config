@@ -1,4 +1,4 @@
-
+# -*- mode: conf; -*- vim:ft=conf
 # fg          #E0DEF4
 # bg          #191724
 # active bg   #26233A
@@ -12,13 +12,11 @@
 # cyan    #EBBCBA
 # white   #E0DEF4
 
-#matching-algorithm = normal
 #text-cursor = true
-#terminal = kitty
 require-match = false
 #multi-instance = true
-font = Myosevka Extended Medium
-font-size = 18
+font = JetBrains Mono Medium
+font-size = 14
 
 # Window Style
 anchor = center
@@ -27,7 +25,7 @@ height = 40%
 
 outline-width = 0
 border-width = 2
-border-color = #26233A
+border-color = #1A1D27
 corner-radius = 5
 min-input-width = 120
 result-spacing = 20
@@ -39,26 +37,27 @@ padding-right = 0
 # Text style
 prompt-text = "->"
 placeholder-text = terminal
-placeholder-color = #403D52
+placeholder-color = #494C59
 prompt-padding = 10
 
-background-color = #191724
-text-color = #C4A7E7
+background-color = #14161E
+text-color = #AF98E6
 
-prompt-color = #31748F
-prompt-background = #191724
+
+prompt-color = #
+prompt-background = #14161E
 prompt-background-padding = 10
 prompt-background-corner-radius = 5
 
 
-input-color = #EB6F92
-input-background = #191724
+input-color = #FB7DA7
+input-background = #14161E
 input-background-padding = 10
 input-background-corner-radius = 5
 
-selection-color = #E0DEF4
-selection-background = #26233A
+selection-color = #D7D7D7
+selection-background = #1A1D27
 selection-background-padding = 10
 selection-background-corner-radius = 5
-selection-match-color = #31748F
+selection-match-color = #76C5A4
 
