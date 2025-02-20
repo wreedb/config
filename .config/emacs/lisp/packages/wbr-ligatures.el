@@ -15,3 +15,5 @@
   :config
   (ligature-set-ligatures 'prog-mode ligatures-JetBrainsMono)
   (global-ligature-mode t))
+
+(provide 'wbr-ligatures)

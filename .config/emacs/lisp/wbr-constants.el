@@ -5,23 +5,23 @@
   "User's home directory")
 
 (defconst wbr/config-dir
-  user-emacs-directory
+  (concat user-emacs-directory "/")
   "my user emacs configuration directory")
 
 (defconst wbr/cache-dir
-  (wbr-func/config-dir "cache/")
+  (wbr-f/config-dir "cache/")
   "cache directory for changing files")
 
 (defconst wbr/elpaca-dir
-  (wbr-func/config-dir "elpaca/")
+  (wbr-f/config-dir "elpaca/")
   "directory for elpaca's packages")
 
 (defconst wbr/assets-dir
-  (wbr-func/config-dir "assets/")
+  (wbr-f/config-dir "assets/")
   "directory for images and other misc. assets")
 
 (defconst wbr/themes-dir
-  (wbr-func/config-dir "themes/")
+  (wbr-f/config-dir "themes/")
   "directory for locally installed themes")
 
 (defconst wbr/org-dir
@@ -32,14 +32,9 @@
   (concat wbr/home-dir "Projects/")
   "Directory where I store my projects")
 
-(unless (file-exists-p wbr/cache-dir)
-  (mkdir wbr/cache-dir t))
+(wbr-f/mkdir wbr/cache-dir)
+(wbr-f/mkdir wbr/assets-dir)
+(wbr-f/mkdir wbr/themes-dir)
+(wbr-f/mkdir wbr/org-dir)
 
-(unless (file-exists-p wbr/assets-dir)
-  (mkdir wbr/assets-dir t))
-
-(unless (file-exists-p wbr/themes-dir)
-  (mkdir wbr/themes-dir t))
-  
-(unless (file-exists-p wbr/org-dir)
-  (mkdir wbr/org-dir t))
+(provide 'wbr-constants)

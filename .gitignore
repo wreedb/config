@@ -1,5 +1,8 @@
 # -*- mode: conf; -*-
 
+# host-specific
+.config/hypr/**/host.conf
+
 # Vesktop
 .config/vesktop/Crashpad/
 .config/vesktop/sessionData/
@@ -20,6 +23,7 @@
 .config/emacs/local-pkgs/
 .config/emacs/cache/
 .config/emacs/tree-sitter/
+.config/emacs/themes/archives/
 *.elc
 *.eln
 

@@ -8,3 +8,5 @@
 		    :box nil
 		    :slant 'italic
 		    :weight 'bold)
+
+(provide 'wbr-font-lock)

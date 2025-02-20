@@ -45,3 +45,5 @@
   (setq elpaca-use-package-by-default t)
   (setq use-package-always-ensure t))
 (elpaca-wait)
+
+(provide 'elpaca-setup)

@@ -74,3 +74,5 @@
     "l f" '(load-file            :wk "file")
 
     "p" '(projectile-command-map :wk "projectile")))
+
+(provide 'wbr-general)

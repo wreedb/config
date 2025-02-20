@@ -3,4 +3,5 @@
 --ignore=".gitattributes"
 --ignore="LICENSE"
 --ignore="README.org"
+--ignore="deploy.sh"
 --verbose=1

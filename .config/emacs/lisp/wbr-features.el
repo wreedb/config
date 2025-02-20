@@ -6,7 +6,6 @@
       tab-width 4
       blink-cursor-mode nil
       pixel-scroll-precision-mode nil
-      column-number-mode t
       electric-indent-mode nil
       indent-tabs-mode nil)
 
@@ -19,14 +18,21 @@
 
 (setq auto-save-list-file-prefix (concat wbr/cache-dir "auto-save/saves-")
       auto-save-default nil)
+
 ;; line numbers
-(global-visual-line-mode)
-
 (global-display-line-numbers-mode)
+;; reduce motion when scrolling past double-digit line numbers
+(setq display-line-numbers-width 3)
 
-(setq load-prefer-newer t
-      auto-revert-avoid-polling t
-      display-line-numbers-width 3)
+;; column numbers in modeline
+(column-number-mode)
+
+;; auto-reload changed files
+(global-auto-revert-mode t)
+(setq auto-revert-verbose nil)
+
+;; prefer newer .el files over older .elc files
+(setq load-prefer-newer t)
 
 ;; pretend to visit the symlink as if it were real
 (setq find-file-visit-truename nil
@@ -57,3 +63,5 @@
 
 (add-hook 'text-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'hl-line-mode)
+
+(provide 'wbr-features)
