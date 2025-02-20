@@ -41,4 +41,5 @@
 (unless (file-exists-p wbr/themes-dir)
   (mkdir wbr/themes-dir t))
   
-		       
+(unless (file-exists-p wbr/org-dir)
+  (mkdir wbr/org-dir t))

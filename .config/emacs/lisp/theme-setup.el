@@ -16,4 +16,4 @@
       doom-themes-enable-italic t
       doom-gruvbox-variant "hard")
 
-(load-theme 'one-dark t)
+(load-theme 'doom-vibrant t)

@@ -20,6 +20,11 @@
 .config/emacs/local-pkgs/
 .config/emacs/cache/
 .config/emacs/tree-sitter/
+*.elc
+*.eln
+
+# fontconfig
+.config/fontconfig/conf.d/
 
 # fish
 .config/fish/completions/

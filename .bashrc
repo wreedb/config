@@ -39,9 +39,6 @@ export GOTELEMETRY=off
 export CGO_CFLAGS="$CFLAGS -g"
 export CGO_CXXFLAGS="$CXXFLAGS -g"
 
-#mkdir -p "${XDG_RUNTIME_DIR:-$HOME/.local/run}/sockets"
-#export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR:-$XDG_RUNTIME_HOME}/sockets/ssh-agent"
-
 ls_o="--group-directories-first -F always -a --icons always --no-git"
 ll_o="--long --header --no-permissions --octal-permissions --header"
 alias ls="eza $ls_o -w 80"
@@ -111,9 +108,9 @@ manpath-edit()
     fi
 }
 
-path-edit "${CARGO_HOME}/bin"
-path-edit "${GOBIN}"
-path-edit "${BUN_INSTALL}/bin"
+# path-edit "${CARGO_HOME}/bin"
+# path-edit "${GOBIN}"
+# path-edit "${BUN_INSTALL}/bin"
 
 export PATH
 
