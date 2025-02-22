@@ -8,3 +8,5 @@
 #path-edit /opt/sw/deno/bin
 #path-edit ~/.local/share/homebrew/bin
 #path-edit ~/.local/share/homebrew/sbin
+
+path-edit $BUN_INSTALL/bin

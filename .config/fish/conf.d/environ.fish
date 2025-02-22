@@ -36,4 +36,9 @@ set -gx CGO_CFLAGS $common_flags
 set -gx CGO_CXXFLAGS $common_flags
 set -gx RUSTFLAGS "-C target-cpu=skylake -C link-arg=-fuse-ld=lld -C opt-level=3"
 
+set -gx VCACHE $XDG_CACHE_HOME/v
+set -gx VMODULES $XDG_DATA_HOME/v
+
+set -gx GUILE_HISTORY $XDG_CACHE_HOME/guile/history
+
 # set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/sockets/ssh-agent"

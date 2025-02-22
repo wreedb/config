@@ -18,12 +18,9 @@
 .config/micro/backups/
 
 # Emacs
-.config/emacs/var/
-.config/emacs/elpaca/
-.config/emacs/local-pkgs/
 .config/emacs/cache/
 .config/emacs/tree-sitter/
-.config/emacs/themes/archives/
+.config/emacs/themes/*
 *.elc
 *.eln
 

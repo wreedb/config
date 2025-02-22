@@ -1,4 +1,8 @@
-format = "$username@$hostname $directory $time $hg_branch$cmd_duration\n$character "
+
+# format = "$username@$hostname $directory $time $hg_branch$cmd_duration\n$character "
+
+format = "$directory $character "
+
 scan_timeout = 30
 command_timeout = 500
 add_newline = false

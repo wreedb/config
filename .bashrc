@@ -39,6 +39,10 @@ export GOTELEMETRY=off
 export CGO_CFLAGS="$CFLAGS -g"
 export CGO_CXXFLAGS="$CXXFLAGS -g"
 
+export VCACHE="${XDG_CACHE_HOME}/v"
+export VMODULES="${XDG_DATA_HOME}/v"
+export GUILE_HISTORY="${XDG_CACHE_HOME}/guile/history"
+
 ls_o="--group-directories-first -F always -a --icons always --no-git"
 ll_o="--long --header --no-permissions --octal-permissions --header"
 alias ls="eza $ls_o -w 80"
