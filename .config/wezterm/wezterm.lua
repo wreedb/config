@@ -46,7 +46,7 @@ config.window_padding = {
 }
 
 config.default_cursor_style = "SteadyBar"
-config.color_scheme = "gruvbox"
+config.color_scheme = "alice"
 -- use fish as the interactive shell
 config.default_prog = { "fish" }
 -- specify TERMINFO

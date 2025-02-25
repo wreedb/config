@@ -112,9 +112,9 @@ manpath-edit()
     fi
 }
 
-# path-edit "${CARGO_HOME}/bin"
+path-edit "${CARGO_HOME}/bin"
 # path-edit "${GOBIN}"
-# path-edit "${BUN_INSTALL}/bin"
+path-edit "${BUN_INSTALL}/bin"
 
 export PATH
 

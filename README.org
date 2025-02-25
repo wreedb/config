@@ -2,10 +2,10 @@
 #+DESCRIPTION: My configuration files for linux
 
 * The programs I mainly use :TOC:
-+ [[file:./.config/kitty/kitty.conf][Terminal Emulator: Kitty]]
-+ [[file:./.config/emacs/configuration.org][Text Editor: GNU Emacs]]
-+ [[file:./.config/fish][Command Line Shell: Fish]]
-+ [[file:./.config/hypr/hyprland.conf][Wayland Compositor: Hyprland]]
++ Terminal: [[file:./.config/wezterm/README.org][Wezterm]]
++ Text Editor: [[https://github.com/wreedb/emacs-config][GNU Emacs]]
++ Shell: [[file:./.config/fish][Fish]]
++ Compositor: [[file:./.config/hypr/hyprland.conf][Hyprland]]
 
 * Trying my configurations
 I'd recommend just copying the things you like, however if you want to install them all at once:

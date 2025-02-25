@@ -12,5 +12,9 @@ function dnf-search --description "search with DNF while omitting common program
         -x "python3-*" \
 		-x "python-*" \
         -x "php-*" \
+        -x "mingw32-*" \
+        -x "mingw64-*" \
+        -x "kf5-*" \
+        -x "kf6-*" \
         $argv
 end
