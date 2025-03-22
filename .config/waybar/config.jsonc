@@ -17,7 +17,6 @@
     
 	"modules-right": [
         "tray",
-		"custom/dnf",
         "pulseaudio",
         "network",
         "clock"
@@ -47,21 +46,23 @@
         "icon-size": 21,
         "spacing": 10
     },
+    
     "clock": {
 		"interval": 20,
 		"timezone": "America/Chicago",
         "format": "{:%I:%M %p}",
 		"tooltip-format": "{:%F}"
     },
+    
     "network": {
 		"tooltip": false,
 		"interval": 30,
 		"format-ethernet": "",
 	    "format-disconnected": "",
         "on-click": "~/.config/waybar/scripts/kitty-nm"
-    },
+    }
 
-	"custom/dnf": {
+	/*"custom/dnf": {
 		"format": "󰏕",
 		"tooltip-format": "{} updates available",
 		"interval": 1800,
@@ -69,5 +70,5 @@
 		"signal": 8,
 	    "on-click-right": "pkill -SIGRTMIN+8 waybar",
         "on-click": "~/.config/waybar/scripts/kitty-dnf-updates"
-	}
+	}*/
 }

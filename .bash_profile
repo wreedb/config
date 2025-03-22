@@ -1,5 +1,9 @@
-#!/bin/sh
-# -*- mode: bash; -*- vim:ft=bash
+# -*- bash-ts -*- vim:ft=bash
 
-pgrep ssh-agent && true || ssh-agent -a "${XDG_RUNTIME_DIR}/ssh-agent.socket"
-ssh-add >/dev/null 2>&1
+source "${HOME}"/.config/login/env.sh
+source "${HOME}"/.config/login/path.sh
+
+if [ -r "${HOME}/.bashrc" ]
+then
+    . "${HOME}/.bashrc"
+fi

@@ -1,3 +1,4 @@
+# -*- mode: yaml-ts; -*-
 # Case sensitive search if the search string contains uppercase characters.
 SmartCaseSensitive: false
 

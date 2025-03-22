@@ -1,0 +1,13 @@
+#!/bin/sh
+# -*- bash-ts -*- vim:ft=bash
+
+rtdir="${XDG_RUNTIME_DIR}"
+
+herd stop root || true
+rm "${rtdir}/shepherd/pid" || true
+rm "${rtdir}/shepherd/log" || true
+rm "${rtdir}/shepherd/socket" || true
+
+rm "${rtdir}"/gpg-agent/* || true
+rm "${rtdir}"/dirmngr/* || true
+rm "${rtdir}"/ssh-agent/* || true

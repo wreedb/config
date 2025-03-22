@@ -22,23 +22,28 @@ set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
 set -gx GIT_CONFIG_NOSYSTEM 1
 set -gx GIT_CONFIG_GLOBAL $XDG_CONFIG_HOME/git/config
 set -gx GOPATH $XDG_DATA_HOME/go
+set -gx SWIFTLY_HOME $XDG_DATA_HOME/swiftly
+set -gx SWIFTLY_BIN_DIR $SWIFTLY_HOME/bin
+
 
 # nodejs
-set -gx NODE_REPL_HISTORY $XDG_CACHE_HOME/nodejs-history
+mkdir -p $XDG_CACHE_HOME/node
+set -gx NODE_REPL_HISTORY $XDG_CACHE_HOME/node/repl-history
 set -gx NPM_CONFIG_EDITOR nvim
 set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
 set -gx BUN_INSTALL $XDG_DATA_HOME/bun
 
-set -l common_flags "-mtune=native -march=skylake -O2 -pipe"
+set -l common_flags "-march=skylake -mtune=native -O2 -pipe"
 set -gx CFLAGS $common_flags
 set -gx CXXFLAGS $common_flags
 set -gx CGO_CFLAGS $common_flags
 set -gx CGO_CXXFLAGS $common_flags
-set -gx RUSTFLAGS "-C target-cpu=skylake -C link-arg=-fuse-ld=lld -C opt-level=3"
+set -gx RUSTFLAGS "-C target-cpu=native -C link-arg=-fuse-ld=lld -C opt-level=3"
 
-set -gx VCACHE $XDG_CACHE_HOME/v
-set -gx VMODULES $XDG_DATA_HOME/v
+set -gx VFLAGS "-cc gcc"
+mkdir -p $XDG_DATA_HOME/v
+set -gx VMODULES $XDG_DATA_HOME/v/modules
+set -gx VCACHE $XDG_DATA_HOME/v/cache
+set -gx VTMP $XDG_DATA_HOME/v/tmp
 
 set -gx GUILE_HISTORY $XDG_CACHE_HOME/guile/history
-
-# set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/sockets/ssh-agent"

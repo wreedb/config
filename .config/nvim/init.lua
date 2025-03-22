@@ -11,8 +11,8 @@ ft.add { pattern = { [".*/hypr/.*%.conf"] = "hyprlang" } }
 
 -- g.everforest_background = "hard"
 -- g.everforest_better_performance = 1
-g.gruvbox_italic = true
-g.gruvbox_contrast_dark = "medium"
+-- g.gruvbox_italic = true
+-- g.gruvbox_contrast_dark = "medium"
 
 
-cmd "colorscheme gruvbox"
+cmd "colorscheme onedark"

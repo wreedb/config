@@ -121,11 +121,12 @@ rev = "v3.16.0"
 #git = "folke/noice.nvim"
 #rev = "v4.10.0"
 
+[plugins.vim-scdoc]
+git = "gpanders/vim-scdoc"
+
 [config]
 plugins_dir = "config/"
 auto_setup = false
-
-
 
 
 

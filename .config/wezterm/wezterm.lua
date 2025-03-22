@@ -1,9 +1,14 @@
+-- -*- lua-ts -*-
 local wezterm = require "wezterm"
 local userhome = wezterm.home_dir
-local userfonts = userhome .. "/.local/share/fonts"
 local config = wezterm.config_builder()
+local runtime_dir = os.getenv "XDG_RUNTIME_DIR"
 
-local auth_sock = os.getenv("XDG_RUNTIME_DIR") .. "/ssh-agent.socket"
+-- I have shepherd handle my ssh-agent and it always
+-- uses this socket specifically
+local def_socket = runtime_dir .. "/ssh-agent/socket"
+
+config.default_ssh_auth_sock = def_socket
 
 config.font = wezterm.font_with_fallback {
 
@@ -19,6 +24,8 @@ config.font = wezterm.font_with_fallback {
     { family = "Noto Music" },
 
 }
+
+config.window_background_opacity = 0.95
 
 config.font_size = 14.00
 config.font_shaper = "Harfbuzz"
@@ -51,8 +58,6 @@ config.color_scheme = "alice"
 config.default_prog = { "fish" }
 -- specify TERMINFO
 config.term = "wezterm"
--- use existing ssh_auth_sock
-config.default_ssh_auth_sock = auth_sock
 
 config.keys = {
 

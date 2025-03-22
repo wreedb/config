@@ -4,4 +4,9 @@
 --ignore="LICENSE"
 --ignore="README.org"
 --ignore="deploy.sh"
+--ignore=".config/vesktop/Crashpad"
+--ignore=".config/vesktop/sessionData"
+--ignore=".config/vesktop/settings"
+--ignore=".config/vesktop/state"
+--ignore=".config/vesktop/Singleton*"
 --verbose=1

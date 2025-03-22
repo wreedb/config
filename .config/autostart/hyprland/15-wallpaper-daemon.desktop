@@ -1,4 +1,0 @@
-[Desktop Entry]
-Name=wallpaper daemon
-Exec=swww-daemon -q
-Type=Application

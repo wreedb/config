@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Status Bar
-Exec=gBar bar DP-2
-StartupNotify=false
-Terminal=false
-Type=Application

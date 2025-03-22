@@ -1,6 +1,6 @@
-vim.g.coq_settings = { auto_start = "shut-up" }
+--vim.g.coq_settings = { auto_start = "shut-up" }
 
-local coq = require "coq"
+--local coq = require "coq"
 --local lsp = require "lspconfig"
 --local coq_ensure = coq.lsp_ensure_capabilities
 

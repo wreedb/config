@@ -1,7 +1,7 @@
 # vim:ft=ghostty
 
-command = fish
-shell-integration = fish
+command = bash
+shell-integration = bash
 
 window-padding-x = 8
 window-padding-y = 8
@@ -27,6 +27,6 @@ clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 
 focus-follows-mouse = true
-# gtk-single-instance = true
+gtk-single-instance = true
 
 keybind = control+shift+enter=new_split:right

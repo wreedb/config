@@ -117,7 +117,7 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = Papirus
+    icon_theme = "default-icons"
 
     # Align icons left/right/top/off
     icon_position = left
