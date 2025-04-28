@@ -1,0 +1,3 @@
+#!/bin/sh
+exec /usr/bin/env -S polkit-agent 2>&1
+# vim:ft=bash

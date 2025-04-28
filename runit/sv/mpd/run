@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -r ./conf ] && . ./conf
+exec /bin/env -S mpd ${OPTS:---no-daemon} 2>&1

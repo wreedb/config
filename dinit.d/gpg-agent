@@ -1,0 +1,6 @@
+# vim:ft=yaml
+type: scripted
+command: /usr/bin/gpgconf --launch gpg-agent
+stop-command: /usr/bin/gpgconf --kill gpg-agent
+restart: false
+log-type: none

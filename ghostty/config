@@ -1,0 +1,38 @@
+# vim:ft=ghostty
+
+# font
+font-family = JetBrains Mono
+font-family = Symbols Nerd Font Mono
+adjust-cell-width = -5%
+font-size = 15.00
+
+# cursor
+cursor-style = bar
+# cursor-style-blink = false
+
+# background
+theme = alice
+background-opacity = 0.95
+
+# misc
+split-divider-color = #76C5A4
+
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = server
+gtk-titlebar = false
+term = ghostty
+
+confirm-close-surface = false
+app-notifications = false
+resize-overlay = never
+focus-follows-mouse = true
+
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
+# async-backend = io_uring
+auto-update = off
+
+keybind = control+shift+enter=new_split:right

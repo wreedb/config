@@ -1,0 +1,5 @@
+# vim:ft=yaml
+type: process
+command: /usr/lib/tumbler-1/tumblerd
+log-type: buffer
+after: thunar

@@ -1,0 +1,5 @@
+# vim:ft=yaml
+type: process
+command: /usr/libexec/xdg-desktop-portal-gtk
+log-type: buffer
+after: hyprland

@@ -1,0 +1,4 @@
+# vim:ft=yaml
+type: process
+command: /usr/bin/waybar
+log-type: buffer

@@ -1,0 +1,4 @@
+# vim:ft=yaml
+type: process
+command: /usr/libexec/xfce-polkit
+log-type: buffer

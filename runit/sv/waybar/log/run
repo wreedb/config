@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -d "${HOME}/.local/var/log/sv/waybar" ] || mkdir -p "${HOME}/.local/var/log/sv/waybar"
+exec svlogd -tt "${HOME}/.local/var/log/sv/waybar"

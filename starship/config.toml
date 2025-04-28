@@ -1,0 +1,284 @@
+
+format = "$username@$hostname $directory $time $hg_branch$cmd_duration\n$character "
+
+# format = "$directory $character "
+
+scan_timeout = 30
+command_timeout = 500
+add_newline = false
+
+[line_break]
+disabled = false
+
+[username]
+format = "[$user]($style)"
+style_user = "green"
+show_always = true
+disabled = false
+
+[directory]
+disabled = false
+format = "\\([$path]($style)\\)[$read_only]($read_only_style)"
+style = "yellow"
+read_only_style = "red"
+read_only = "  "
+home_symbol = "~"
+
+[cmd_duration]
+disabled = false
+format = " \\([$duration]($style)\\) "
+style = "magenta"
+min_time = 10_000
+
+[character]
+format = "$symbol"
+success_symbol = "[->](bold green)"
+error_symbol = "[->](bold red)"
+disabled = false
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style)"
+style = "red"
+disabled = false
+
+[jobs]
+threshold = 1
+symbol_threshold = 1
+number_threshold = 2
+format = "[$symbol$number]($style)"
+symbol = "✦"
+style = "blue"
+disabled = false
+
+[shell]
+format = "[$indicator]($style)"
+bash_indicator = "  "
+style = "white"
+disabled = true
+
+[shlvl]
+disabled = true
+
+[status]
+format = "[$symbol$status]($style)"
+symbol = "❌"
+success_symbol = ""
+not_executable_symbol = "🚫"
+not_found_symbol = "🔍"
+sigint_symbol = "🧱"
+signal_symbol = "⚡"
+style = "red"
+map_symbol = false
+recognize_signal_code = true
+pipestatus = false
+pipestatus_separator = "|"
+pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style) '
+disabled = false
+
+[time]
+format = "\\[[$time]($style)\\]"
+style = "purple"
+time_format = "%I:%M%p"
+use_12hr = true
+disabled = false
+
+[palettes]
+
+[profiles]
+
+[fill]
+style = "black"
+symbol = "."
+disabled = false
+
+############################################################
+# programming modules
+
+[git_branch]
+format = "on [$symbol$branch(:$remote_branch)]($style) "
+symbol = " "
+style = "purple"
+truncation_length = 9223372036854775807
+truncation_symbol = "…"
+only_attached = false
+always_show_remote = false
+ignore_branches = []
+disabled = false
+
+[hg_branch]
+symbol = " "
+style = "purple"
+format = "on [$symbol$branch(:$topic)]($style) "
+truncation_length = 9223372036854775807
+truncation_symbol = "…"
+disabled = false
+
+[perl]
+format = "via [$symbol($version )]($style)"
+version_format = "v${raw}"
+symbol = "🐪 "
+style = "bold"
+disabled = false
+
+[meson]
+truncation_length = 4294967295
+truncation_symbol = "…"
+format = "via [$symbol$project]($style) "
+symbol = "⬢ "
+style = "blue"
+disabled = true
+
+############################################################
+# the hall of shame
+
+[aws]
+disabled = true
+[azure]
+disabled = true
+[buf]
+disabled = true
+[bun]
+disabled = true
+[c]
+disabled = true
+[cmake]
+disabled = true
+[cobol]
+disabled = true
+[conda]
+disabled = true
+[container]
+disabled = true
+[crystal]
+disabled = true
+[daml]
+disabled = true
+[dart]
+disabled = true
+[deno]
+disabled = true
+[direnv]
+disabled = true
+[docker_context]
+disabled = true
+[dotnet]
+disabled = true
+[elixir]
+disabled = true
+[elm]
+disabled = true
+[erlang]
+disabled = true
+[fennel]
+disabled = true
+[fossil_branch]
+disabled = true
+[fossil_metrics]
+disabled = true
+[gcloud]
+disabled = true
+[git_commit]
+disabled = true
+[git_metrics]
+disabled = true
+[git_state]
+disabled = true
+[git_status]
+disabled = true
+[gleam]
+disabled = true
+[golang]
+disabled = true
+[gradle]
+disabled = true
+[guix_shell]
+disabled = true
+[haskell]
+disabled = true
+[haxe]
+disabled = true
+[helm]
+disabled = true
+[java]
+disabled = true
+[julia]
+disabled = true
+[kotlin]
+disabled = true
+[kubernetes]
+disabled = true
+[localip]
+disabled = true
+[lua]
+disabled = true
+[memory_usage]
+disabled = true
+[mojo]
+disabled = true
+[nats]
+disabled = true
+[nim]
+disabled = true
+[nix_shell]
+disabled = true
+[nodejs]
+disabled = true
+[ocaml]
+disabled = true
+[odin]
+disabled = true
+[opa]
+disabled = true
+[openstack]
+disabled = true
+[os]
+disabled = true
+[package]
+disabled = true
+[php]
+disabled = true
+[pijul_channel]
+disabled = true
+[pulumi]
+disabled = true
+[purescript]
+disabled = true
+[python]
+disabled = true
+[quarto]
+disabled = true
+[raku]
+disabled = true
+[red]
+disabled = true
+[rlang]
+disabled = true
+[ruby]
+disabled = true
+[rust]
+disabled = true
+[scala]
+disabled = true
+[singularity]
+disabled = true
+[solidity]
+disabled = true
+[spack]
+disabled = true
+[sudo]
+disabled = true
+[swift]
+disabled = true
+[terraform]
+disabled = true
+[typst]
+disabled = true
+[vagrant]
+disabled = true
+[vcsh]
+disabled = true
+[vlang]
+disabled = true
+[zig]
+disabled = true

@@ -1,0 +1,5 @@
+--style plain
+--paging auto
+--pager less
+--theme ansi
+--wrap never

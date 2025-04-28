@@ -1,0 +1,45 @@
+# -*- mode: conf; -*- vim:ft=ghostty
+# Instructions:
+
+# method one:
+# copy this file into your ~/.config/ghostty directory
+# under a directory called 'themes', then in your ghostty
+# config file (~/.config/ghostty/config), add the line
+# theme = alice
+
+# method two:
+# place this file anywhere, and add the line
+# config-file = /path/to/this/file
+# in your ~/.config/ghostty/config.
+
+# method three:
+# copy and paste the contents below into your ghostty config
+# file directly
+
+# for more information, see the ghostty configuration manual: `man 5 ghostty`
+
+# normal
+palette = 0=#1A1D27
+palette = 1=#FB7DA7
+palette = 2=#76C5A4
+palette = 3=#FDAD5D
+palette = 4=#80B0E0
+palette = 5=#AF98E6
+palette = 6=#51C7DA
+palette = 7=#D7D7D7
+# bright
+palette = 8=#494C59
+palette = 9=#FB83AB
+palette = 10=#7DC8A9
+palette = 11=#E3CF67
+palette = 12=#86B4E2
+palette = 13=#B39DE7
+palette = 14=#5ACADC
+palette = 15=#ECECEC
+# base
+foreground = #EBEBEB
+background = #14161E
+selection-foreground = #D7D7D7
+selection-background = #494C59
+cursor-text  = #1A1D27
+cursor-color = #80B0E0

@@ -1,0 +1,14 @@
+[init]
+    defaultBranch = main
+
+[user]
+    email = wreed@disroot.org
+    name = Will Reed
+
+[core]
+    editor = vim
+
+[advice]
+    detachedHead = false
+[safe]
+	directory = /usr/src/void-packages

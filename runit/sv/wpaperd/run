@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -r ./conf ] && ./conf
+exec /usr/bin/env -S wpaperd 2>&1
+# vim:ft=bash

@@ -1,0 +1,4 @@
+# vim:ft=yaml
+type: process
+command: /usr/bin/clapboard --record both
+log-type: buffer
