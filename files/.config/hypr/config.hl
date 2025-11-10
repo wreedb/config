@@ -1,0 +1,94 @@
+# -*- mode: hyprlang-ts; -*- vim:ft=hyprlang
+
+$monitorOne = DP-2
+$monitorTwo = DVI-D-1
+
+$terminal = gtk4-launch org.wezfurlong.wezterm
+$menu = walker
+$launcher = tofi-run
+$editor = emacsclient -c
+$browser = firefox
+$filemanager = thunar
+
+$d = ~/.config/hypr
+
+env = MAIN_MONITOR, $monitorOne
+
+debug:disable_logs = true
+
+source = $d/env.hl
+source = $d/themes/alice.hl
+
+monitor = $monitorOne,1920x1080@144,0x0,1
+
+workspace = 1, monitor:$monitorOne, persistent:true
+workspace = 2, monitor:$monitorOne, persistent:true
+workspace = 3, monitor:$monitorOne, persistent:true
+workspace = 4, monitor:$monitorOne, persistent:true
+workspace = 5, monitor:$monitorOne, persistent:true
+workspace = 6, monitor:$monitorOne, persistent:true
+workspace = 7, monitor:$monitorOne, persistent:true
+workspace = 8, monitor:$monitorOne, persistent:true
+workspace = 9, monitor:$monitorTwo, persistent:true
+
+cursor:default_monitor = $monitorOne
+cursor:no_hardware_cursors = true
+
+opengl:nvidia_anti_flicker = true
+
+xwayland:enabled = true
+
+general {
+    col.active_border = $blue
+    col.inactive_border = $bright_black
+    border_size = 1
+    gaps_in = 6
+    gaps_out = 6
+    layout = master
+    allow_tearing = true
+}
+
+master:new_status = master
+master:mfact = 0.5
+
+decoration {
+    blur:enabled = false
+    shadow:enabled = false
+    rounding = 0
+    dim_inactive = false
+}
+
+animations {
+    enabled = true
+    bezier = bezios, 0, 0, 1, 1
+    
+    animation = workspaces,  1, 2, bezios, slide
+    animation = windows,     1, 2, bezios, slide
+    animation = layers,      1, 2, bezios, popin
+    animation = borderangle, 0
+    animation = border,      0 
+    animation = fade,        0
+}
+
+misc {
+    disable_hyprland_qtutils_check = true
+    force_default_wallpaper = 0
+    disable_hyprland_logo = true
+    enable_swallow = true
+    swallow_regex = ^(thunar)$
+}
+
+input {
+    kb_layout = us
+    numlock_by_default = true
+    repeat_rate = 50
+    repeat_delay = 300
+    sensitivity = -0.5
+}
+
+source = $d/keys.hl
+source = $d/rules.hl
+
+exec-once = systemctl --user start desktop.target
+exec-once = swhks
+exec-once = swhkd

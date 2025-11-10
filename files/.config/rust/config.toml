@@ -1,0 +1,30 @@
+[build]
+jobs = 12
+
+[profile.rel]
+inherits = "release"
+opt-level = 3
+debug = "limited"
+strip = false
+debug-assertions = true
+overflow-checks = true
+lto = "thin"
+codegen-units = 4
+incremental = false
+
+[alias]
+b = "build --profile rel"
+
+f = "fetch --target x86_64-unknown-linux-gnu"
+x = "clean --verbose"
+t = "test --profile rel --target x86_64-unknown-linux-gnu"
+
+vend = "vendor --locked"
+
+mb = "build --profile rel --target=x86_64-unknown-linux-musl"
+mf = "fetch --target x86_64-unknown-linux-musl"
+mt = "test --profile rel --target x86_64-unknown-linux-musl"
+
+
+#[term]
+#progress.width = 60

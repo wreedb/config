@@ -1,0 +1,60 @@
+super + return
+    hyprctl dispatch exec wezterm-gui
+
+super + shift + return
+    hyprctl dispatch exec kitty
+
+super + p
+    hyprctl dispatch exec walker
+
+super + shift + p
+    hyprctl dispatch exec tofi-run
+
+super + shift + r
+    hyprctl reload
+
+super + control + r
+    hyprctl dispatch forcerendererreload
+
+super + shift + c
+    hyprctl dispatch killactive
+
+super + shift + e
+    hyprctl dispatch exit
+
+
+super + alt + k
+    hyprctl kill
+
+super + shift + escape
+    hyprlock
+
+mute
+    inyourears -m
+
+volumeup
+    inyourears -u
+
+volumedown
+    inyourears -d
+
+print
+    onyourscreen -cd DP-2
+
+super + print
+    onyourscreen -cs
+
+super + shift + s
+    watchingyou save
+
+xf86audionext
+    playerctl next
+
+xf86audionext
+    playerctl previous
+
+xf86audioplay
+    playerctl play-pause
+
+xf86audiostop
+    playerctl stop

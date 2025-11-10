@@ -1,4 +1,0 @@
-type: process
-command: /usr/bin/pipewire
-log-type: buffer
-before: wireplumber

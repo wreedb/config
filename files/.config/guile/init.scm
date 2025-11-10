@@ -1,0 +1,16 @@
+(use-modules (ice-9 readline)
+             (ice-9 colorized)
+             (ice-9 pretty-print)
+             (ice-9 string-fun)
+             (fibers)
+             (god token)
+             (god parse)
+             (god conv)
+             (god conv hash)
+             (git))
+
+(activate-readline)
+(activate-colorized)
+
+(define cat string-append)
+(define pp pretty-print)

@@ -1,0 +1,115 @@
+// -*- mode: ssass; -*- vim:ft=sass
+
+@use "color-schemes/current" as *
+
+$main-font: "Roboto Condensed", "Symbols Nerd Font Mono"
+
+@mixin modules-common
+  padding: 0 10px
+
+window#waybar
+  font-family: $main-font
+  font-size: 20px
+  background-color: $black
+  // border-bottom: 3px solid $bright-black
+
+  &.hidden
+    opacity: 0.2
+
+
+button
+  box-shadow: inset 0 -3px transparent
+  border: none
+  border-radius: 0
+
+  &:hover
+    background: inherit
+    box-shadow: inset 0 -3px $white
+
+#workspaces
+  button
+    font-weight: bold
+    padding: 0 5px
+    background-color: $black
+    color: $blue
+
+    &:hover
+      background-color: $black
+      opacity: 0.2
+
+    &.active
+      color: $green
+
+    &.empty
+      color: $bright-black
+
+    &.urgent
+      background-color: $red
+
+#tray
+  @include modules-common
+  background-color: $magenta
+  color: $black
+  &:hover
+    background-color: $black
+    color: $magenta
+
+#tray > .passive
+  -gtk-icon-effect: dim
+
+#tray > .needs-attention
+  -gtk-icon-effect: highlight
+
+#pulseaudio
+  @include modules-common
+  background-color: $green
+  color: $black
+  
+  &:hover
+    background-color: $black
+    color: $green
+  
+  &.muted
+    background-color: $red
+    
+    &:hover
+      background-color: $black
+      color: $red
+
+#custom-pacman
+  @include modules-common
+  background-color: $bright-yellow
+  color: $black
+  &:hover
+    background-color: $black
+    color: $bright-yellow
+
+#clock
+  @include modules-common
+  background-color: $black
+  color: $white
+  &:hover
+    background-color: $white
+    color: $black
+
+#network
+  @include modules-common
+  background-color: $blue
+  color: $black
+  &:hover
+    background-color: $black
+    color: $cyan
+  &.disconnected
+    background-color: $red
+
+#window
+  color: $white
+
+#window, #workspaces
+  margin: 0 4px
+
+.modules-left > widget:first-child > #workspace
+  margin-left: 0
+
+.modules-right > widget:last-child > #workspace
+  margin-right: 0

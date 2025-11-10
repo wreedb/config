@@ -1,0 +1,57 @@
+{
+  "auto_update": false,
+  "use_on_type_format": false,
+  "ensure_final_newline_on_save": false,
+  "remove_trailing_whitespace_on_save": false,
+  "format_on_save": "off",
+  "gutter": {
+    "min_line_number_digits": 1
+  },
+  "auto_signature_help": true,
+  "tasks": {
+    "prefer_lsp": false
+  },
+
+  "icon_theme": "Bearded Icon Theme",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  "file_types": {
+    "Meson": ["meson.*", "meson_*"],
+    "JSON5": ["*.json", "flake.lock"],
+    "Shell Script": ["PKGBUILD*"]
+  },
+
+  "terminal": {
+    "shell": { "program": "fish" },
+    "cursor_shape": "bar"
+  },
+
+  "ui_font_family": "Roboto Condensed",
+
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_features": {
+    "sso1": true,
+    "calt": true,
+    "liga": true,
+    "dlig": true
+  },
+
+  "ui_font_size": 18,
+  "buffer_font_size": 18,
+  "theme": {
+    "mode": "dark",
+    "light": "One Dark - Darkened",
+    "dark": "One Dark - Darkened"
+  },
+  "vim_mode": true,
+  "soft_wrap": "none"
+  // "languages": {
+  //   "C++": {
+  //     "enable_language_server": false
+  //   }
+  // }
+  
+}

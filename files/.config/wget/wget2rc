@@ -1,0 +1,8 @@
+hsts = off
+restrict-file-names = lowercase
+progress = bar
+max-threads = 2
+report-speed = bytes
+prefer-family = IPv4
+max-redirect = 8
+ignore-case = on

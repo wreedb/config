@@ -1,4 +1,0 @@
-type: process
-command: /usr/bin/wpaperd
-log-type: buffer
-after: kanshi

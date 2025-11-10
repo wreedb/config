@@ -1,0 +1,19 @@
+[init]
+    defaultBranch = main
+
+[user]
+    email = wreed@disroot.org
+    name = Will Reed
+
+[core]
+    editor = nvim
+    pager = delta
+
+[advice]
+    detachedHead = false
+
+[submodule]
+    recurse = true
+
+[alias]
+    subm = submodule update --init --depth 1

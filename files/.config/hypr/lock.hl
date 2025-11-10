@@ -1,0 +1,18 @@
+# -*- mode: hyprlang-ts; -*- vim:ft=hyprlang
+
+input-field {
+    monitor = DP-2
+    fade_on_empty = false
+}
+
+background {
+    color = rgb(76C5A4)
+}
+
+animations {
+    enabled   = true
+    bezier    = bezios,  1, 1, 0, 0
+
+    animation = fadeIn,  1, 5, bezios
+    animation = fadeOut, 1, 5, bezios
+}

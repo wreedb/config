@@ -1,4 +1,0 @@
-type: process
-command: /usr/bin/mpd --no-daemon
-log-type: buffer
-after: wireplumber

@@ -1,3 +1,0 @@
-#!/bin/sh
-[ -d "${HOME}/.local/var/log/sv/ssh-agent" ] || mkdir -p "${HOME}/.local/var/log/sv/ssh-agent"
-exec svlogd -tt "${HOME}/.local/var/log/sv/ssh-agent"

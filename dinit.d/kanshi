@@ -1,5 +1,0 @@
-# vim:ft=yaml
-type: process
-command: /usr/bin/kanshi
-log-type: buffer
-before: wpaperd

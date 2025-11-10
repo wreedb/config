@@ -1,6 +1,0 @@
-# vim:ft=yaml
-type: scripted
-command: /usr/bin/gpgconf --launch dirmngr
-stop-command: /usr/bin/gpgconf --kill dirmngr
-restart: false
-log-type: none

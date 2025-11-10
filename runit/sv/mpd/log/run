@@ -1,3 +1,0 @@
-#!/bin/sh
-[ -d "${HOME}/.local/var/log/sv/mpd" ] || mkdir -p "${HOME}/.local/var/log/sv/mpd"
-exec svlogd -tt "${HOME}/.local/var/log/sv/mpd"

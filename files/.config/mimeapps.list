@@ -1,0 +1,10 @@
+[Default Applications]
+x-scheme-handler/discord=vesktop.desktop
+image/jpeg=pqiv.desktop
+text/x-c++src=dev.zed.Zed.desktop
+
+[Added Associations]
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
+application/x-shellscript=micro.desktop;
+image/jpeg=pqiv.desktop;
+text/x-c++src=dev.zed.Zed.desktop;

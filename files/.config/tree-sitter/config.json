@@ -1,0 +1,232 @@
+{
+    "parser-directories": [
+        "/home/wbr/projects",
+        "/home/wbr/sources/grammars"
+    ],
+    "theme": {
+        "variable": {
+            "color": 4
+        },
+        "variable.builtin": {
+            "color": 4,
+            "bold": true
+        },
+        "variable.parameter": {
+            "color": 4
+        },
+        "variable.parameter.builtin": {
+            "color": 4,
+            "bold": true
+        },
+        "variable.member": {
+            "color": 12,
+            "bold": true
+        },
+        "constant": {
+            "color": 11
+        },
+        "constant.builtin": {
+            "color": 11,
+            "bold": true
+        },
+        "constant.macro": {
+            "color": 11,
+            "bold": true,
+            "italic": true
+        },
+        "module": {
+            "color": 5
+        },
+        "module.builtin": {
+            "color": 5,
+            "bold": true
+        },
+        "label": {
+            "color": 6
+        },
+        "string": {
+            "color": 2
+        },
+        "string.documentation": {
+            "color": 2
+        },
+        "string.regexp": {
+            "color": 2,
+            "italic": true
+        },
+        "string.special": {
+            "color": 3,
+            "bold": true
+        },
+        "string.special.symbol": {
+            "color": 3,
+            "bold": true
+        },
+        "string.special.url": {
+            "color": 3,
+            "underline": true
+        },
+        "string.special.path": {
+            "color": 3,
+            "underline": true
+        },
+        "character": {
+            "color": 3
+        },
+        "character.special": {
+            "color": 3,
+            "bold": true
+        },
+        "null": {
+            "color": 6,
+            "italic": true
+        },
+        "boolean": {
+            "color": 3,
+            "italic": true
+        },
+        "number": {
+            "color": 3
+        },
+        "number.float": {
+            "color": 3
+        },
+        "type": {
+            "color": 6
+        },
+        "type.builtin": {
+            "color": 6,
+            "bold": true
+        },
+        "type.definition": {
+            "color": 14
+        },
+        "attribute": {
+            "color": 14
+        },
+        "attribute.builtin": {
+            "color": 2,
+            "bold": true
+        },
+        "property": {
+            "color": 1
+        },
+        "function": {
+            "color": 6
+        },
+        "function.builtin": {
+            "color": 6,
+            "bold": true
+        },
+        "function.call": {
+            "color": 6
+        },
+        "function.macro": {
+            "color": 14
+        },
+        "function.method": {
+            "color": 14
+        },
+        "function.method.call": {
+            "color": 14
+        },
+        "constructor": {
+            "color": 14,
+            "bold": true
+        },
+        "operator": {
+            "color": 7
+        },
+        "keyword": {
+            "color": 5
+        },
+        "keyword.coroutine": {
+            "color": 6
+        },
+        "keyword.function": {
+            "color": 6
+        },
+        "keyword.operator": {
+            "color": 7
+        },
+        "keyword.import": {
+            "color": 6
+        },
+        "keyword.type": {
+            "color": 6
+        },
+        "keyword.modifier": {
+            "color": 6
+        },
+        "keyword.repeat": {
+            "color": 6
+        },
+        "keyword.return": {
+            "color": 6
+        },
+        "keyword.debug": {
+            "color": 13,
+            "bold": true
+        },
+        "keyword.exception": {
+            "color": 13,
+            "bold": true
+        },
+        "keyword.conditional": {
+            "color": 15,
+            "bold": true
+        },
+        "keyword.conditional.ternary": {
+            "color": 15,
+            "bold": true
+        },
+        "keyword.directive": {
+            "color": 11
+        },
+        "keyword.directive.define": {
+            "color": 11,
+            "bold": true
+        },
+        "punctuation.delimiter": {
+            "color": 8
+        },
+        "punctuation.bracket": {
+            "color": 7
+        },
+        "punctuation.special": {
+            "color": 7,
+            "bold": true
+        },
+        "comment": {
+            "color": 8,
+            "italic": true
+        },
+        "comment.documentation": {
+            "color": 8,
+            "italic": true,
+            "underline": true
+        },
+        "comment.error": {
+            "color": 8,
+            "bold": true
+        },
+        "comment.warning": {
+            "color": 8,
+            "bold": true
+        },
+        "comment.todo": {
+            "color": 8,
+            "italic": true
+        },
+        "comment.note": {
+            "color": 8,
+            "italic": true
+        },
+        "none": {
+            "bold": false,
+            "italic": false,
+            "underline": false,
+            "color": null
+        }
+    }
+}

@@ -1,0 +1,55 @@
+
+$bin = ~/.local/bin
+
+# # BINDS
+# bind = SUPER,       Return, exec, $terminal
+# bind = SUPER+SHIFT, Return, exec, kitty
+# bind = SUPER,       P,      exec, walker
+# bind = SUPER+SHIFT, P,      exec, $launcher
+# bind = SUPER+SHIFT, M,      exec, emacsclient -c
+# bind = SUPER+SHIFT, B,      exec, firefox
+# bind = SUPER+SHIFT, T,      exec, thunar
+#
+# bind = SUPER+SHIFT, R,      exec, hyprctl reload
+# bind = SUPER+CTRL,  R,      exec, hyprctl dispatch forcerendererreload
+# bind = SUPER+SHIFT, C,      killactive
+# bind = SUPER+SHIFT, E,      exit
+bind = SUPER,       F,      fullscreen,     active
+bind = SUPER+SHIFT, F,      togglefloating, active
+# bind = SUPER+ALT,   K,      exec,           hyprctl kill
+# bind = SUPER+SHIFT, Escape, exec,           hyprlock
+
+bind = SUPER,       J, cyclenext
+bind = SUPER,       K, cyclenext, previous
+bind = SUPER+SHIFT, J, swapnext
+bind = SUPER+SHIFT, K, swapnext,  previous
+
+binde = SUPER, H, resizeactive, -30  30
+binde = SUPER, L, resizeactive,  30 -30
+
+bind = SUPER, 1, workspace, 1
+bind = SUPER, 2, workspace, 2
+bind = SUPER, 3, workspace, 3
+bind = SUPER, 4, workspace, 4
+bind = SUPER, 5, workspace, 5
+bind = SUPER, 6, workspace, 6
+bind = SUPER, 7, workspace, 7
+bind = SUPER, 8, workspace, 8
+bind = SUPER, 9, workspace, 9
+
+bind = SUPER+SHIFT, 1, movetoworkspacesilent, 1
+bind = SUPER+SHIFT, 2, movetoworkspacesilent, 2
+bind = SUPER+SHIFT, 3, movetoworkspacesilent, 3
+bind = SUPER+SHIFT, 4, movetoworkspacesilent, 4
+bind = SUPER+SHIFT, 5, movetoworkspacesilent, 5
+bind = SUPER+SHIFT, 6, movetoworkspacesilent, 6
+bind = SUPER+SHIFT, 7, movetoworkspacesilent, 7
+bind = SUPER+SHIFT, 8, movetoworkspacesilent, 8
+bind = SUPER+SHIFT, 9, movetoworkspacesilent, 9
+
+bind  = SUPER, tab, focusmonitor, +1
+
+bind  = SUPER, mouse_down, workspace, e+1
+bind  = SUPER, mouse_up,   workspace, e-1
+bindm = SUPER, mouse:272,  movewindow
+bindm = SUPER, mouse:273,  resizewindow

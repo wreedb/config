@@ -1,0 +1,41 @@
+# vim:ft=ghostty
+
+command = fish
+
+# font
+font-family = JetBrains Mono Medium
+font-family-bold = JetBrains Mono Bold
+font-family-italic = JetBrains Mono Medium Italic
+font-family-bold-italic = JetBrains Mono Bold Italic
+font-family = Symbols Nerd Font Mono
+#adjust-cell-width = -5%
+font-size = 14.00
+
+# cursor
+cursor-style = bar
+cursor-style-blink = false
+
+# background
+theme = tokyonight-night
+background-opacity = 0.99
+
+# misc
+# split-divider-color = #76C5A4
+
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = server
+gtk-titlebar = false
+
+confirm-close-surface = false
+app-notifications = false
+resize-overlay = never
+focus-follows-mouse = true
+
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
+auto-update = off
+
+keybind = control+shift+enter=new_split:right
