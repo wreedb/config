@@ -1,10 +1,13 @@
 # -*- mode: conf; -*- vim:ft=gitattributes
 
-git/config linguist-language=gitconfig
+files/.config/git/config linguist-language=gitconfig
 *.conf linguist-language=dosini
-ghostty/config linguist-language=dosini
-ghostty/themes/* linguist-language=dosini
-tofi/config linguist-language=dosini
-misc/mimeapps.list linguist-language=desktop
-bat/config linguist-language=sh
-misc/user-dirs.dirs linguist-language=sh
+files/.config/ghostty/config linguist-language=dosini
+files/.config/ghostty/themes/* linguist-language=dosini
+files/.config/tofi/config linguist-language=dosini
+files/.config/mimeapps.list linguist-language=desktop
+files/.config/bat/config linguist-language=sh
+files/.config/user-dirs.dirs linguist-language=sh
+files/profile linguist-language=sh
+files/bashrc linguist-language=bash
+files/.config/fontconfig/fonts.conf linguist-language=xml
