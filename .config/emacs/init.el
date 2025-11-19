@@ -1043,6 +1043,7 @@
 		   ("\\.tsx\\'" . typescript-ts-mode))
 		 auto-mode-alist))
 
+(add-hook 'texinfo-mode-hook #'display-line-numbers-mode)
 (add-hook 'toml-ts-mode-hook #'display-line-numbers-mode)
 
 (defun after-init-org-require ()

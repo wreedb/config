@@ -23,12 +23,12 @@
     ],
 	
 	"hyprland/workspaces": {
-		"format": "{icon}",
-		"format-icons": {
-			"active": "",
-			"empty": "",
-			"default": ""
-		}
+        "format": "{name}",
+		// "format-icons": {
+		// 	"active": "",
+		// 	"empty": "",
+		// 	"default": ""
+		// }
 	},
 	"pulseaudio": {
 		"format-icons": {
