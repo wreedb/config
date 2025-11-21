@@ -10,8 +10,7 @@ set -gx CFLAGS -march=x86-64 \
                -fcf-protection=full \
                -fPIC \
                -pipe \
-               -O2 \
-               -g
+               -O2
 #
 set -gx CXXFLAGS $CFLAGS
 set -gx LDFLAGS -Wl,-z,relro \

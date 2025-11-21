@@ -16,10 +16,18 @@ links: {
         type: file
     }
     
-    wireplumber: {
+    wireplumber-desktop: {
         source: ${repo}/.config/wireplumber/wireplumber.conf.d/51-local.conf.desktop
         dest: ${xdg_config_home}/wireplumber/wireplumber.conf.d/51-local.conf
         type: file
+        tag: desktop
+    }
+    
+    wireplumber-laptop: {
+        source: ${repo}/.config/wireplumber/wireplumber.conf.d/51-local.conf.laptop
+        dest: ${xdg_config_home}/wireplumber/wireplumber.conf.d/51-local.conf
+        type: file
+        tag: laptop
     }
 
     bashprofile: {

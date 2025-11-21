@@ -26,4 +26,4 @@ lsp.config['clangd'] = {
     root_markers = {{ "compile_commands.json", "meson.build" }}
 }
 
--- lsp.enable("clangd")
+lsp.enable("clangd")
