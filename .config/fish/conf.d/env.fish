@@ -30,8 +30,7 @@ set -gx RUSTFLAGS -C target-cpu=native \
                   -C link-arg=-Wl,-z,noexecstack \
                   -C link-arg=-Wl,--as-needed \
                   -C strip=none \
-                  -C debuginfo=2 \
-                  -C code-model=kernel
+                  -C debuginfo=2
 
 
 set -gx CARGO_HOME $XDG_DATA_HOME/rust
